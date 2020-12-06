@@ -91,23 +91,23 @@
 
 // Vendor / Plugins
 
-// @import "custom/vendor/plugin-perfect-scrollbar.scss";
-// @import "custom/vendor/plugin-animate-bootstrap-notify.scss";
-// @import "custom/vendor/plugin-bootstrap-switch.scss";
-// @import "custom/vendor/plugin-nouislider.scss";
-// @import "custom/vendor/plugin-datetimepicker.scss";
+@import "custom/vendor/plugin-perfect-scrollbar.scss";
+@import "custom/vendor/plugin-animate-bootstrap-notify.scss";
+@import "custom/vendor/plugin-bootstrap-switch.scss";
+@import "custom/vendor/plugin-nouislider.scss";
+@import "custom/vendor/plugin-datetimepicker.scss";
 
 // Cards
 
-// @import "custom/card";
-// @import "custom/cards/card-chart";
-// @import "custom/cards/card-map";
-// @import "custom/cards/card-user";
-// @import "custom/cards/card-task";
-// @import "custom/cards/card-plain";
-// @import "custom/cards/card-register";
-// @import "custom/cards/card-stats";
-// @import "custom/cards/card-chart";
+@import "custom/card";
+@import "custom/cards/card-chart";
+@import "custom/cards/card-map";
+@import "custom/cards/card-user";
+@import "custom/cards/card-task";
+@import "custom/cards/card-plain";
+@import "custom/cards/card-register";
+@import "custom/cards/card-stats";
+@import "custom/cards/card-chart";
 
 // Angular changes
 @import "angular/tabs";
