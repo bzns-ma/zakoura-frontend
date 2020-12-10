@@ -19,6 +19,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatIconModule } from '@angular/material/icon'
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
+import { PagesJaunesComponent } from './pages-jaunes/pages-jaunes.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { MatButtonModule } from '@angular/material/button';
     HeaderComponent,
     FooterComponent,
     EventComponent,
-    PortfolioComponent
+    PortfolioComponent,
+    PagesJaunesComponent
   ],
   imports: [
     BrowserModule,
