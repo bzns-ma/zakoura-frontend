@@ -94,9 +94,31 @@
             ],
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
-              "src/styles.scss"
+              "src/styles.scss",
+              "src/assets/css/animate.css",
+              "src/assets/css/aos.css",
+              "src/assets/css/bootstrap.min.css",
+              "src/assets/css/default.css",
+              "src/assets/css/default-min.css",
+              "src/assets/css/font-awesome.min.css",
+              "src/assets/css/LineIcons.css",
+              "src/assets/css/slick.css",
+              "src/assets/css/style.css",
+              "src/assets/css/style.css.map"
+
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/js/vendor/jquery-1.12.4.min",
+              "src/assets/js/vendor/modernizr-3.6.0.min",
+              "src/assets/js/aos",
+              "src/assets/js/bootstrap.min",
+              "src/assets/js/jquery.easing.min",
+              "src/assets/js/main",
+              "src/assets/js/scrolling-nav",
+              "src/assets/js/slick.min",
+              "src/assets/js/wow.min"
+              
+            ]
           }
         },
         "lint": {
