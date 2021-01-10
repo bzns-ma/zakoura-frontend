@@ -19,6 +19,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatIconModule } from '@angular/material/icon'
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
+import { ActivitiesComponent } from './app/activities/activities.component';
+import { ProjectsComponent } from './projects/projects.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,9 @@ import { MatButtonModule } from '@angular/material/button';
     HeaderComponent,
     FooterComponent,
     EventComponent,
-    PortfolioComponent
+    PortfolioComponent,
+    ActivitiesComponent,
+    ProjectsComponent
   ],
   imports: [
     BrowserModule,
