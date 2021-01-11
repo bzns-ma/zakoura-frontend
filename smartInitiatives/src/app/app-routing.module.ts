@@ -3,14 +3,14 @@ import { Routes, RouterModule, ExtraOptions } from '@angular/router';
 import { AboutComponent } from './about/about.component';
 import { ArtisanCvComponent } from './artisan-cv/artisan-cv.component';
 import { ContactComponent } from './contact/contact.component';
-import { EventComponent } from './event/event.component';
 import { LandingComponent } from './landing/landing.component';
 import { PortfolioComponent } from './portfolio/portfolio.component';
 
 const routerOptions: ExtraOptions = {
-  scrollPositionRestoration: 'enabled',
-  anchorScrolling: 'enabled',
-  scrollOffset: [0, 64],
+    scrollPositionRestoration: 'enabled',
+    anchorScrolling: 'enabled',
+    scrollOffset: [0, 64],
+    relativeLinkResolution: 'legacy'
 };
 
 const routes: Routes = [

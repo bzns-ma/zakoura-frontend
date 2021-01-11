@@ -931,3 +931,11 @@
 [data-overlay="9"]::before {
 	opacity: 0.9;
 }
+
+.alignit{
+	text-align: justify;
+}
+
+.centerit{
+	text-align: center;
+}

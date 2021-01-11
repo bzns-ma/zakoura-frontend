@@ -11,7 +11,6 @@ import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
-import { EventComponent } from './event/event.component';
 import { PortfolioComponent } from './portfolio/portfolio.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -19,8 +18,9 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatIconModule } from '@angular/material/icon'
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
-import { ActivitiesComponent } from './app/activities/activities.component';
 import { ProjectsComponent } from './projects/projects.component';
+import { ActivitiesComponent } from './activities/activities.component';
+import { RealisationsComponent } from './realisations/realisations.component';
 
 @NgModule({
   declarations: [
@@ -31,10 +31,10 @@ import { ProjectsComponent } from './projects/projects.component';
     ContactComponent,
     HeaderComponent,
     FooterComponent,
-    EventComponent,
     PortfolioComponent,
+    ProjectsComponent,
     ActivitiesComponent,
-    ProjectsComponent
+    RealisationsComponent
   ],
   imports: [
     BrowserModule,
