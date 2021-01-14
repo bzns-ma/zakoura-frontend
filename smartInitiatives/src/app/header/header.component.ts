@@ -10,16 +10,13 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {}
   scroll(id) {
-    console.log('scrolling to', id);
-
-    // var hash = window.location.hash;
-    // if (hash == '' || hash == '#' || hash == undefined) return false;
-
-    const el: HTMLElement|null = document.getElementById(id);
-
+    const el: HTMLElement | null = document.getElementById(id);
     if (el) {
-      setTimeout(() =>
-        el.scrollIntoView({behavior: 'smooth', block: 'start', inline: 'nearest'}), 0);
+      el.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+        inline: 'nearest',
+      });
     }
   }
 }
