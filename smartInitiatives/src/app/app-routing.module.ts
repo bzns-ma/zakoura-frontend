@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule, ExtraOptions } from '@angular/router';
-import { AboutComponent } from './about/about.component';
-import { ArtisanCvComponent } from './artisan-cv/artisan-cv.component';
-import { ContactComponent } from './contact/contact.component';
-import { LandingComponent } from './landing/landing.component';
-import { PortfolioComponent } from './portfolio/portfolio.component';
+import { AboutComponent } from './components/about/about.component';
+import { ArtisanCvComponent } from './components/artisan-cv/artisan-cv.component';
+import { ContactComponent } from './components/contact/contact.component';
+import { LandingComponent } from './components/landing/landing.component';
+import { PortfolioComponent } from './components/portfolio/portfolio.component';
 
 const routerOptions: ExtraOptions = {
     scrollPositionRestoration: 'enabled',

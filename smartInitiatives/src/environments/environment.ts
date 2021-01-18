@@ -3,7 +3,14 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  backendUrl: {
+      api: "assets/data/",
+      activities : "activities.json",
+      achivements: "achivements.json",
+      artisan: "artisan.json",
+      projects: "projects.json"
+  }
 };
 
 /*

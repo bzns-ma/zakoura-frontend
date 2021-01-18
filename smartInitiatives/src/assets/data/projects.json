@@ -1,0 +1,49 @@
+[{
+        "id": "",
+        "title": "Programme MAHARATE",
+        "description": "est un programme de renforcement des capacités transversesvisant à appuyer l’insertion des jeunes diplômés dans le marché du travail.",
+        "section": "Employabilité"
+    },
+    {
+        "id": "",
+        "title": "Programme MOUAKABA",
+        "description": "est un dispositif d’accompagnement des jeunes diplômés visant à renforcer le dispositif de prospection et d’identification des opportunités professionnelle.",
+        "section": "Employabilité"
+    },
+    {
+        "id": "",
+        "title": "Journée porte ouverte",
+        "description": "Les journées de l’emploi consistent à regrouper des acteurs économiques en quête des profils afin d’initier des opportunités d’échanges avec les candidats.",
+        "section": "Employabilité"
+    },
+    {
+        "id": "",
+        "title": "Programme MOUKAOUALA",
+        "description": "est un dispositif d’ancrage de l’esprit entrepreneurial à travers l’appropriation d’un métier porteur, et l’accompagnement par la constitution d’une coopérative ou des AGR par les différents bénéficiaires.",
+        "section": "Entreprenariat"
+    },
+    {
+        "id": "",
+        "title": "Parcours TASWIQ",
+        "description": "est un dispositif de renforcement des capacités et d’accompagnement sur les aspects liés à la commercialisation.",
+        "section": "Entreprenariat"
+    },
+    {
+        "id": "",
+        "title": "Marché solidaire",
+        "description": "est un dispositif d’appui à la commercialisation des produits locaux au profit des entrepreneurs locaux (AGR & Coopératives) à travers des expositions éphémères.",
+        "section": "Entreprenariat"
+    },
+    {
+        "id": "",
+        "title": "Initiatives citoyennes",
+        "description": "est une action de synergies entre les collaborateurs de SMT, et les porteurs d’idées citoyennes au sein de la commune de Ain Harrouda.",
+        "section": "Entreprenariat"
+    },
+    {
+        "id": "",
+        "title": "Parcours Ambassadeur",
+        "description": "est un relais de l’incubateur auprès de la population locale. Son rôle consiste à véhiculer d’une manière objective et positive les différentes informations relatives à l’offre de service de d’incubateur.",
+        "section": "Entreprenariat"
+    }
+]
