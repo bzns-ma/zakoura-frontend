@@ -2,7 +2,7 @@ import { HttpClient, HttpErrorResponse, HttpResponse } from '@angular/common/htt
 import { Injectable } from '@angular/core';
 import { throwError } from 'rxjs';
 import { environment } from '../../environments/environment';
-import { Achivement } from '../models/achivement';
+import { achievement } from '../models/achievement';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -12,8 +12,8 @@ export class AchivementsService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getAchivements(): Observable<HttpResponse<Achivement[]>> {
-    return this.httpClient.get<Achivement[]>(environment.backendUrl.api + environment.backendUrl.achivements, { observe: 'response' });
+  getAchivements(): Observable<HttpResponse<achievement[]>> {
+    return this.httpClient.get<achievement[]>(environment.backendUrl.api + environment.backendUrl.achievement, { observe: 'response' });
   }
 
   handleError(error: HttpErrorResponse) {

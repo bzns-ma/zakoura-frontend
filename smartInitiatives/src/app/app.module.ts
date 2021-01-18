@@ -5,13 +5,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { HttpClientModule } from '@angular/common/http';
-import { LandingComponent } from './components/landing/landing.component';
-import { ArtisanCvComponent } from './components/artisan-cv/artisan-cv.component';
-import { AboutComponent } from './components/about/about.component';
-import { ContactComponent } from './components/contact/contact.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
-import { PortfolioComponent } from './components/portfolio/portfolio.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
@@ -20,7 +15,10 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { ProjectsComponent } from './components/projects/projects.component';
 import { ActivitiesComponent } from './components/activities/activities.component';
-import { AchivementsComponent } from './components/achivements/achivements.component';
+import { LandingComponent } from './components/landing/landing.component';
+import { ArtisanCvComponent } from './components/artisan-cv/artisan-cv.component';
+import { AboutComponent } from './components/about/about.component';
+import { ContactComponent } from './components/contact/contact.component';
 
 @NgModule({
   declarations: [
@@ -31,10 +29,8 @@ import { AchivementsComponent } from './components/achivements/achivements.compo
     ContactComponent,
     HeaderComponent,
     FooterComponent,
-    PortfolioComponent,
     ProjectsComponent,
-    ActivitiesComponent,
-    AchivementsComponent
+    ActivitiesComponent
   ],
   imports: [
     BrowserModule,

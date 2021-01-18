@@ -19,7 +19,6 @@ export class ProjectsComponent implements OnInit {
 
   getProjects() {
     this.api.getProject().subscribe(response => {
-      console.log(response);
       for (const data of response.body) {
         this.projects.push(data);
       }

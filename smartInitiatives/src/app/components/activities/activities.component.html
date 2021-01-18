@@ -1,4 +1,3 @@
-<!--====== SERVICES PART START ======-->
 <section id="service" class="services-area pt-125 pb-130 gray-bg">
     <div class="container">
         <div class="row justify-content-center">
@@ -7,15 +6,13 @@
                     <h5 class="sub-title mb-15">Nos activités</h5>
                     <h2 class="title">CE QUE NOUS FAISONS</h2>
                 </div>
-
             </div>
         </div>
-
         <div class="row justify-content-center">
             <div *ngFor="let activity of activities" class="col-lg-4 col-md-6 col-sm-8">
                 <div class="single-services text-center mt-30 wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="1.2s">
                     <div class="services-icon">
-                        <i class="lni-grow"></i>
+                        <i [className]="activity.iconclass"></i>
                     </div>
                     <div class="services-content mt-15">
                         <h4 class="services-title">{{activity.title}}</h4>
@@ -24,11 +21,7 @@
                         </p>
                     </div>
                 </div>
-                <!-- single services -->
             </div>
         </div>
-
-        <!-- row -->
     </div>
-    <!-- container -->
 </section>

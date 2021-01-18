@@ -19,7 +19,6 @@ export class ActivitiesComponent implements OnInit {
 
   getActivities() {
     this.api.getActivities().subscribe(response => {
-      console.log(response);
       for (const data of response.body) {
         this.activities.push(data);
       }

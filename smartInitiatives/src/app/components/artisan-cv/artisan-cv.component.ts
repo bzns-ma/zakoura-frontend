@@ -9,7 +9,7 @@ import { Artisan } from '../../models/artisan';
 })
 export class ArtisanCvComponent implements OnInit {
 
-  artisan: Artisan[] = [];
+  artisans: Artisan[] = [];
 
   constructor(private api: ArtisanService) { }
 
@@ -19,9 +19,8 @@ export class ArtisanCvComponent implements OnInit {
 
   getArtisan() {
     this.api.getArtisan().subscribe(response => {
-      console.log(response);
       for (const data of response.body) {
-        this.artisan.push(data);
+        this.artisans.push(data);
       }
     });
   }

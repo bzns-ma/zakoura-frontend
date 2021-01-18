@@ -1,6 +1,6 @@
 [{
         "id": "",
-        "title": "CEO & Founder",
+        "title": "Boucher",
         "firstname": "Rob",
         "lastname": "Hope",
         "facebook": "#",
@@ -9,7 +9,7 @@
     },
     {
         "id": "",
-        "title": "Chief Designer",
+        "title": "Boulanger",
         "firstname": "Patric",
         "lastname": "Green",
         "facebook": "#",
@@ -18,7 +18,16 @@
     },
     {
         "id": "",
-        "title": "Consultant",
+        "title": "Cordonnier",
+        "firstname": "Daryl",
+        "lastname": "Dixon",
+        "facebook": "#",
+        "twitter": "#",
+        "linkedin": "#"
+    },
+    {
+        "id": "",
+        "title": "Fleuriste",
         "firstname": "Daryl",
         "lastname": "Dixon",
         "facebook": "#",

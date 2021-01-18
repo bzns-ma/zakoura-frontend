@@ -7,7 +7,7 @@ export const environment = {
   backendUrl: {
       api: "assets/data/",
       activities : "activities.json",
-      achivements: "achivements.json",
+      achievement: "achivements.json",
       artisan: "artisan.json",
       projects: "projects.json"
   }
