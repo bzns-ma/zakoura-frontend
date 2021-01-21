@@ -150,7 +150,7 @@ p {
 
 /*===== All Section Title Style =====*/
 .section-title .sub-title {
-  font-size: 18px;
+  font-size: 20px;
   color: #f3a24a;
   text-transform: uppercase; }
   @media (max-width: 767px) {
@@ -790,7 +790,7 @@ p {
           margin-top: -25px; } }
 
 .about-content .about-welcome {
-  font-size: 24px;
+  font-size: 20px;
   color: #f3a24a;
   text-transform: uppercase; }
   @media (max-width: 767px) {
@@ -798,7 +798,7 @@ p {
       font-size: 18px; } }
 
 .about-content .about-title {
-  font-size: 35px;
+  font-size: 30px;
   text-transform: uppercase; }
   @media (max-width: 767px) {
     .about-content .about-title {
@@ -834,7 +834,7 @@ p {
     -ms-transition: all 0.4s ease-out 0s;
     -o-transition: all 0.4s ease-out 0s;
     transition: all 0.4s ease-out 0s; }
-  .single-services .services-content .services-title {
+  .services-content .services-content .services-title {
     font-size: 22px;
     font-weight: 600;
     font-family: 'Barlow', sans-serif;
@@ -1100,7 +1100,7 @@ p {
   font-weight: 600; }
 
 .single-testimonial .testimonial-content .sub-title {
-  font-family: 'Hind', sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
   font-size: 14px;
   color: #fff; }
 
@@ -1283,7 +1283,7 @@ p.form-message.error {
   .footer-link ul li a {
     font-size: 16px;
     color: #646464;
-    font-family: 'Hind', sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
     -webkit-transition: all 0.4s ease-out 0s;
     -moz-transition: all 0.4s ease-out 0s;
     -ms-transition: all 0.4s ease-out 0s;
