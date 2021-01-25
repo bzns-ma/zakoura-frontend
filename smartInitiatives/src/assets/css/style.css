@@ -19,7 +19,7 @@
 /*===========================
     1. COMMON css 
 ===========================*/
-@import url("https://fonts.googleapis.com/css?family=Barlow:300,400,500,600,700|Hind:400,500,600,700|Quattrocento:400,700");
+/* @import url("https://fonts.googleapis.com/css?family=Barlow:300,400,500,600,700|Hind:400,500,600,700|Quattrocento:400,700"); */
 body {
   font-family: Arial, Helvetica, sans-serif;
   font-weight: normal;
@@ -58,7 +58,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'Quattrocento', serif;
+  font-family: Arial, Helvetica, sans-serif;
   font-weight: 700;
   color: #121619;
   margin: 0px; }
