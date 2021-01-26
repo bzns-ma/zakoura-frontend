@@ -1,81 +1,64 @@
-    <section id="team" class="team-area pt-125 pb-130 gray-bg">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-6">
-                    <div class="section-title text-center pb-20">
-                        <h5 class="sub-title mb-15">Nos artisans</h5>
-                        <h2 class="title">Nos artisans ont du talent</h2>
-                    </div>
-                </div>
-            </div> 
-            <div class="row" >
-                <div *ngFor="let artisan of artisans" class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="single-team text-center mt-30 wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="0.4s">
-                        <div class="team-image">
-                            <img src="assets/images/team/team-1.jpg" alt="Team">
-                        </div>
-                        <div class="team-content">
-                            <h4 class="team-name"><a href="#">{{artisan.firstname +" "+ artisan.lastname}}</a></h4>
-                            <span class="sub-title">{{artisan.title}}</span>
-                            <ul class="social mt-25">
-                                <li><a href="#"><i class="lni-facebook-filled"></i></a></li>
-                                <li><a href="#"><i class="lni-twitter-original"></i></a></li>
-                                <li><a href="#"><i class="lni-linkedin-original"></i></a></li>
-                            </ul>
-                        </div>
-                    </div> 
-                </div>
 
-                <!-- <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="single-team text-center mt-30 wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="0.8s">
-                        <div class="team-image">
-                            <img src="assets/images/team/team-2.jpg" alt="Team">
+  <section id="team" class="team-area pt-125 pb-130 gray-bg">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6" *ngFor="let artisan of artisans" style="padding: 1em;" >
+                <section class="bussinesscard">
+                    <div class="flip">
+                      <div class="front">       
+                        <div class="top">       
+                          <div class="logo"><span class="fat">E</span><span class="skinny">K</span></div>       
                         </div>
-                        <div class="team-content">
-                            <h4 class="team-name"><a href="#">Patric Green</a></h4>
-                            <span class="sub-title">Chief Designer</span>
-                            <ul class="social mt-25">
-                                <li><a href="#"><i class="lni-facebook-filled"></i></a></li>
-                                <li><a href="#"><i class="lni-twitter-original"></i></a></li>
-                                <li><a href="#"><i class="lni-linkedin-original"></i></a></li>
-                            </ul>
-                        </div>
+                        <div class="nametroduction">
+                          <div class="name">{{artisan.firstname}} {{artisan.lastname}}</div>
+                          <div class="introduction">{{artisan.title}}</div>
+                        </div>  
+                        <div class="contact">                                  
+                          <div class="phone ">
+                            <span class="ion-ios7-telephone"></span> 
+                            <a href="#">0118 999 7253</a> 
+                          </div>
+                          <div class="email ">
+                            <span class="ion-email"></span>
+                            <a href="#">eduard@kosicky.me</a>
+                          </div>
+
+                          <div class="facebook ">
+                            <span class="ion-social-facebook"></span> 
+                            <a href="#">{{artisan.facebook}}</a> 
+                          </div>
+
+                          <div class="twitter ">
+                            <span class="ion-social-twitter"></span> 
+                            <a href="#">{{artisan.twitter}}</a> 
+                          </div>
+
+                        </div>            
+                      </div>
+                      <div class="back"></div> <!--FIXES FONT RENDERING -->
                     </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="single-team text-center mt-30 wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="1.2s">
-                        <div class="team-image">
-                            <img src="assets/images/team/team-3.jpg" alt="Team">
-                        </div>
-                        <div class="team-content">
-                            <h4 class="team-name"><a href="#">Daryl Dixon</a></h4>
-                            <span class="sub-title">Consultant</span>
-                            <ul class="social mt-25">
-                                <li><a href="#"><i class="lni-facebook-filled"></i></a></li>
-                                <li><a href="#"><i class="lni-twitter-original"></i></a></li>
-                                <li><a href="#"><i class="lni-linkedin-original"></i></a></li>
-                            </ul>
-                        </div>
-                    </div> 
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="single-team text-center mt-30 wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="1.6s">
-                        <div class="team-image">
-                            <img src="assets/images/team/team-4.jpg" alt="Team">
-                        </div>
-                        <div class="team-content">
-                            <h4 class="team-name"><a href="#">Mark Parker</a></h4>
-                            <span class="sub-title">Intern</span>
-                            <ul class="social mt-25">
-                                <li><a href="#"><i class="lni-facebook-filled"></i></a></li>
-                                <li><a href="#"><i class="lni-twitter-original"></i></a></li>
-                                <li><a href="#"><i class="lni-linkedin-original"></i></a></li>
-                            </ul>
-                        </div>
-                    </div> 
-                </div> -->
-                
+                  </section>
+
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
+<!-- 
+<mat-card class="example-card">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>Shiba Inu</mat-card-title>
+      <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+    <mat-card-content>
+      <p>
+        {{artisan.title}}
+      </p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button>LIKE</button>
+      <button mat-button>SHARE</button>
+    </mat-card-actions>
+  </mat-card> -->

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule, ExtraOptions } from '@angular/router';
+import { ArtisanCvComponent } from './components/artisan-cv/artisan-cv.component';
 import { LandingComponent } from './components/landing/landing.component';
 
 const routerOptions: ExtraOptions = {
@@ -11,8 +12,8 @@ const routerOptions: ExtraOptions = {
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full'},
-  { path: 'home', component: LandingComponent }
-  // { path: 'artisan', component: ArtisanCvComponent },
+  { path: 'home', component: LandingComponent },
+  { path: 'artisan', component: ArtisanCvComponent }
   // { path: 'about', component: AboutComponent },
   // { path: 'portfolio', component: PortfolioComponent },
   // { path: 'contact', component: ContactComponent },
