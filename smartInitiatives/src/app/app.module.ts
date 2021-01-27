@@ -20,6 +20,8 @@ import { ArtisanCvComponent } from './components/artisan-cv/artisan-cv.component
 import { AboutComponent } from './components/about/about.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { TeamComponent } from './components/team/team.component';
+import { FilterPipe } from './pipes/filter.pipe';
+import { FormsModule } from '@angular/forms'; 
 
 @NgModule({
   declarations: [
@@ -32,7 +34,8 @@ import { TeamComponent } from './components/team/team.component';
     FooterComponent,
     ProjectsComponent,
     ActivitiesComponent,
-    TeamComponent
+    TeamComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,
@@ -42,7 +45,8 @@ import { TeamComponent } from './components/team/team.component';
     MatToolbarModule,
     MatIconModule,
     MatButtonModule,
-    MatCardModule
+    MatCardModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

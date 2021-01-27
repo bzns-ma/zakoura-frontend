@@ -1,8 +1,14 @@
 
   <section id="team" class="team-area pt-125 pb-130 gray-bg">
     <div class="container">
+        <input type="text" 
+          [(ngModel)]="searchText"
+          placeholder="chercher un artisan par nom,métier,mail..."
+          class="form-control">
+      </div>
+    <div class="container">
         <div class="row">
-            <div class="col-lg-6" *ngFor="let artisan of artisans" style="padding: 1em;" >
+            <div class="col-lg-6" *ngFor="let artisan of artisans | filter:searchText" style="padding: 1em;" >
                 <section class="bussinesscard">
                     <div class="flip">
                       <div class="front">       

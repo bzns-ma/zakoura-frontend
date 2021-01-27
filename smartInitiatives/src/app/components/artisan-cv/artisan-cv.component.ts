@@ -10,6 +10,7 @@ import { Artisan } from '../../models/artisan';
 export class ArtisanCvComponent implements OnInit {
 
   artisans: Artisan[] = [];
+  searchText = '';
 
   constructor(private api: ArtisanService) { }
 
