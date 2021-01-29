@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ArtisanService } from '../../services/artisan.service';
 import { Artisan } from '../../models/artisan';
+import { MatPaginator, PageEvent } from '@angular/material/paginator';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-artisan-cv',
@@ -8,14 +10,50 @@ import { Artisan } from '../../models/artisan';
   styleUrls: ['./artisan-cv.component.scss']
 })
 export class ArtisanCvComponent implements OnInit {
-
+  pageEvent: PageEvent;
   artisans: Artisan[] = [];
+  currentArtisansToShow: Artisan[] = [];
   searchText = '';
 
-  constructor(private api: ArtisanService) { }
+  length = 100;
+  pageSize = 5;
+  pageSizeOptions: number[] = [5, 10, 25, 100];
+
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+
+
+  constructor(private api: ArtisanService,private actro : ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.getArtisan();
+    // this.getArtisan();
+    this.artisans = this.actro.snapshot.data['artres'].body; 
+
+    console.log(this.artisans);
+    let l = this.artisans.filter((v,i)=>
+      i<5);
+    console.log(l);
+
+    this.currentArtisansToShow = l;
+
+    // this.paginator.firstPage(); 
+
+  }
+
+  ngAfterViewInit() {
+    this.paginator.page.subscribe(
+       (event) => console.log(event)
+);
+// this.paginator.firstPage();
+}
+
+  onPageChange($event) {
+    this.currentArtisansToShow = this.artisans.slice($event.pageIndex * $event.pageSize, $event.pageIndex * $event.pageSize + $event.pageSize);
+  }
+
+  onPageChanged(e) {
+    let firstCut = e.pageIndex * e.pageSize;
+    let secondCut = firstCut + e.pageSize;
+    this.currentArtisansToShow = this.artisans.slice(firstCut, secondCut);
   }
 
   getArtisan() {
@@ -26,3 +64,5 @@ export class ArtisanCvComponent implements OnInit {
     });
   }
 }
+
+

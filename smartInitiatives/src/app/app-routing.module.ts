@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule, ExtraOptions } from '@angular/router';
 import { ArtisanCvComponent } from './components/artisan-cv/artisan-cv.component';
 import { LandingComponent } from './components/landing/landing.component';
+import { ArtisansResolver } from './resolvers/artisans.resolver';
 
 const routerOptions: ExtraOptions = {
     scrollPositionRestoration: 'enabled',
@@ -13,7 +14,13 @@ const routerOptions: ExtraOptions = {
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full'},
   { path: 'home', component: LandingComponent },
-  { path: 'artisan', component: ArtisanCvComponent }
+  { 
+    path: 'artisan', 
+    component: ArtisanCvComponent,
+    resolve:{
+      artres : ArtisansResolver
+    }
+  }
   // { path: 'about', component: AboutComponent },
   // { path: 'portfolio', component: PortfolioComponent },
   // { path: 'contact', component: ContactComponent },
@@ -25,6 +32,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes,routerOptions)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers:[ArtisansResolver]
 })
 export class AppRoutingModule { }

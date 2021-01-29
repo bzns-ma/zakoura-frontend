@@ -1,3 +1,6 @@
+* {
+  box-sizing: border-box;
+}
 .example-card {
     max-width: 400px;
   }
@@ -6,6 +9,23 @@
     background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
     background-size: cover;
   }
+
+  ::ng-deep .mat-paginator-page-size{
+    display: none !important;
+}
+
+::ng-deep .mat-paginator-range-label{
+    display: none !important;
+}
+
+.center-elems {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 15%;
+  border: 3px solid transparent;
+  opacity: 90%;
+}
 
 
 @import '~compass-mixins/lib/compass/css3';
