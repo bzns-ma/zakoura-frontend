@@ -110,11 +110,11 @@ a{
       }             
       .logo{
         display: inline-block;      
-        background: $maincolor;
+        background: #fff;//$maincolor;
         color: #fff;
         z-index: 11;
-        padding: .16em;
-        border: 8px solid #fff;
+        // padding: .16em;
+        border: 5px solid #fff;
         position: relative;
         pointer-events: none;
         @include translateX(-50%);
@@ -220,4 +220,17 @@ a{
 }
 .flip:hover .front .contact{
   @include translateY(-35%);  
+}
+
+
+.badge{
+  position: absolute;
+    right:2%;
+    top:10px;
+    background:#f3a24a;
+    text-align: center;
+    border-radius: 30px 30px 30px 30px;
+    color:white;
+    padding:5px 20px;
+    font-size:20px;
 }

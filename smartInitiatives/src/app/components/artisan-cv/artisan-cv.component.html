@@ -16,7 +16,8 @@
           <div class="flip">
             <div class="front">
               <div class="top">
-                <div class="logo"><span class="fat">E</span><span class="skinny">K</span></div>
+                <div class="logo"><img src="assets/images/about/IMG_8880.jpg" alt="artisans" style="width:80px;height:68px;"  ></div>
+                <div *ngIf="artisan.membership" class="badge"> <span>{{artisan.membership}}</span></div>
               </div>
               <div class="nametroduction">
                 <div class="name">{{artisan.firstname}} {{artisan.lastname}}</div>
