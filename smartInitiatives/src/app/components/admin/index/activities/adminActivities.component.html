@@ -17,18 +17,16 @@
                     <th>Identifiant</th>
                     <th>Titre</th>
                     <th>Description</th>
-                    <th>Section</th>
                     <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let project of projects">
+                <tr *ngFor="let activity of activities">
                     <th scope="row">1</th>
-                    <td>{{project.id}}</td>
-                    <td>{{project.title}}</td>
-                    <td>{{project.description}}</td>
-                    <td>{{project.section}}</td>
-                    <td><a href="#" (click)="modify(project.id)"><i class="bi bi-pencil-square action-icon"></i></a><a href="#"><i (click)="delete(project.id)" class="bi bi-x-octagon action-icon"></i></a></td>
+                    <td>{{activity.id}}</td>
+                    <td>{{activity.title}}</td>
+                    <td>{{activity.description}}</td>
+                    <td><a href="#" (click)="modify(activity.id)"><i class="bi bi-pencil-square action-icon"></i></a><a href="#"><i (click)="delete(activity.id)" class="bi bi-x-octagon action-icon"></i></a></td>
                 </tr>
             </tbody>
         </table>
@@ -53,10 +51,6 @@
                         </div>
                         <div class="form-group">
                             <label for="message-text" class="col-form-label">Description:</label>
-                            <textarea class="form-control" id="message-text"></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label for="message-text" class="col-form-label">Section:</label>
                             <textarea class="form-control" id="message-text"></textarea>
                         </div>
                     </form>

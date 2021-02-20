@@ -19,6 +19,9 @@ import { LandingComponent } from './components/landing/landing.component';
 import { LoginComponent } from './components/admin/login/login.component';
 import { IndexComponent } from './components/admin/index/index.component';
 import { AdminProjectsComponent } from './components/admin/index/projects/adminProjects.component';
+import { AdminArtisansComponent } from './components/admin/index/artisans/adminArtisans.component';
+import { AdminAchivementsComponent } from './components/admin/index/achievements/adminAchievements.component';
+import { AdminActivitiesComponent } from './components/admin/index/activities/adminActivities.component';
 import { ArtisanCvComponent } from './components/artisan-cv/artisan-cv.component';
 import { AboutComponent } from './components/about/about.component';
 import { ContactComponent } from './components/contact/contact.component';
@@ -49,6 +52,9 @@ import { ReactiveFormsModule, FormBuilder } from '@angular/forms';
     LoginComponent,
     IndexComponent,
     AdminProjectsComponent,
+    AdminArtisansComponent,
+    AdminAchivementsComponent,
+    AdminActivitiesComponent,
     FilterPipe
   ],
   imports: [
