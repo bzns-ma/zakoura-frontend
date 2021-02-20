@@ -18,15 +18,16 @@ import { ActivitiesComponent } from './components/activities/activities.componen
 import { LandingComponent } from './components/landing/landing.component';
 import { LoginComponent } from './components/admin/login/login.component';
 import { IndexComponent } from './components/admin/index/index.component';
+import { AdminProjectsComponent } from './components/admin/index/projects/adminProjects.component';
 import { ArtisanCvComponent } from './components/artisan-cv/artisan-cv.component';
 import { AboutComponent } from './components/about/about.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { TeamComponent } from './components/team/team.component';
 import { FilterPipe } from './pipes/filter.pipe';
 import { FormsModule } from '@angular/forms';
-import {MatPaginatorModule} from '@angular/material/paginator';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatInputModule} from '@angular/material/input';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 import { RouterModule } from '@angular/router';
 import { fakeBackendProvider } from './helpers/fake-backend';
 import { JwtInterceptor } from './helpers/jwt.interceptor';
@@ -47,6 +48,7 @@ import { ReactiveFormsModule, FormBuilder } from '@angular/forms';
     TeamComponent,
     LoginComponent,
     IndexComponent,
+    AdminProjectsComponent,
     FilterPipe
   ],
   imports: [

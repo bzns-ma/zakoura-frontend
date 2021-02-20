@@ -24,8 +24,8 @@ const routes: Routes = [
       artres : ArtisansResolver
     }
   },
-  { path: 'admin', component: IndexComponent, canActivate: [AuthGuard] },
-  { path: 'login', component: LoginComponent }
+  { path: 'admin', component: IndexComponent, canActivate: [AuthGuard], data:{header:false} },
+  { path: 'login', component: LoginComponent },
 ];
 
 @NgModule({

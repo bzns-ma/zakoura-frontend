@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Location } from "@angular/common";
 
 @Component({
   selector: 'app-footer',
@@ -6,7 +8,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./footer.component.scss'],
 })
 export class FooterComponent implements OnInit {
-  constructor() {}
+
+  notAdminPages: boolean;
+
+  constructor(private router: Router, location: Location,) { 
+    this.router.events.subscribe(val => {
+        this.notAdminPages = !(location.path() === "/admin" || location.path() === "/login");
+    }); 
+  }
 
   ngOnInit(): void {}
 

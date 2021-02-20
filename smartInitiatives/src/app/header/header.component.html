@@ -15,7 +15,7 @@
         <img src="assets/images/banner/shape/shape-4.png" alt="shape">
     </div>
 
-    <div class="navigation-bar">
+    <div *ngIf="notAdminPages" class="navigation-bar">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -23,9 +23,7 @@
                         <a class="navbar-brand">
                             <img src="assets/images/logo_smart.png" alt="Logo">
                         </a>
-                        <button class="navbar-toggler" type="button" data-toggle="collapse"
-                            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                            aria-expanded="false" aria-label="Toggle navigation">
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="toggler-icon"></span>
                             <span class="toggler-icon"></span>
                             <span class="toggler-icon"></span>
@@ -46,7 +44,7 @@
                                     <a style="cursor: pointer;" routerLink="artisan"  routerLinkActive="active">Nos artisans</a>
                                 </li> -->
                                 <li class="nav-item">
-                                    <a style="cursor: pointer;" routerLink="." fragment="contact" >Nous contactez</a>
+                                    <a style="cursor: pointer;" routerLink="." fragment="contact">Nous contactez</a>
                                 </li>
                             </ul>
                         </div>
@@ -59,7 +57,4 @@
             </div>
         </div>
     </div>
-
-
-
 </header>
