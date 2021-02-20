@@ -3,6 +3,9 @@ import { Routes, RouterModule, ExtraOptions } from '@angular/router';
 import { ArtisanCvComponent } from './components/artisan-cv/artisan-cv.component';
 import { LandingComponent } from './components/landing/landing.component';
 import { ArtisansResolver } from './resolvers/artisans.resolver';
+import { LoginComponent } from './components/admin/login/login.component';
+import { IndexComponent } from './components/admin/index/index.component';
+import { AuthGuard } from './helpers/auth.guard';
 
 const routerOptions: ExtraOptions = {
     scrollPositionRestoration: 'enabled',
@@ -20,14 +23,9 @@ const routes: Routes = [
     resolve:{
       artres : ArtisansResolver
     }
-  }
-  // { path: 'about', component: AboutComponent },
-  // { path: 'portfolio', component: PortfolioComponent },
-  // { path: 'contact', component: ContactComponent },
-  // { path: 'event', component: EventComponent }
-
-
-
+  },
+  { path: 'admin', component: IndexComponent, canActivate: [AuthGuard] },
+  { path: 'login', component: LoginComponent }
 ];
 
 @NgModule({
