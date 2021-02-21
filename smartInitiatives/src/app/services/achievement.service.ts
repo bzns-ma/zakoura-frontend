@@ -2,7 +2,7 @@ import { HttpClient, HttpErrorResponse, HttpResponse } from '@angular/common/htt
 import { Injectable } from '@angular/core';
 import { throwError } from 'rxjs';
 import { environment } from '../../environments/environment';
-import { achievement } from '../models/achievement';
+import { Achievement } from '../models/achievement';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -12,8 +12,20 @@ export class AchivementsService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getAchivements(): Observable<HttpResponse<achievement[]>> {
-    return this.httpClient.get<achievement[]>(environment.backendUrl.api + environment.backendUrl.achievement, { observe: 'response' });
+  getAchivements(): Observable<HttpResponse<Achievement[]>> {
+    return this.httpClient.get<Achievement[]>(environment.backendUrl.api + environment.backendUrl.achievement, { observe: 'response' });
+  }
+
+  addAchievement(achievement: any){
+    return this.httpClient.post<Achievement>(environment.backendUrl.api + environment.backendUrl.projects + environment.backendUrl.createAchievement, achievement, { observe: 'response' });
+  }
+
+  updateAchievement(achievement: any){
+    return this.httpClient.post<Achievement>(environment.backendUrl.api + environment.backendUrl.projects + environment.backendUrl.updateAchievement, achievement, { observe: 'response' });
+  }
+
+  deleteAchievement(achievement: any){
+    return this.httpClient.post<Achievement>(environment.backendUrl.api + environment.backendUrl.projects + environment.backendUrl.deleteAchievement, achievement, { observe: 'response' });
   }
 
   handleError(error: HttpErrorResponse) {
