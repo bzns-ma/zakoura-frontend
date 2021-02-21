@@ -11,12 +11,12 @@
     <br />
   <div class="container">
     <div class="row">
-      <div class="col-lg-6" *ngFor="let artisan of currentArtisansToShow | filter:searchText" style="padding: 1em;">
+      <div class="col-lg-4 space" *ngFor="let artisan of currentArtisansToShow | filter:searchText">
         <section class="bussinesscard">
           <div class="flip">
             <div class="front">
               <div class="top">
-                <div class="logo"><img src="assets/images/about/IMG_8880.jpg" alt="artisans" style="width:80px;height:68px;"  ></div>
+                <div class="logo"><img class="artisanImg" src="assets/images/about/IMG_8880.jpg" alt="artisans"></div>
                 <div *ngIf="artisan.membership" class="badge"> <span>{{artisan.membership}}</span></div>
               </div>
               <div class="nametroduction">
