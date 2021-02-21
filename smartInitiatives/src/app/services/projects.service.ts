@@ -16,6 +16,18 @@ export class ProjectsService {
     return this.httpClient.get<Project[]>(environment.backendUrl.api + environment.backendUrl.projects, { observe: 'response' });
   }
 
+  addProject(project: any){
+    return this.httpClient.post<Project>(environment.backendUrl.api + environment.backendUrl.projects + environment.backendUrl.createProject, { observe: 'response' });
+  }
+
+  updateProject(project: any){
+    return this.httpClient.post<Project>(environment.backendUrl.api + environment.backendUrl.projects + environment.backendUrl.updateProject, project, { observe: 'response' });
+  }
+
+  deleteProject(project: any){
+    return this.httpClient.post<Project>(environment.backendUrl.api + environment.backendUrl.projects + environment.backendUrl.deleteProject, project, { observe: 'response' });
+  }
+
   handleError(error: HttpErrorResponse) {
     let errorMessage = 'Unknown error!';
     if (error.error instanceof ErrorEvent) {

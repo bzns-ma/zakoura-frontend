@@ -16,6 +16,18 @@ export class ArtisanService {
     return this.httpClient.get<Artisan[]>(environment.backendUrl.api + environment.backendUrl.artisan, { observe: 'response' });
   }
 
+  addArtisan(artisan: any){
+    return this.httpClient.post<Artisan>(environment.backendUrl.api + environment.backendUrl.artisan + environment.backendUrl.createArtisan, { observe: 'response' });
+  }
+
+  updateArtisan(artisan: any){
+    return this.httpClient.post<Artisan>(environment.backendUrl.api + environment.backendUrl.artisan + environment.backendUrl.updateArtisan, artisan, { observe: 'response' });
+  }
+
+  deleteArtisan(artisan: any){
+    return this.httpClient.post<Artisan>(environment.backendUrl.api + environment.backendUrl.artisan + environment.backendUrl.deleteArtisan, artisan, { observe: 'response' });
+  }
+
   handleError(error: HttpErrorResponse) {
     let errorMessage = 'Unknown error!';
     if (error.error instanceof ErrorEvent) {

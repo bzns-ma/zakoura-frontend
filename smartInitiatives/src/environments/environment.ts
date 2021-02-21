@@ -9,7 +9,22 @@ export const environment = {
       activities : "activities.json",
       achievement: "achivements.json",
       artisan: "artisan.json",
-      projects: "projects.json"
+      projects: "projects.json",
+      createProject: "",
+      deleteProject: "",
+      updateProject: "",
+      createEvent: "",
+      deleteEvent: "",
+      updateEvent: "",
+      createArtisan: "",
+      deleteArtisan: "",
+      updateArtisan: "",
+      createAchievement: "",
+      deleteAchievement: "",
+      updateAchievement: "",
+      createActivity: "",
+      deleteActivity: "",
+      updateActivity: ""
   }
 };
 
