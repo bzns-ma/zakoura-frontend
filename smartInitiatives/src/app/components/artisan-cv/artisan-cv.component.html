@@ -5,13 +5,19 @@
       <div class="col-6">
         <input style="float: right;" type="text" [(ngModel)]="searchText" placeholder="filter" class="form-control">
       </div>
-      <div class="col-3"></div>
+      <div class="col-3">
+        <div style="margin-right: 5%;">
+          <mat-paginator #paginator [length]="length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"
+       (page)="onPageChanged($event)">
+     </mat-paginator> 
+       </div>
+      </div>
     </div>
   </div>
     <br />
   <div class="container">
     <div class="row">
-      <div class="col-lg-6 space" *ngFor="let artisan of currentArtisansToShow | filter:searchText">
+      <div class="col-md-auto space" *ngFor="let artisan of currentArtisansToShow | filter:searchText">
         <section class="bussinesscard">
           <div class="flip">
             <div class="front">
@@ -52,12 +58,6 @@
 
       </div>
     </div>
-  </div>
-  <br />      <br />
-  <div style="margin-right: 5%;">
-     <mat-paginator #paginator [length]="length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"
-  (page)="onPageChanged($event)">
-</mat-paginator> 
   </div>
 
 </section>
