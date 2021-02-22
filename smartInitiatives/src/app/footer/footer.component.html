@@ -65,11 +65,11 @@
                             <h4 class="title">Menu</h4>
                         </div>
                         <ul class="mt-15">
-                            <li><a style="cursor: pointer;" routerLink="." fragment="about">A propos</a></li>
-                            <li><a style="cursor: pointer;" routerLink="." fragment="activities">Nos activités</a></li>
-                            <li><a style="cursor: pointer;" routerLink="." fragment="projects">Nos projets</a></li>
-                            <!-- <li><a style="cursor: pointer;" routerLink="artisans" >Nos artisans</a></li> -->
-                            <li><a style="cursor: pointer;" routerLink="." fragment="contact">Nous contactez</a></li>
+                            <li><a style="cursor: pointer;" routerLink="." fragment="about" (click)="onClickAnchor()">A propos</a></li>
+                            <li><a style="cursor: pointer;" routerLink="." fragment="activities" (click)="onClickAnchor()">Nos activités</a></li>
+                            <li><a style="cursor: pointer;" routerLink="." fragment="projects" (click)="onClickAnchor()">Nos projets</a></li>
+                            <!-- <li><a style="cursor: pointer;" routerLink="artisans" (click)="onClickAnchor()">Nos artisans</a></li> -->
+                            <li><a style="cursor: pointer;" routerLink="." fragment="contact" (click)="onClickAnchor()">Nous contactez</a></li>
 
                         </ul>
                     </div>
@@ -80,7 +80,7 @@
                             <h4 class="title">Liens utiles</h4>
                         </div>
                         <ul class="mt-15">
-                            <li><a routerLink="artisan">Nos artisans</a></li>
+                            <li><a routerLink="artisan" (click)='scrollToTop()'>Nos artisans</a></li>
                             <!-- <li><a routerLink="events">Nos événements</a></li> -->
                             <!-- <li><a href="#">Nos Partenaires</a></li> -->
                         </ul>

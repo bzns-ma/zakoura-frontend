@@ -1,6 +1,6 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
 import { ClipboardModule } from '@angular/cdk/clipboard';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from "@angular/common";
 
 @Component({
@@ -13,7 +13,7 @@ export class HeaderComponent implements OnInit {
   currentRoute: string;
   notAdminPages: boolean;
 
-  constructor(private router: Router, location: Location,) { 
+  constructor(private route: ActivatedRoute,private router: Router, location: Location) { 
     this.router.events.subscribe(val => {
         this.notAdminPages = !(location.path() === "/admin" || location.path() === "/login");
     }); 
@@ -21,6 +21,13 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void { 
       
+  }
+
+  onClickAnchor(){
+    this.route.fragment.subscribe ( frg => {
+      const elm = document.querySelector ( "#" + frg )
+      if ( elm ) elm.scrollIntoView();
+    });
   }
 
   copyNumber(val: string) {

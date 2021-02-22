@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from "@angular/common";
 
 @Component({
@@ -11,7 +11,7 @@ export class FooterComponent implements OnInit {
 
   notAdminPages: boolean;
 
-  constructor(private router: Router, location: Location,) { 
+  constructor(private route : ActivatedRoute,private router: Router, location: Location) { 
     this.router.events.subscribe(val => {
         this.notAdminPages = !(location.path() === "/admin" || location.path() === "/login");
     }); 
@@ -29,4 +29,16 @@ export class FooterComponent implements OnInit {
       });
     }
   }
+
+  onClickAnchor(){
+    this.route.fragment.subscribe ( frg => {
+      const elm = document.querySelector ( "#" + frg )
+      if ( elm ) elm.scrollIntoView();
+    });
+  }
+  scrollToTop(){
+    console.log("hello");
+    window.scrollTo(0, 0)
+  }
+
 }
