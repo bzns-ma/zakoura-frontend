@@ -5,11 +5,11 @@
 export const environment = {
   production: false,
   backendUrl: {
-      api: "assets/data/",
-      activities : "activities.json",
-      achievement: "achivements.json",
-      artisan: "artisan.json",
-      projects: "projects.json",
+      api: "/",
+      activities : "activities",
+      achievement: "achivements",
+      artisan: "allArtisans",
+      projects: "projects",
       createProject: "",
       deleteProject: "",
       updateProject: "",

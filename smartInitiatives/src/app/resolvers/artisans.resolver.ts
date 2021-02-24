@@ -11,7 +11,7 @@ export class ArtisansResolver implements Resolve<any> {
 
   resolve(route : ActivatedRouteSnapshot,rstate : RouterStateSnapshot) : any{
     console.log('logging collected route param',route.params['artres']);
-    return this.api.getArtisan().pipe(map(data => data));
+    return this.api.getArtisans().pipe(map(data => data));
 
   }
 }

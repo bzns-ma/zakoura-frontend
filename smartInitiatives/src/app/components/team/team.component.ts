@@ -16,8 +16,8 @@ export class TeamComponent implements OnInit {
     this.getArtisan();
   }
   getArtisan() {
-    this.api.getArtisan().subscribe(response => {
-      for (const data of response.body) {
+    this.api.getArtisans().subscribe(response => {
+      for (const data of response) {
         this.artisans.push(data);
       }
     });

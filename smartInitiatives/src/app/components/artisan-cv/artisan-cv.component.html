@@ -1,4 +1,6 @@
+
 <section id="artisancv" class="team-area pt-125 pb-130 gray-bg">
+
   <div class="container">
     <div class="row center-elems">
       <div class="col-3"></div>
@@ -14,10 +16,33 @@
       </div>
     </div>
   </div>
+
+
+  <nav class="navbar navbar-expand-sm bg-light navbar-light">
+    <ul class="navbar navbar-nav">
+      <li>
+        <button class="btn btn-outline-dark ml-5" (click)="getAllArtisans()" >All</button>
+      </li>
+      <li>
+        <button class="btn btn-outline-dark ml-2"(click)="getSelectedArtisans()" >Selected</button>
+      </li>
+      <li>
+        <button class="btn btn-outline-dark ml-2" (click)="getCatArtisans()" >Category</button>
+      </li>
+    </ul>
+  </nav>
+
+
+
+
+
+
+
+
     <br />
   <div class="container">
     <div class="row">
-      <div class="col-md-auto space" *ngFor="let artisan of currentArtisansToShow | filter:searchText">
+      <div class="col-md-auto space" *ngFor="let artisan of artisanList$ | filter:searchText">
         <section class="bussinesscard">
           <div class="flip">
             <div class="front">

@@ -3,6 +3,9 @@ import { ArtisanService } from '../../services/artisan.service';
 import { Artisan } from '../../models/artisan';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { ActivatedRoute } from '@angular/router';
+import { Observable, of } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
+import { off } from 'process';
 
 @Component({
   selector: 'app-artisan-cv',
@@ -12,6 +15,7 @@ import { ActivatedRoute } from '@angular/router';
 export class ArtisanCvComponent implements OnInit {
   pageEvent: PageEvent;
   artisans: Artisan[] = [];
+  artisanList$: Observable<Artisan[]> | null = null;
   currentArtisansToShow: Artisan[] = [];
   searchText = '';
 
@@ -22,17 +26,14 @@ export class ArtisanCvComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
 
-  constructor(private api: ArtisanService,private actro : ActivatedRoute) { }
+  constructor(private api: ArtisanService, private actro: ActivatedRoute) { }
 
   ngOnInit(): void {
-    // this.getArtisan();
-    this.artisans = this.actro.snapshot.data['artres'].body; 
+    this.artisans = this.actro.snapshot.data['artres'].body;
 
     console.log(this.artisans);
-    let l = this.artisans.filter((v,i)=>
-      i<5);
-    console.log(l);
-
+    let l = this.artisans.filter((v, i) =>
+      i < 5);
     this.currentArtisansToShow = l;
 
     // this.paginator.firstPage(); 
@@ -41,13 +42,8 @@ export class ArtisanCvComponent implements OnInit {
 
   ngAfterViewInit() {
     this.paginator.page.subscribe(
-       (event) => console.log(event)
-);
-// this.paginator.firstPage();
-}
-
-  onPageChange($event) {
-    this.currentArtisansToShow = this.artisans.slice($event.pageIndex * $event.pageSize, $event.pageIndex * $event.pageSize + $event.pageSize);
+      (event) => console.log(event)
+    );
   }
 
   onPageChanged(e) {
@@ -57,11 +53,26 @@ export class ArtisanCvComponent implements OnInit {
   }
 
   getArtisan() {
-    this.api.getArtisan().subscribe(response => {
-      for (const data of response.body) {
+    this.api.getArtisans().subscribe(response => {
+      for (const data of response) {
         this.artisans.push(data);
       }
     });
+  }
+
+  getAllArtisans() {
+    this.artisanList$ = this.api.getArtisans().pipe(
+      map(data => data),
+      catchError(error => of(error))
+      );
+  }
+
+  getSelectedArtisans() {
+
+  }
+
+  getCatArtisans() {
+
   }
 }
 
