@@ -14,7 +14,7 @@ export class ArtisanService {
   constructor(private httpClient: HttpClient) { }
 
   getArtisans(): Observable<Artisan[]> {
-    return this.httpClient.get<Artisan[]>(environment.backendUrl.api + environment.backendUrl.artisan);
+    return this.httpClient.get<Artisan[]>("http://localhost:3000/allArtisans"); //(environment.backendUrl.api + environment.backendUrl.artisan);
   }
 
   addArtisan(artisan: any){

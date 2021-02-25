@@ -1,4 +1,3 @@
-
 <section id="artisancv" class="team-area pt-125 pb-130 gray-bg">
 
   <div class="container">
@@ -9,10 +8,10 @@
       </div>
       <div class="col-3">
         <div style="margin-right: 5%;">
-          <mat-paginator #paginator [length]="length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"
+          <!-- <mat-paginator #paginator [length]="length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"
        (page)="onPageChanged($event)">
-     </mat-paginator> 
-       </div>
+     </mat-paginator>  -->
+        </div>
       </div>
     </div>
   </div>
@@ -21,28 +20,40 @@
   <nav class="navbar navbar-expand-sm bg-light navbar-light">
     <ul class="navbar navbar-nav">
       <li>
-        <button class="btn btn-outline-dark ml-5" (click)="getAllArtisans()" >All</button>
+        <button class="btn btn-outline-dark ml-5" (click)="getAllArtisans()">Tout</button>
       </li>
       <li>
-        <button class="btn btn-outline-dark ml-2"(click)="getSelectedArtisans()" >Selected</button>
+        <button class="btn btn-outline-dark ml-2" (click)="getAdherents()">Adhérents </button>
       </li>
       <li>
-        <button class="btn btn-outline-dark ml-2" (click)="getCatArtisans()" >Category</button>
+        <button class="btn btn-outline-dark ml-2" (click)="getCatArtisans()">Non adhérents </button>
       </li>
     </ul>
   </nav>
 
 
+  <!-- <ng-container *ngIf="artisans" [ngSwitch]="artisansdataState">
+    <ng-container *ngSwitchCase="LOADED">
+      Loaded
+    </ng-container>
+
+    <ng-container *ngSwitchCase="ERROR">
+      <div class="alert-danger">
+        error
+      </div>
+
+    </ng-container>
+  </ng-container> -->
 
 
 
 
 
-
-    <br />
-  <div class="container">
+  <br />
+  <div class="container" *ngIf="artisans">
     <div class="row">
-      <div class="col-md-auto space" *ngFor="let artisan of artisanList$ | filter:searchText">
+      <div class="col-md-auto space" *ngFor="let artisan of artisansToShow  | filter:searchText ">
+        <!-- | filter:searchText -->
         <section class="bussinesscard">
           <div class="flip">
             <div class="front">
@@ -51,8 +62,8 @@
                 <div *ngIf="artisan.membership" class="badge"> <span>{{artisan.membership}}</span></div>
               </div>
               <div class="nametroduction">
-                <div class="name">{{artisan.firstname}} {{artisan.lastname}}</div>
-                <div class="introduction">{{artisan.title}}</div>
+                <div class="name">{{artisan.first_name}} {{artisan.last_name}}</div>
+                <div class="introduction">{{artisan.field}}</div>
               </div>
               <div class="contact">
                 <div class="phone ">

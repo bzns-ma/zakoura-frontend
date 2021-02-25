@@ -6,10 +6,10 @@ export const environment = {
   production: false,
   backendUrl: {
       api: "/",
-      activities : "activities",
-      achievement: "achivements",
+      activities : "",
+      achievement: "",
       artisan: "allArtisans",
-      projects: "projects",
+      projects: "",
       createProject: "",
       deleteProject: "",
       updateProject: "",

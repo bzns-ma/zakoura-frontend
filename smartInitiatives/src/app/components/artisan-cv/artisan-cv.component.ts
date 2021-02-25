@@ -6,6 +6,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { off } from 'process';
+import { AppDataState, DataStateEnum } from 'src/app/state/artisan.state';
 
 @Component({
   selector: 'app-artisan-cv',
@@ -14,8 +15,11 @@ import { off } from 'process';
 })
 export class ArtisanCvComponent implements OnInit {
   pageEvent: PageEvent;
+  artisansnapshot : any;
   artisans: Artisan[] = [];
-  artisanList$: Observable<Artisan[]> | null = null;
+  artisansdataState : DataStateEnum;
+  artisansToShow:Artisan[] = [];
+  // artisanList$: Observable<AppDataState<Artisan[]>> | null = null;
   currentArtisansToShow: Artisan[] = [];
   searchText = '';
 
@@ -29,46 +33,48 @@ export class ArtisanCvComponent implements OnInit {
   constructor(private api: ArtisanService, private actro: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.artisans = this.actro.snapshot.data['artres'].body;
+    // this.artisans = this.actro.snapshot.data['artres'];
+    // console.log(this.artisans);
 
-    console.log(this.artisans);
-    let l = this.artisans.filter((v, i) =>
-      i < 5);
-    this.currentArtisansToShow = l;
+    // console.log(this.artisans);
+    // let l = this.artisans.filter((v, i) =>
+    //   i < 5);
+    // this.currentArtisansToShow = l;
 
     // this.paginator.firstPage(); 
 
   }
 
   ngAfterViewInit() {
-    this.paginator.page.subscribe(
-      (event) => console.log(event)
-    );
+    // this.paginator.page.subscribe(
+    //   (event) => console.log(event)
+    // );
   }
 
-  onPageChanged(e) {
-    let firstCut = e.pageIndex * e.pageSize;
-    let secondCut = firstCut + e.pageSize;
-    this.currentArtisansToShow = this.artisans.slice(firstCut, secondCut);
-  }
+  // onPageChanged(e) {
+  //   let firstCut = e.pageIndex * e.pageSize;
+  //   let secondCut = firstCut + e.pageSize;
+  //   this.currentArtisansToShow = this.artisans.slice(firstCut, secondCut);
+  // }
 
-  getArtisan() {
-    this.api.getArtisans().subscribe(response => {
-      for (const data of response) {
-        this.artisans.push(data);
-      }
-    });
-  }
+  // getArtisan() {
+  //   this.api.getArtisans().subscribe(response => {
+  //     for (const data of response) {
+  //       this.artisans.push(data);
+  //     }
+  //   });
+  // }
 
   getAllArtisans() {
-    this.artisanList$ = this.api.getArtisans().pipe(
-      map(data => data),
-      catchError(error => of(error))
-      );
+    this.artisansnapshot = this.actro.snapshot.data['artres'];
+    this.artisans = this.artisansnapshot.data;
+    this.artisansToShow = this.artisans;
+    console.log(this.artisans);
   }
 
-  getSelectedArtisans() {
-
+  getAdherents() {
+    this.artisansToShow = this.artisans.filter(data => data.first_name == "bill");
+    console.log(this.artisansToShow);
   }
 
   getCatArtisans() {

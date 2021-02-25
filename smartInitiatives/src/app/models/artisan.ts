@@ -1,9 +1,10 @@
 export interface Artisan {
-    id: string;
-    title: string;
-    firstname: string;
-    lastname: string;
-    facebook: string;
-    twitter: string;
-    linkedin: string;
+    _id: string;
+    field: string;
+    first_name: string;
+    last_name: string;
+    description:string
+    facebook?: string;
+    twitter?: string;
+    linkedin?: string;
 }
