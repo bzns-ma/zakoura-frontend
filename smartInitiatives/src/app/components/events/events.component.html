@@ -1,0 +1,41 @@
+<section id="events" class="services-area pt-125 pb-130 gray-bg">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                <div class="section-title text-center pb-20">
+                    <h5 class="sub-title mb-15">Nos évenements</h5>
+                    <h2 class="title">Agenda</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div *ngFor="let event of events" class="col-lg-6" style="padding-bottom: 3em;">
+                <article class="card fl-left">
+                    <section class="date">
+                        <time >
+                            <span>28</span><span>FEV</span>
+                        </time>
+                    </section>
+                    <section class="card-cont">
+                        <small>{{event.title}}</small>
+                        <h3>{{event.description}}</h3>
+                        <div class="even-date">
+                            <i class="fa fa-calendar"></i>
+                            <time>
+                                <span>{{event.date}}</span>
+                                <span>{{event.stat_time}} to {{event.end_time}} am</span>
+                            </time>
+                        </div>
+                        <div class="even-info">
+                            <i class="fa fa-map-marker"></i>
+                            <p>
+                               {{event.place}}
+                            </p>
+                        </div>
+                        <a>A venir</a>
+                    </section>
+                </article>
+            </div>
+        </div>
+    </div>
+</section>

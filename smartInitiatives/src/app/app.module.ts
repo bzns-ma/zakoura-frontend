@@ -36,6 +36,7 @@ import { fakeBackendProvider } from './helpers/fake-backend';
 import { JwtInterceptor } from './helpers/jwt.interceptor';
 import { ErrorInterceptor } from './helpers/error.interceptor';
 import { ReactiveFormsModule, FormBuilder } from '@angular/forms';
+import { EventsComponent } from './components/events/events.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import { ReactiveFormsModule, FormBuilder } from '@angular/forms';
     AdminArtisansComponent,
     AdminAchivementsComponent,
     AdminActivitiesComponent,
-    FilterPipe
+    FilterPipe,
+    EventsComponent
   ],
   imports: [
     BrowserModule,

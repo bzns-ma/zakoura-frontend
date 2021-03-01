@@ -1,6 +1,6 @@
 <section id="artisancv" class="team-area pt-125 pb-130 gray-bg">
 
-  <div class="container">
+  <!-- <div class="container">
     <div class="row center-elems">
       <div class="col-3"></div>
       <div class="col-6">
@@ -8,17 +8,18 @@
       </div>
       <div class="col-3">
         <div style="margin-right: 5%;">
-          <!-- <mat-paginator #paginator [length]="length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"
+          <mat-paginator #paginator [length]="length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"
        (page)="onPageChanged($event)">
-     </mat-paginator>  -->
+     </mat-paginator> 
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
 
 
+  <br /><br />
   <nav class="navbar navbar-expand-sm bg-light navbar-light">
-    <ul class="navbar navbar-nav">
+    <ul class="navbar navbar-nav" style="left :15%">
       <li>
         <button class="btn btn-outline-dark ml-5" (click)="getAllArtisans()">Tout</button>
       </li>
@@ -27,6 +28,14 @@
       </li>
       <li>
         <button class="btn btn-outline-dark ml-2" (click)="getCatArtisans()">Non adhérents </button>
+      </li>
+      <li>
+        <input style="float: right;" type="text" [(ngModel)]="searchText" placeholder="filter" class="form-control" style="margin-left: 2em;">
+      </li>
+      <li style="margin-left: 15em;">
+        <mat-paginator #paginator [length]="length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"
+        (page)="onPageChanged($event)">
+      </mat-paginator> 
       </li>
     </ul>
   </nav>
@@ -46,10 +55,9 @@
   </ng-container> -->
 
 
-
-
-
   <br />
+
+
   <div class="container" *ngIf="artisans">
     <div class="row">
       <div class="col-md-auto space" *ngFor="let artisan of artisansToShow  | filter:searchText ">
@@ -59,11 +67,11 @@
             <div class="front">
               <div class="top">
                 <div class="logo"><img class="artisanImg" src="assets/images/about/IMG_8880.jpg" alt="artisans"></div>
-                <div *ngIf="artisan.membership" class="badge"> <span>{{artisan.membership}}</span></div>
+                <div *ngIf="artisan.membership" class="badge"> <span>{{getStatut(artisan.membership)}}</span></div>
               </div>
               <div class="nametroduction">
                 <div class="name">{{artisan.first_name}} {{artisan.last_name}}</div>
-                <div class="introduction">{{artisan.field}}</div>
+                <div class="introduction">{{artisan.title}}</div>
               </div>
               <div class="contact">
                 <div class="phone ">

@@ -33,6 +33,7 @@ export class ArtisanCvComponent implements OnInit {
   constructor(private api: ArtisanService, private actro: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.getAllArtisans();
     // this.artisans = this.actro.snapshot.data['artres'];
     // console.log(this.artisans);
 
@@ -51,11 +52,11 @@ export class ArtisanCvComponent implements OnInit {
     // );
   }
 
-  // onPageChanged(e) {
-  //   let firstCut = e.pageIndex * e.pageSize;
-  //   let secondCut = firstCut + e.pageSize;
-  //   this.currentArtisansToShow = this.artisans.slice(firstCut, secondCut);
-  // }
+  onPageChanged(e) {
+    let firstCut = e.pageIndex * e.pageSize;
+    let secondCut = firstCut + e.pageSize;
+    this.currentArtisansToShow = this.artisans.slice(firstCut, secondCut);
+  }
 
   // getArtisan() {
   //   this.api.getArtisans().subscribe(response => {
@@ -73,12 +74,16 @@ export class ArtisanCvComponent implements OnInit {
   }
 
   getAdherents() {
-    this.artisansToShow = this.artisans.filter(data => data.first_name == "bill");
-    console.log(this.artisansToShow);
+    this.artisansToShow = this.artisans.filter(data => data.membership == true);
+    // console.log(this.artisansToShow);
   }
 
   getCatArtisans() {
+    this.artisansToShow = this.artisans.filter(data => data.membership !== true);
+  }
 
+  getStatut(member : boolean){
+    return member == true ? 'adhérent' : '';
   }
 }
 

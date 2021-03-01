@@ -41,6 +41,7 @@ export class HeaderComponent implements OnInit {
     selBox.focus();
     selBox.select();
     document.execCommand('copy');
+    alert("Copied the text: " + val);
     document.body.removeChild(selBox);
   }
 

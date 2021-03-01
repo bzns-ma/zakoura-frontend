@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivitiesService } from '../../services/activities.service';
 import { Activity } from '../../models/activity';
-
 @Component({
   selector: 'app-activities',
   templateUrl: './activities.component.html',
