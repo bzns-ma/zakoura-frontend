@@ -1,12 +1,12 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ArtisanService } from '../../services/artisan.service';
 import { Artisan } from '../../models/artisan';
-import { MatPaginator, PageEvent } from '@angular/material/paginator';
+import { MatPaginator } from '@angular/material/paginator';
 import { ActivatedRoute } from '@angular/router';
-import { Observable, of } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
-import { off } from 'process';
-import { AppDataState, DataStateEnum } from 'src/app/state/artisan.state';
+import { Observable } from 'rxjs';
+import { DataStateEnum } from 'src/app/state/artisan.state';
+import { MatTableDataSource } from '@angular/material/table';
+import { ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'app-artisan-cv',
@@ -14,68 +14,57 @@ import { AppDataState, DataStateEnum } from 'src/app/state/artisan.state';
   styleUrls: ['./artisan-cv.component.scss']
 })
 export class ArtisanCvComponent implements OnInit {
-  pageEvent: PageEvent;
   artisansnapshot : any;
   artisans: Artisan[] = [];
   artisansdataState : DataStateEnum;
   artisansToShow:Artisan[] = [];
-  // artisanList$: Observable<AppDataState<Artisan[]>> | null = null;
-  currentArtisansToShow: Artisan[] = [];
+
   searchText = '';
 
-  length = 100;
-  pageSize = 5;
+  // pagination 
+  length = 15;
+  pageSize = 9;
   pageSizeOptions: number[] = [5, 10, 25, 100];
-
   @ViewChild(MatPaginator) paginator: MatPaginator;
+  dataSource : MatTableDataSource<Artisan>;
+  obs: Observable<any>;
 
-
-  constructor(private api: ArtisanService, private actro: ActivatedRoute) { }
+  constructor(private api: ArtisanService, private actro: ActivatedRoute,private cdRef:ChangeDetectorRef) { }
 
   ngOnInit(): void {
     this.getAllArtisans();
-    // this.artisans = this.actro.snapshot.data['artres'];
-    // console.log(this.artisans);
-
-    // console.log(this.artisans);
-    // let l = this.artisans.filter((v, i) =>
-    //   i < 5);
-    // this.currentArtisansToShow = l;
-
-    // this.paginator.firstPage(); 
+    this.dataSource = new MatTableDataSource<Artisan>(this.artisansToShow);
 
   }
 
+  ngOnDestroy() {
+    if (this.dataSource) { 
+      this.dataSource.disconnect(); 
+    }
+  }
+
   ngAfterViewInit() {
-    // this.paginator.page.subscribe(
-    //   (event) => console.log(event)
-    // );
+    this.dataSource.paginator = this.paginator;
+    this.artisansToShow = this.artisans.slice(0, 9);
+    this.obs = this.dataSource.connect();
+    this.cdRef.detectChanges();
+
   }
 
   onPageChanged(e) {
     let firstCut = e.pageIndex * e.pageSize;
     let secondCut = firstCut + e.pageSize;
-    this.currentArtisansToShow = this.artisans.slice(firstCut, secondCut);
+    this.artisansToShow = this.artisans.slice(firstCut, secondCut);
   }
-
-  // getArtisan() {
-  //   this.api.getArtisans().subscribe(response => {
-  //     for (const data of response) {
-  //       this.artisans.push(data);
-  //     }
-  //   });
-  // }
 
   getAllArtisans() {
     this.artisansnapshot = this.actro.snapshot.data['artres'];
     this.artisans = this.artisansnapshot.data;
     this.artisansToShow = this.artisans;
-    console.log(this.artisans);
   }
 
   getAdherents() {
     this.artisansToShow = this.artisans.filter(data => data.membership == true);
-    // console.log(this.artisansToShow);
   }
 
   getCatArtisans() {

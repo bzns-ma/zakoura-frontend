@@ -29,6 +29,8 @@ import { TeamComponent } from './components/team/team.component';
 import { FilterPipe } from './pipes/filter.pipe';
 import { FormsModule } from '@angular/forms';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatTableModule } from '@angular/material/table';
+
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { RouterModule } from '@angular/router';
@@ -69,6 +71,7 @@ import { EventsComponent } from './components/events/events.component';
     MatButtonModule,
     MatCardModule,
     FormsModule,
+    MatTableModule,
     MatPaginatorModule,
     MatFormFieldModule,
     MatInputModule,

@@ -1,22 +1,4 @@
 <section id="artisancv" class="team-area pt-125 pb-130 gray-bg">
-
-  <!-- <div class="container">
-    <div class="row center-elems">
-      <div class="col-3"></div>
-      <div class="col-6">
-        <input style="float: right;" type="text" [(ngModel)]="searchText" placeholder="filter" class="form-control">
-      </div>
-      <div class="col-3">
-        <div style="margin-right: 5%;">
-          <mat-paginator #paginator [length]="length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"
-       (page)="onPageChanged($event)">
-     </mat-paginator> 
-        </div>
-      </div>
-    </div>
-  </div> -->
-
-
   <br /><br />
   <nav class="navbar navbar-expand-sm bg-light navbar-light">
     <ul class="navbar navbar-nav" style="left :15%">
@@ -30,16 +12,14 @@
         <button class="btn btn-outline-dark ml-2" (click)="getCatArtisans()">Non adhérents </button>
       </li>
       <li>
-        <input style="float: right;" type="text" [(ngModel)]="searchText" placeholder="filter" class="form-control" style="margin-left: 2em;">
+        <input style="float: right;" type="text" [(ngModel)]="searchText" placeholder="filter" class="form-control" style="margin-left: 2em;width: 182%;">
       </li>
       <li style="margin-left: 15em;">
         <mat-paginator #paginator [length]="length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"
-        (page)="onPageChanged($event)">
-      </mat-paginator> 
+        (page)="onPageChanged($event)"></mat-paginator>
       </li>
     </ul>
   </nav>
-
 
   <!-- <ng-container *ngIf="artisans" [ngSwitch]="artisansdataState">
     <ng-container *ngSwitchCase="LOADED">
@@ -53,15 +33,11 @@
 
     </ng-container>
   </ng-container> -->
-
-
+  
   <br />
-
-
   <div class="container" *ngIf="artisans">
     <div class="row">
       <div class="col-md-auto space" *ngFor="let artisan of artisansToShow  | filter:searchText ">
-        <!-- | filter:searchText -->
         <section class="bussinesscard">
           <div class="flip">
             <div class="front">
@@ -99,7 +75,6 @@
             <!--FIXES FONT RENDERING -->
           </div>
         </section>
-
       </div>
     </div>
   </div>
