@@ -13,7 +13,7 @@ export class ActivitiesService {
   constructor(private httpClient: HttpClient) { }
 
   getActivities(): Observable<HttpResponse<Activity[]>> {
-    return this.httpClient.get<Activity[]>(environment.backendUrl.api + environment.backendUrl.activities, { observe: 'response' });
+    return this.httpClient.get<Activity[]>(environment.backendUrl.activities, { observe: 'response' });
   }
 
   
