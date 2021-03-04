@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   backendUrl: {
-      api: "/",
+      api: "http://localhost:3000/",
       activities : "assets/data/activities.json",
       achievement: "",
       artisan: "allArtisans",
@@ -25,7 +25,8 @@ export const environment = {
       createActivity: "",
       deleteActivity: "",
       updateActivity: "",
-      events :"assets/data/events.json"
+      //events :"assets/data/events.json"
+      events:"allEvents"
   }
 };
 
