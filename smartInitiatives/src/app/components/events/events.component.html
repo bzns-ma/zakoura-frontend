@@ -1,4 +1,4 @@
-<section id="events" class="services-area pt-125 pb-130 gray-bg">
+<section id="events" class="services-area pt-125 pb-130 gray-bg" *ngIf="events && events.length >0">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-6">
@@ -9,11 +9,11 @@
             </div>
         </div>
         <div class="row">
-            <div *ngFor="let event of events" class="col-lg-6" style="padding-bottom: 3em;">
+            <div *ngFor="let event of activeEvents" class="col-lg-6" style="padding-bottom: 3em;">
                 <article class="card fl-left">
                     <section class="date">
-                        <time >
-                            <span>28</span><span>FEV</span>
+                        <time>
+                            <span>{{eventDay}}</span><span>{{shortFormMonth}}</span>
                         </time>
                     </section>
                     <section class="card-cont">
@@ -23,19 +23,46 @@
                             <i class="fa fa-calendar"></i>
                             <time>
                                 <span>{{event.date}}</span>
-                                <span>{{event.stat_time}} to {{event.end_time}} am</span>
+                                <span>{{event.start_time}} à  {{event.end_time}}</span>
                             </time>
                         </div>
                         <div class="even-info">
                             <i class="fa fa-map-marker"></i>
                             <p>
-                               {{event.place}}
+                                {{event.place}}
                             </p>
                         </div>
-                        <a>A venir</a>
+                        <a style = '{{getStatutStyle()}}' >{{statutOfevent}}</a>
                     </section>
                 </article>
             </div>
         </div>
+        <div class="row center-elems" >
+            <mat-paginator 
+            [length]="events.length"
+            [pageSize]="pageSize" 
+            [pageSizeOptions]="pageSizeOptions"
+            (page)="onPageChanged($event)"
+            >
+        </mat-paginator>
+        </div>
     </div>
+        <!-- <div class="row">
+<div class="col-lg-6" style="float: left;">
+
+    <svg class="btn btn--prev" height="96" viewBox="0 0 24 24" width="96" xmlns="http://www.w3.org/2000/svg">
+        <path d="M15.41 16.09l-4.58-4.59 4.58-4.59L14 5.5l-6 6 6 6z"/>
+        <path d="M0-.5h24v24H0z" fill="none"/>
+      </svg>
+</div>
+<div class="col-lg-6" style="float: right;">
+
+      <svg class="btn btn--next" height="96" viewBox="0 0 24 24" width="96" xmlns="http://www.w3.org/2000/svg">
+        <path d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z"/>
+        <path d="M0-.25h24v24H0z" fill="none"/>
+      </svg>
+</div>
+        </div> -->
+
+
 </section>

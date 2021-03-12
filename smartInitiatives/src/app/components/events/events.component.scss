@@ -180,3 +180,26 @@ h1
     font-size: 75%
   }
 }
+
+::ng-deep .mat-paginator-page-size{
+  display: none !important;
+}
+
+// ::ng-deep .mat-paginator-range-label{
+//     display: none !important;
+// }
+
+.center-elems {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 15%;
+  border: 3px solid transparent;
+  opacity: 90%;
+}
+
+a:link {color: #009900;}
+a:visited {color: #999999;}
+a:hover {color: #FF0000;}
+a:focus {color: #000000;}
+a:active {color: #009900;}

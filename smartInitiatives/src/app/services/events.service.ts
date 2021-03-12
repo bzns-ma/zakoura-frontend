@@ -11,7 +11,7 @@ export class EventsService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getActivities(): Observable<HttpResponse<Events[]>> {
-    return this.httpClient.get<Events[]>(environment.backendUrl.api + environment.backendUrl.events, { observe: 'response' });
+  getEvents(): Observable<Events[]> {
+    return this.httpClient.get<Events[]>(environment.backendUrl.api + environment.backendUrl.events);
   }
 }

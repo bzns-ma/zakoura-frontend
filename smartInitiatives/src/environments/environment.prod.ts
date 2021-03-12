@@ -3,10 +3,10 @@ import { ɵbypassSanitizationTrustResourceUrl } from "@angular/core";
 export const environment = {
   production: ɵbypassSanitizationTrustResourceUrl,
   backendUrl: {
-      api: "smartinitiatives.ma:3000",
+      api: "smartinitiatives.ma:3000/",
       activities : "activities",
       achievement: "achivements",
-      artisan: "artisan",
+      artisan: "allArtisans",
       projects: "projects",
       createProject: "create_project",
       deleteProject: "delete_project",
@@ -19,6 +19,7 @@ export const environment = {
       updateArtisan: "update_artisan",
       createAchievement: "create_Achievement",
       deleteAchievement: "delete_Achievement",
-      updateAchievement: "update_achievement"
+      updateAchievement: "update_achievement",
+      events : "allEvents"
   }
 };
