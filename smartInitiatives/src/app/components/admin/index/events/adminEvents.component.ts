@@ -37,13 +37,13 @@ export class AdminEventsComponent implements OnInit {
     this.currentPage = 1;
     this.nextPage = 2;
     this.previousPage = 1;
-    this.eventsPage = this.events.slice(0, this.pageSize);
   }
 
   getEvents() {
     this.api.getEvents().subscribe(response => {
       for (const data of response) {
         this.events.push(data);
+        this.eventsPage = this.events.slice(0, this.pageSize);
       }
     });
   }
@@ -72,7 +72,7 @@ export class AdminEventsComponent implements OnInit {
   }
 
   toPreviousPage(){
-    if (this.previousPage - 1 > 0) {
+    if (this.previousPage - 1 >= 0) {
       this.nextPage = this.currentPage;
       this.currentPage = this.previousPage;
       this.previousPage = this.previousPage - 1;
