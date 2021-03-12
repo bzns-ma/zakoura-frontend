@@ -21,12 +21,12 @@ export class ArtisanService {
     return this.httpClient.post<Artisan>(environment.backendUrl.api + environment.backendUrl.artisan + environment.backendUrl.createArtisan, { observe: 'response' });
   }
 
-  updateArtisan(artisan: any){
-    return this.httpClient.post<Artisan>(environment.backendUrl.api + environment.backendUrl.artisan + environment.backendUrl.updateArtisan, artisan, { observe: 'response' });
+  updateArtisan(id: string, artisan: any){
+    return this.httpClient.post<Artisan>(environment.backendUrl.api + environment.backendUrl.artisan + environment.backendUrl.updateArtisan + "?id=" + id, artisan, { observe: 'response' });
   }
 
-  deleteArtisan(artisan: any){
-    return this.httpClient.post<Artisan>(environment.backendUrl.api + environment.backendUrl.artisan + environment.backendUrl.deleteArtisan, artisan, { observe: 'response' });
+  deleteArtisan(id: string){
+    return this.httpClient.post<Artisan>(environment.backendUrl.api + environment.backendUrl.artisan + environment.backendUrl.deleteArtisan + "?id=" + id, {}, { observe: 'response' });
   }
 
   handleError(error: HttpErrorResponse) {

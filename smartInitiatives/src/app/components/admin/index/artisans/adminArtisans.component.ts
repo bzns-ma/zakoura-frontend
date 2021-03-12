@@ -11,7 +11,12 @@ import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 export class AdminArtisansComponent implements OnInit {
 
   artisans: Artisan[] = [];
+  artisansPage: Artisan[] = [];
   artisanForm: FormGroup;
+  pageSize: number = 10;
+  currentPage: number = 1;
+  nextPage: number = 2;
+  previousPage: number = 1;
   
   constructor(private api: ArtisanService, private formBuilder: FormBuilder) {
   
@@ -25,8 +30,14 @@ export class AdminArtisansComponent implements OnInit {
       lastname: ['', Validators.required],
       facebook: ['', Validators.required],
       twitter: ['', Validators.required],
-      linkedin: ['', Validators.required]
-  });
+      linkedin: ['', Validators.required],
+      number: ['', Validators.required],
+      membership: ['', Validators.required]
+    });
+    this.currentPage = 1;
+    this.nextPage = 2;
+    this.previousPage = 1;
+    this.artisansPage = this.artisans.slice(0, this.pageSize);
   }
 
   getArtisans() {
@@ -38,15 +49,37 @@ export class AdminArtisansComponent implements OnInit {
   }
 
   add(){
-    this.api.addArtisan({title: this.artisanForm.get("title"), firstname: this.artisanForm.get("firstname"), tiwtter: this.artisanForm.get("tiwtter"), lastname: this.artisanForm.get("lastname"), facebook: this.artisanForm.get("facebook"), linkedin: this.artisanForm.get("linkedin")});
+    this.api.addArtisan({title: this.artisanForm.get("title"), firstname: this.artisanForm.get("firstname"), tiwtter: this.artisanForm.get("tiwtter"), 
+    lastname: this.artisanForm.get("lastname"), facebook: this.artisanForm.get("facebook"), linkedin: this.artisanForm.get("linkedin"),
+    number: this.artisanForm.get("number"), membership: this.artisanForm.get("membership")});
   }
 
   modify(id){
-    this.api.updateArtisan({title: this.artisanForm.get("title"), firstname: this.artisanForm.get("firstname"), tiwtter: this.artisanForm.get("tiwtter"), lastname: this.artisanForm.get("lastname"), facebook: this.artisanForm.get("facebook"), linkedin: this.artisanForm.get("linkedin")});
+    this.api.updateArtisan(id, {title: this.artisanForm.get("title"), firstname: this.artisanForm.get("firstname"), tiwtter: this.artisanForm.get("tiwtter"), 
+    lastname: this.artisanForm.get("lastname"), facebook: this.artisanForm.get("facebook"), linkedin: this.artisanForm.get("linkedin"),
+    number: this.artisanForm.get("number"), membership: this.artisanForm.get("membership")});
   }
 
   delete(id){
-    this.api.deleteArtisan({title: this.artisanForm.get("title"), firstname: this.artisanForm.get("firstname"), tiwtter: this.artisanForm.get("tiwtter"), lastname: this.artisanForm.get("lastname"), facebook: this.artisanForm.get("facebook"), linkedin: this.artisanForm.get("linkedin")});
+    this.api.deleteArtisan(id);
+  }
+
+  toNextPage(){
+    if (this.currentPage * this.pageSize < this.artisans.length) {
+      this.previousPage = this.currentPage;
+      this.currentPage = this.nextPage;
+      this.nextPage = this.nextPage + 1;
+      this.artisansPage = this.artisans.slice(this.pageSize * this.currentPage - this.pageSize, this.pageSize * this.currentPage);
+    }
+  }
+
+  toPreviousPage(){
+    if (this.previousPage - 1 > 0) {
+      this.nextPage = this.currentPage;
+      this.currentPage = this.previousPage;
+      this.previousPage = this.previousPage - 1;
+      this.artisansPage = this.artisans.slice(this.pageSize * this.currentPage - this.pageSize, this.pageSize * this.currentPage);
+    }
   }
 
 }

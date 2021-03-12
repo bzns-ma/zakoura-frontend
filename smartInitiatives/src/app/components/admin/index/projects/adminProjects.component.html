@@ -22,7 +22,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let project of projects">
+                <tr *ngFor="let project of projectsPage">
                     <th scope="row">1</th>
                     <td>{{project.id}}</td>
                     <td>{{project.title}}</td>
@@ -33,6 +33,24 @@
             </tbody>
         </table>
     </div>
+    <nav>
+        <ul class="pagination">
+            <li class="page-item">
+                <a class="page-link" (click)="toPreviousPage()">Previous</a>
+            </li>
+            <li class="page-item"><span class="page-link">{{previousPage}}</span></li>
+            <li class="page-item active">
+                <span class="page-link">
+              {{currentPage}}
+              <span class="sr-only">(current)</span>
+                </span>
+            </li>
+            <li class="page-item"><span class="page-link">{{nextPage}}</span></li>
+            <li class="page-item">
+                <a class="page-link" (click)="toNextPage()">Next</a>
+            </li>
+        </ul>
+    </nav>
 </div>
 
 <div>
