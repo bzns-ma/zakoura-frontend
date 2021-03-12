@@ -38,6 +38,7 @@ export class AdminProjectsComponent implements OnInit {
     this.api.getProject().subscribe(response => {
       for (const data of response.body) {
         this.projects.push(data);
+        this.projectsPage = this.projects.slice(0, this.pageSize);
       }
     });
   }
@@ -55,14 +56,20 @@ export class AdminProjectsComponent implements OnInit {
   }
 
   toNextPage(){
-    this.previousPage = this.currentPage;
-    this.currentPage = this.nextPage;
-    this.nextPage = this.nextPage + 1;
+    if (this.currentPage * this.pageSize < this.projects.length) {
+      this.previousPage = this.currentPage;
+      this.currentPage = this.nextPage;
+      this.nextPage = this.nextPage + 1;
+      this.projectsPage = this.projects.slice(this.pageSize * this.currentPage - this.pageSize, this.pageSize * this.currentPage);
+    }
   }
 
   toPreviousPage(){
-    this.nextPage = this.currentPage;
-    this.currentPage = this.previousPage;
-    this.previousPage = this.previousPage - 1;
+    if (this.previousPage - 1 >= 0) {
+      this.nextPage = this.currentPage;
+      this.currentPage = this.previousPage;
+      this.previousPage = this.previousPage - 1;
+      this.projectsPage = this.projects.slice(this.pageSize * this.currentPage - this.pageSize, this.pageSize * this.currentPage);
+    }
   }
 }

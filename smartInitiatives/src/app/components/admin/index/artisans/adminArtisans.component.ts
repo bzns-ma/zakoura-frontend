@@ -37,27 +37,27 @@ export class AdminArtisansComponent implements OnInit {
     this.currentPage = 1;
     this.nextPage = 2;
     this.previousPage = 1;
-    this.artisansPage = this.artisans.slice(0, this.pageSize);
   }
 
   getArtisans() {
     this.api.getArtisans().subscribe(response => {
       for (const data of response) {
         this.artisans.push(data);
+        this.artisansPage = this.artisans.slice(0, this.pageSize);
       }
     });
   }
 
   add(){
-    this.api.addArtisan({title: this.artisanForm.get("title"), firstname: this.artisanForm.get("firstname"), tiwtter: this.artisanForm.get("tiwtter"), 
+    this.api.addArtisan({firstname: this.artisanForm.get("firstname"), tiwtter: this.artisanForm.get("tiwtter"), photo: this.artisanForm.get("photo"), 
     lastname: this.artisanForm.get("lastname"), facebook: this.artisanForm.get("facebook"), linkedin: this.artisanForm.get("linkedin"),
-    number: this.artisanForm.get("number"), membership: this.artisanForm.get("membership")});
+    number: this.artisanForm.get("number"), membership: this.artisanForm.get("membership"), website: this.artisanForm.get("website")});
   }
 
   modify(id){
-    this.api.updateArtisan(id, {title: this.artisanForm.get("title"), firstname: this.artisanForm.get("firstname"), tiwtter: this.artisanForm.get("tiwtter"), 
+    this.api.updateArtisan(id, {firstname: this.artisanForm.get("firstname"), tiwtter: this.artisanForm.get("tiwtter"), photo: this.artisanForm.get("photo"), 
     lastname: this.artisanForm.get("lastname"), facebook: this.artisanForm.get("facebook"), linkedin: this.artisanForm.get("linkedin"),
-    number: this.artisanForm.get("number"), membership: this.artisanForm.get("membership")});
+    number: this.artisanForm.get("number"), membership: this.artisanForm.get("membership"), website: this.artisanForm.get("website")});
   }
 
   delete(id){
@@ -74,7 +74,7 @@ export class AdminArtisansComponent implements OnInit {
   }
 
   toPreviousPage(){
-    if (this.previousPage - 1 > 0) {
+    if (this.previousPage - 1 >= 0) {
       this.nextPage = this.currentPage;
       this.currentPage = this.previousPage;
       this.previousPage = this.previousPage - 1;
