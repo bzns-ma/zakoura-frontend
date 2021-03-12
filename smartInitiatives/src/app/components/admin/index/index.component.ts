@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AdminProjectsComponent } from './projects/adminProjects.component';
+import { AdminEventsComponent } from './events/adminEvents.component';
+import { AdminArtisansComponent } from './artisans/adminArtisans.component';
+
 
 @Component({
   selector: 'app-admin-index-projects',
@@ -7,6 +10,8 @@ import { AdminProjectsComponent } from './projects/adminProjects.component';
   styleUrls: ['./index.component.scss']
 })
 export class IndexComponent implements OnInit {
+
+  selectedComponent: string = "artisans";
 
   ngOnInit(): void {
   }
@@ -48,6 +53,10 @@ export class IndexComponent implements OnInit {
 
     changeValue(id: number, property: string, event: any) {
       this.editField = event.target.textContent;
+    }
+
+    updateSelectedComponent(newSelectedComponent) {
+      this.selectedComponent = newSelectedComponent;
     }
 
 }

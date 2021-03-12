@@ -22,6 +22,7 @@ import { AdminProjectsComponent } from './components/admin/index/projects/adminP
 import { AdminArtisansComponent } from './components/admin/index/artisans/adminArtisans.component';
 import { AdminAchivementsComponent } from './components/admin/index/achievements/adminAchievements.component';
 import { AdminActivitiesComponent } from './components/admin/index/activities/adminActivities.component';
+import { AdminEventsComponent } from './components/admin/index/events/adminEvents.component';
 import { ArtisanCvComponent } from './components/artisan-cv/artisan-cv.component';
 import { AboutComponent } from './components/about/about.component';
 import { ContactComponent } from './components/contact/contact.component';
@@ -56,6 +57,7 @@ import { EventsComponent } from './components/events/events.component';
     IndexComponent,
     AdminProjectsComponent,
     AdminArtisansComponent,
+    AdminEventsComponent,
     AdminAchivementsComponent,
     AdminActivitiesComponent,
     FilterPipe,

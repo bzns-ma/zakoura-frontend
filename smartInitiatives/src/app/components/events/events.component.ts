@@ -3,7 +3,7 @@ import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { map } from 'rxjs/operators';
-import { Events } from 'src/app/models/events';
+import { Event } from 'src/app/models/event';
 import { EventsService } from 'src/app/services/events.service';
 
 @Component({
@@ -12,7 +12,7 @@ import { EventsService } from 'src/app/services/events.service';
   styleUrls: ['./events.component.scss']
 })
 export class EventsComponent implements OnInit {
-  events: Events[];
+  events: Event[];
   lfCard: any;
   shortFormMonth: string;
   eventDay: string;
@@ -49,8 +49,8 @@ export class EventsComponent implements OnInit {
   pageSize = 2;
   // pageSizeOptions: number[] = [3, 5, 8, 10];
   @ViewChild(MatPaginator) paginator: MatPaginator;
-  dataSource: MatTableDataSource<Events>;
-  activeEvents: Events[];
+  dataSource: MatTableDataSource<Event>;
+  activeEvents: Event[];
   statutOfevent: string;
   statutStyle: string;
   constructor(private api: EventsService, private cdRef: ChangeDetectorRef) { }
@@ -61,7 +61,7 @@ export class EventsComponent implements OnInit {
       console.log(this.events);
       this.activeEvents = this.events.slice(0, this.pageSize) || [];
       if (this.activeEvents && this.activeEvents.length >= 0) {
-        this.dataSource = new MatTableDataSource<Events>(this.events);
+        this.dataSource = new MatTableDataSource<Event>(this.events);
         this.dataSource.paginator = this.paginator;
         this.getMonthShortName(this.activeEvents['date']);
         this.getStatutOfevents('06/03/2021');
