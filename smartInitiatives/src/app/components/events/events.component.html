@@ -13,11 +13,11 @@
                 <article class="card fl-left">
                     <section class="date">
                         <time>
-                            <span>{{eventDay}}</span><span>{{shortFormMonth}}</span>
+                            <span>{{getDayFromDate(event)}}</span><span>{{getMonthShortName(event)}}</span>
                         </time>
                     </section>
                     <section class="card-cont">
-                        <small>{{event.title}}</small>
+                        <!-- <small>{{event.title}}</small> -->
                         <h3>{{event.description}}</h3>
                         <div class="even-date">
                             <i class="fa fa-calendar"></i>
@@ -32,7 +32,7 @@
                                 {{event.place}}
                             </p>
                         </div>
-                        <a style = '{{getStatutStyle()}}' >{{statutOfevent}}</a>
+                        <a style = '{{getStatutStyle()}}' >{{getStatutOfevents(event)}}</a>
                     </section>
                 </article>
             </div>

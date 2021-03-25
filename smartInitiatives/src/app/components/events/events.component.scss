@@ -48,7 +48,7 @@ h1
   height: 15px;
   background-color: orange;
   position: absolute;
-  top: 93% !important;
+  top: 91% !important;
   right: -16px;
   z-index: 1;
   border-top-left-radius: 40em;
@@ -91,9 +91,9 @@ h1
 .card-cont
 {
   display: table-cell;
-  width: 75%;
+  // width: 75%;
   font-size: 85%;
-  padding: 10px 10px 30px 50px
+  padding: 10px 10px 35px 50px
 }
 
 .card-cont h3
@@ -128,7 +128,7 @@ h1
 
 .card-cont .even-info p
 {
-  padding: 30px 50px 0 0
+  padding: 10px 5px 0 0
 }
 
 .card-cont .even-date time span
@@ -149,7 +149,7 @@ h1
   border-radius: 2px;
   position: absolute;
   right: 10px;
-  bottom: 10px
+  bottom: 5px
 }
 
 .row:last-child .card:first-child .card-cont a

@@ -14,8 +14,8 @@ import { EventsService } from 'src/app/services/events.service';
 export class EventsComponent implements OnInit {
   events: Event[];
   lfCard: any;
-  shortFormMonth: string;
-  eventDay: string;
+  shortFormMonth: string[] = [];
+  eventDay: string[] = [];
   monthShortNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
     "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
   ];
@@ -58,15 +58,15 @@ export class EventsComponent implements OnInit {
   ngOnInit(): void {
     this.api.getEvents().subscribe(data => {
       this.events = data;
-      console.log(this.events);
       this.activeEvents = this.events.slice(0, this.pageSize) || [];
       if (this.activeEvents && this.activeEvents.length >= 0) {
         this.dataSource = new MatTableDataSource<Event>(this.events);
         this.dataSource.paginator = this.paginator;
-        this.getMonthShortName(this.activeEvents['date']);
-        this.getStatutOfevents('06/03/2021');
+        this.getStatutOfevents('19/03/2021');
       }
-    })
+    }, (error => {
+      console.log('error connexion or events > ', error);
+    }))
 
   }
 
@@ -91,65 +91,52 @@ export class EventsComponent implements OnInit {
     return this.statutStyle = this.statutOfevent == 'À venir' ? 'background-color: orange;' : 'background-color: gray;';
   }
 
-  getMonthShortName(eventDate: string) {
-    eventDate = '12/12/2021';
-    if (this.validateDateFormat(eventDate)) {
-      let splitedDate = eventDate.split('/');
+  getMonthShortName(event) {
+    if (typeof event['date'] == 'string' && this.validateDateFormat(event['date'])) {
+      let splitedDate = event['date'].split('/');
       let day = splitedDate[0];
       let month = splitedDate[1];
       let year = splitedDate[2];
-      this.shortFormMonth = this.monthShortNames[+month - 1];
-      this.eventDay = day;
+      return this.monthShortNames[+month - 1];
     } else {
-      this.shortFormMonth = '';
-      console.log('error in events Date format !');
+      return '';
     }
-
   }
 
-  validateDateFormat(str) {
-    return str.match(/^[0-9]{2}\/[0-9]{2}\/[0-9]{4}$/) !== null;
+  getDayFromDate(event){
+    if (typeof event['date'] == 'string' && this.validateDateFormat(event['date'])) {
+      let splitedDate = event['date'].split('/');
+      return splitedDate[0];
+    } else {
+      return '';
+    }
   }
 
-  getStatutOfevents(DateOfEvent: string) {
-    // let current_date = new Date().toLocaleDateString();
-    // if (DateOfEvent == current_date) this.statutOfevent = 'Aujourd\'hui';
-    if (this.isUpcoming(DateOfEvent)) {
+  validateDateFormat(str: string) {
+    return (str.match(/^[0-9]{2}\/[0-9]{2}\/[0-9]{4}$/) !== null) ? true : false;
+  }
+
+  getStatutOfevents(event) {
+    if (this.isUpcoming( event['date'])) {
       this.statutOfevent = 'À venir';
     } else {
       this.statutOfevent = 'passé'
     }
-    console.log(this.statutOfevent);
-    // let newDate = new Date(eventDate1);
-
-
+    return this.statutOfevent;
   }
 
   isUpcoming(dateString1: string) {
-
-    // let current_date = new Date().toLocaleDateString('en-GB', { timeZone: 'UTC' });
-    // // current_date.setHours(0,0,0,0);
-    // let evdate = dateString1;
-    // console.log(evdate,' vs ',current_date,evdate > current_date);
-    // return evdate > current_date;
-    // let current_date = formatDate(new Date(), 'dd/MM/yyyy', 'en');
-    // current_date.setHours(0,0,0,0);
-    // current_date.setUTCHours(0);
-    // let evdate = dateString1;
-    // evdate.setUTCHours(0);
-    // console.log(evdate, ' vs ', current_date);
-    // return evdate > current_date;
-    let splitedDate = dateString1.split('/');
-    let day = splitedDate[0];
-    let month = splitedDate[1];
-    let year = splitedDate[2];
-    let current_date = new Date();
-    current_date.setHours(0, 0, 0, 0);
-    console.log(+day,+month,+year);
-    let evdate = new Date(+year,3-1, +day);
-console.log(evdate);
-    return current_date.getTime() < evdate.getTime();
-
+    if(typeof dateString1 == 'string' && this.validateDateFormat(dateString1)){
+      let splitedDate = dateString1.split('/');
+      let day = splitedDate[0];
+      let month = splitedDate[1];
+      let year = splitedDate[2];
+      let current_date = new Date();
+      current_date.setHours(0, 0, 0, 0);
+      console.log(+day, +month, +year);
+      let evdate = new Date(+year, 3 - 1, +day);
+      return current_date.getTime() < evdate.getTime();
+    }
 
   }
 }
