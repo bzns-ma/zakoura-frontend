@@ -9,16 +9,20 @@ export const environment = {
       activities : "assets/data/activities.json",
       achievement: "",
       artisan: "allArtisans",
+
       projects: "",
       createProject: "",
       deleteProject: "",
       updateProject: "",
+
       createEvent: "",
       deleteEvent: "",
       updateEvent: "",
-      createArtisan: "",
-      deleteArtisan: "",
-      updateArtisan: "",
+
+      createArtisan: "create_artisan",
+      deleteArtisan: "delete_artisan",
+      updateArtisan: "update_artisan",
+
       createAchievement: "",
       deleteAchievement: "",
       updateAchievement: "",

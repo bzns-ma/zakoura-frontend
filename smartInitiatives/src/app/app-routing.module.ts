@@ -6,31 +6,49 @@ import { ArtisansResolver } from './resolvers/artisans.resolver';
 import { LoginComponent } from './components/admin/login/login.component';
 import { IndexComponent } from './components/admin/index/index.component';
 import { AuthGuard } from './helpers/auth.guard';
+import { AdministrationComponent } from './components/administration/administration.component';
+import { ArtisanAddComponent } from './components/artisan-add/artisan-add.component';
+import { ArtisanEditComponent } from './components/artisan-edit/artisan-edit.component';
+import { EventAddComponent } from './components/event-add/event-add.component';
+import { EventEditComponent } from './components/event-edit/event-edit.component';
 
 const routerOptions: ExtraOptions = {
-    scrollPositionRestoration: 'enabled',
-    anchorScrolling: 'enabled',
-    scrollOffset: [0, 64],
-    relativeLinkResolution: 'legacy'
+  scrollPositionRestoration: 'enabled',
+  anchorScrolling: 'enabled',
+  scrollOffset: [0, 64],
+  relativeLinkResolution: 'legacy'
 };
 
 const routes: Routes = [
-  { path: '', redirectTo: 'home', pathMatch: 'full'},
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: LandingComponent },
-  { 
-    path: 'artisan', 
+  {
+    path: 'artisan',
     component: ArtisanCvComponent,
-    resolve:{
-      artres : ArtisansResolver
+    resolve: {
+      artres: ArtisansResolver
     }
   },
-  { path: 'admin', component: IndexComponent, canActivate: [AuthGuard], data:{header:false} },
+  { path: 'admin', component: IndexComponent, canActivate: [AuthGuard], data: { header: false } },
   { path: 'login', component: LoginComponent },
+  {
+    path: 'administration', component: AdministrationComponent,
+    resolve: {
+      artres: ArtisansResolver
+    }
+  },
+  { path: 'newArtisan', component: ArtisanAddComponent },
+  { path: 'editArtisan', component: ArtisanEditComponent },
+  { path: 'newEvent', component: EventAddComponent },
+  { path: 'editEvent', component: EventEditComponent },
+
+
+
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes,routerOptions)],
+  imports: [RouterModule.forRoot(routes, routerOptions)],
   exports: [RouterModule],
-  providers:[ArtisansResolver]
+  providers: [ArtisansResolver]
 })
 export class AppRoutingModule { }

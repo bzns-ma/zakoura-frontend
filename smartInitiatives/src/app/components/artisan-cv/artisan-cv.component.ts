@@ -48,7 +48,6 @@ export class ArtisanCvComponent implements OnInit {
     this.artisansToShow = this.artisans.slice(0, 9);
     this.obs = this.dataSource.connect();
     this.cdRef.detectChanges();
-
   }
 
   onPageChanged(e) {

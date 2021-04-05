@@ -1,0 +1,66 @@
+<div class="container mt-80">
+    <nav class="navbar navbar-expand-sm bg-light navbar-light">
+        <ul class="navbar navbar-nav">
+            <!-- <li><button class="btn btn-sm btn-outline-dark ml-2" (click)='switchToArtisan()'>Artisans</button></li> -->
+            <!-- <li><button class="btn btn-sm btn-outline-dark ml-2">Events</button></li> -->
+            <button class="btn btn-sm btn-success ml-2" (click)="add()" >
+                <span class="fas fa-plus"> Nouveau</span>  
+
+            </button>
+        </ul>
+        <ul class="navbar navbar-nav ml-auto">
+            <li>
+                <div class="form-group form-inline">
+                    <input type="text" placeholder="keyword" [(ngModel)]="keyword" class="form-control">
+                </div>
+            </li>
+        </ul>
+    </nav>
+</div>
+<mat-tab-group mat-align-tabs="center" animationDuration="0ms" (selectedTabChange)="tabChanged($event)">
+    <!-- Artisan Tab -->
+    <mat-tab label="Artisans" >
+        <ng-template matTabContent>
+            <div class="container" >
+                <!-- *ngIf="isArtisan" -->
+                <table class="table">
+                    <tr>
+                        <th>nom</th>
+                        <th>description</th>
+                        <th>Adhesion</th>
+                        <th>Metier</th>
+                        <th>photo</th>
+                        <th>siteweb</th>
+                        <th>facebook</th>
+                    </tr>
+                    <tr *ngFor="let artisan of artisans | filter : keyword" >
+                        <td>{{artisan.first_name}} {{artisan.last_name}}</td>
+                        <td>{{artisan.description}}</td>
+                        <td>{{artisan.membership}}</td>
+                        <td>{{artisan.title}}</td>
+                        <td>{{artisan.photo}}</td>
+                        <td>{{artisan.siteweb}}</td>
+                        <td>{{artisan.facebook}}</td>
+                        <td>
+                            <button class="btn btn-sm btn-warning" (click)="modifyArtisan(artisan._id)">
+                                <span class="far fa-edit"></span>
+                            </button>
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-danger" (click)="deleteArtisan(artisan._id)">
+                                <span class="fa fa-trash-o"></span>
+                            </button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </ng-template>
+    </mat-tab>
+    <mat-tab label="Events">
+        <ng-template matTabContent>
+            <!-- Event Tab -->
+            Content of Events
+        </ng-template>
+    </mat-tab>
+</mat-tab-group>
+

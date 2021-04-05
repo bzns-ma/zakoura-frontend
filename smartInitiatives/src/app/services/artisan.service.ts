@@ -5,6 +5,7 @@ import { environment } from '../../environments/environment';
 
 import { Artisan } from '../models/artisan';
 import { Observable } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -17,16 +18,19 @@ export class ArtisanService {
     return this.httpClient.get<Artisan[]>(environment.backendUrl.api + environment.backendUrl.artisan);
   }
 
-  addArtisan(artisan: any){
-    return this.httpClient.post<Artisan>(environment.backendUrl.api + environment.backendUrl.artisan + environment.backendUrl.createArtisan, { observe: 'response' });
+  addArtisan(artisan: Artisan){
+    return this.httpClient.post<Artisan>(environment.backendUrl.api + environment.backendUrl.createArtisan,artisan);
   }
 
   updateArtisan(id: string, artisan: any){
-    return this.httpClient.post<Artisan>(environment.backendUrl.api + environment.backendUrl.artisan + environment.backendUrl.updateArtisan + "?id=" + id, artisan, { observe: 'response' });
+    return this.httpClient.post<Artisan>(environment.backendUrl.api + environment.backendUrl.updateArtisan+ "?id=" + id, artisan, { observe: 'response' });
   }
 
   deleteArtisan(id: string){
-    return this.httpClient.post<Artisan>(environment.backendUrl.api + environment.backendUrl.artisan + environment.backendUrl.deleteArtisan + "?id=" + id, {}, { observe: 'response' });
+    let API_URL = `${environment.backendUrl.api}delete_artisan/${id}`;
+    return this.httpClient.delete<Artisan>(API_URL).pipe(
+      catchError(this.handleError)
+    );
   }
 
   handleError(error: HttpErrorResponse) {

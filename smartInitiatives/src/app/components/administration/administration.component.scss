@@ -1,0 +1,13 @@
+// .mat-tab-group {
+//     margin-bottom: 48px;
+//   }
+
+
+  ::ng-deep .mat-tab-group.mat-primary .mat-ink-bar, .mat-tab-nav-bar.mat-primary .mat-ink-bar {
+    background-color: orange;
+}
+
+.mat-tab-label-active .mat-tab-label-content {
+  background-color: red !important;
+  color : green;
+ }

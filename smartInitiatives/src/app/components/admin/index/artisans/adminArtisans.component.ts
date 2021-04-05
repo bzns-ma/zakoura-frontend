@@ -49,9 +49,9 @@ export class AdminArtisansComponent implements OnInit {
   }
 
   add(){
-    this.api.addArtisan({firstname: this.artisanForm.get("firstname"), tiwtter: this.artisanForm.get("tiwtter"), photo: this.artisanForm.get("photo"), 
-    lastname: this.artisanForm.get("lastname"), facebook: this.artisanForm.get("facebook"), linkedin: this.artisanForm.get("linkedin"),
-    number: this.artisanForm.get("number"), membership: this.artisanForm.get("membership"), website: this.artisanForm.get("website")});
+    // this.api.addArtisan({firstname: this.artisanForm.get("firstname"), tiwtter: this.artisanForm.get("tiwtter"), photo: this.artisanForm.get("photo"), 
+    // lastname: this.artisanForm.get("lastname"), facebook: this.artisanForm.get("facebook"), linkedin: this.artisanForm.get("linkedin"),
+    // number: this.artisanForm.get("number"), membership: this.artisanForm.get("membership"), website: this.artisanForm.get("website")});
   }
 
   modify(id){

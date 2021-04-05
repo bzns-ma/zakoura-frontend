@@ -40,6 +40,12 @@ import { JwtInterceptor } from './helpers/jwt.interceptor';
 import { ErrorInterceptor } from './helpers/error.interceptor';
 import { ReactiveFormsModule, FormBuilder } from '@angular/forms';
 import { EventsComponent } from './components/events/events.component';
+import { AdministrationComponent } from './components/administration/administration.component';
+import { ArtisanAddComponent } from './components/artisan-add/artisan-add.component';
+import { ArtisanEditComponent } from './components/artisan-edit/artisan-edit.component';
+import { EventEditComponent } from './components/event-edit/event-edit.component';
+import { EventAddComponent } from './components/event-add/event-add.component';
+import {MatTabsModule} from '@angular/material/tabs';
 
 @NgModule({
   declarations: [
@@ -61,7 +67,12 @@ import { EventsComponent } from './components/events/events.component';
     AdminAchivementsComponent,
     AdminActivitiesComponent,
     FilterPipe,
-    EventsComponent
+    EventsComponent,
+    AdministrationComponent,
+    ArtisanAddComponent,
+    ArtisanEditComponent,
+    EventEditComponent,
+    EventAddComponent
   ],
   imports: [
     BrowserModule,
@@ -77,6 +88,7 @@ import { EventsComponent } from './components/events/events.component';
     MatPaginatorModule,
     MatFormFieldModule,
     MatInputModule,
+    MatTabsModule,
     ReactiveFormsModule,
     RouterModule.forRoot([
       {path: 'login', component: LoginComponent},
