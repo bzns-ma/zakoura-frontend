@@ -41,8 +41,7 @@ export class AdministrationComponent implements OnInit {
 
   getAllArtisans() {
     this.artisansnapshot = this.actro.snapshot.data['artres'];
-    this.artisans = this.artisansnapshot.data;
-    console.log(this.artisans);
+    this.artisans = this.artisansnapshot.data;    
   }
 
   search(value) {
@@ -53,28 +52,23 @@ export class AdministrationComponent implements OnInit {
   }
 
   modifyArtisan(a: Artisan) {
-    // this.api.updateArtisan(a._id, {}).subscribe(res => {
-    //   this.getAllArtisans();
-    // });
+    this.router.navigateByUrl("/editArtisan")
+
   }
 
   deleteArtisan(id) {
-    // let conf = confirm("Etes vous sure de vouloir supprimer cet artisan ?")
-    // if (conf == true) {
-    //   this.api.deleteArtisan(id).subscribe(res => {
-    //     this.removeItemFromDom(id);
+    let conf = confirm("Etes vous sure de vouloir supprimer cet artisan ?")
+    if (conf == true) {
+      this.api.deleteArtisan(id).subscribe(res => {
+        this.removeItemFromDom(id);
 
-    //   });
-    // }
-    console.log('id=',id)
+      });
+    }
     this.removeItemFromDom(id);
   }
   removeItemFromDom(id){
     const artisanToremove  = this.artisans.find(artisan => artisan._id ==id);
-    console.log('index to be removed',artisanToremove);
     this.artisans = this.artisans.filter(artisan => artisan !== artisanToremove);
-    console.log('artisans to show ',this.artisans);
-
   }
 
   tabChanged(tabChangeEvent: MatTabChangeEvent): void {
@@ -92,5 +86,4 @@ export class AdministrationComponent implements OnInit {
   addEvent() {
     throw new Error('Method not implemented.');
   }
-
 }

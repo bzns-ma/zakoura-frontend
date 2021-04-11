@@ -9,5 +9,5 @@ export interface Artisan {
     photo?: string;
     website?: string;
     facebook?: string;
-    telephone?: string;
+    phone_number?: string;
 }

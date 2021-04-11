@@ -3,8 +3,8 @@
         <ul class="navbar navbar-nav">
             <!-- <li><button class="btn btn-sm btn-outline-dark ml-2" (click)='switchToArtisan()'>Artisans</button></li> -->
             <!-- <li><button class="btn btn-sm btn-outline-dark ml-2">Events</button></li> -->
-            <button class="btn btn-sm btn-success ml-2" (click)="add()" >
-                <span class="fas fa-plus"> Nouveau</span>  
+            <button class="btn btn-sm btn-success ml-2" (click)="add()">
+                <span class="fas fa-plus"> Nouveau</span>
 
             </button>
         </ul>
@@ -19,28 +19,28 @@
 </div>
 <mat-tab-group mat-align-tabs="center" animationDuration="0ms" (selectedTabChange)="tabChanged($event)">
     <!-- Artisan Tab -->
-    <mat-tab label="Artisans" >
+    <mat-tab label="Artisans">
         <ng-template matTabContent>
-            <div class="container" >
+            <div class="container">
                 <!-- *ngIf="isArtisan" -->
                 <table class="table">
                     <tr>
-                        <th>nom</th>
-                        <th>description</th>
-                        <th>Adhesion</th>
+                        <th>Nom et Prénom</th>
                         <th>Metier</th>
-                        <th>photo</th>
-                        <th>siteweb</th>
-                        <th>facebook</th>
+                        <th>Description</th>
+                        <th>Membre</th>
+                        <th>Siteweb</th>
+                        <th>Facebook</th>
+                        <th>Photo</th>
                     </tr>
-                    <tr *ngFor="let artisan of artisans | filter : keyword" >
-                        <td>{{artisan.first_name}} {{artisan.last_name}}</td>
+                    <tr *ngFor="let artisan of artisans | filter : keyword">
+                        <td>{{artisan.last_name}} {{artisan.first_name}}</td>
+                        <td>{{artisan.title}}</td>
                         <td>{{artisan.description}}</td>
                         <td>{{artisan.membership}}</td>
-                        <td>{{artisan.title}}</td>
-                        <td>{{artisan.photo}}</td>
-                        <td>{{artisan.siteweb}}</td>
+                        <td>{{artisan.website}}</td>
                         <td>{{artisan.facebook}}</td>
+                        <td>{{artisan.photo}}</td>
                         <td>
                             <button class="btn btn-sm btn-warning" (click)="modifyArtisan(artisan._id)">
                                 <span class="far fa-edit"></span>
@@ -63,4 +63,3 @@
         </ng-template>
     </mat-tab>
 </mat-tab-group>
-
