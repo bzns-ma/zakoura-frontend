@@ -1,7 +1,7 @@
 import { HttpEventType, HttpResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { first, map } from 'rxjs/operators';
 import { ArtisanService } from 'src/app/services/artisan.service';
@@ -21,12 +21,13 @@ export class ArtisanEditComponent implements OnInit {
   message = '';
   submitted = false;
   fileInfos?: Observable<any>;
-  imageUrl:any='';
+  imageUrl: any = '';
 
   constructor(
-    private activatedRoute: ActivatedRoute, 
-    private ArtisanService: ArtisanService, 
-    private fileService : FileService,
+    private activatedRoute: ActivatedRoute,
+    private ArtisanService: ArtisanService,
+    private fileService: FileService,
+    private router: Router,
     private formBuilder: FormBuilder) {
     this.artisanId = this.activatedRoute.snapshot.params.id;
   }
@@ -46,13 +47,13 @@ export class ArtisanEditComponent implements OnInit {
     });
 
     this.ArtisanService.getArtisan(this.artisanId)
-    .pipe(first())
-    .subscribe(artisan => {
-console.log(artisan); 
-            this.modificationForm.patchValue(artisan);
-            this.imageUrl = artisan.photoUrl;
-    });
-  // console.log('this.modificationForm', this.modificationForm.value);
+      .pipe(first())
+      .subscribe(artisan => {
+        console.log(artisan);
+        this.modificationForm.patchValue(artisan);
+        this.imageUrl = artisan.photoUrl;
+      });
+    // console.log('this.modificationForm', this.modificationForm.value);
   }
 
 
@@ -60,10 +61,11 @@ console.log(artisan);
   get f() { return this.modificationForm.controls; }
 
   modifyArtisan() {
-    console.log('this.artisanId',this.artisanId,'form value : ',this.modificationForm.value);
+    console.log('this.artisanId', this.artisanId, 'form value : ', this.modificationForm.value);
     this.ArtisanService.updateArtisan(this.artisanId, this.modificationForm.value).subscribe(data => {
-      console.log('done , ',data);
       alert('modification terminé ! ');
+      this.router.navigateByUrl("/administration")
+
     });
   }
 
@@ -71,18 +73,18 @@ console.log(artisan);
     let reader = new FileReader(); // HTML5 FileReader API
     this.selectedFiles = event.target.files;
     let filepreview = this.selectedFiles.item(0);
-    if(this.selectedFiles && filepreview){
+    if (this.selectedFiles && filepreview) {
       reader.readAsDataURL(filepreview);
       // When file uploads set it to file formcontrol
-            reader.onload = () => {
-              this.imageUrl = reader.result;
-              // console.log( this.imageUrl);
-              this.modificationForm.patchValue({
-                photoUrl: reader.result
-              });
-              // this.editFile = false;
-              // this.removeUpload = true;
-            }
+      reader.onload = () => {
+        this.imageUrl = reader.result;
+        // console.log( this.imageUrl);
+        this.modificationForm.patchValue({
+          photoUrl: reader.result
+        });
+        // this.editFile = false;
+        // this.removeUpload = true;
+      }
     }
   }
 

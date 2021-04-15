@@ -28,6 +28,7 @@ export class ArtisanCvComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   dataSource : MatTableDataSource<Artisan>;
   obs: Observable<any>;
+  imageUrl: any = '';
 
   constructor(private api: ArtisanService, private actro: ActivatedRoute,private cdRef:ChangeDetectorRef) { }
 
@@ -60,6 +61,8 @@ export class ArtisanCvComponent implements OnInit {
     this.artisansnapshot = this.actro.snapshot.data['artres'];
     this.artisans = this.artisansnapshot.data;
     this.artisansToShow = this.artisans;
+    this.imageUrl = this
+    // console.log('this.artisansToShow',this.artisansToShow);
   }
 
   getAdherents() {

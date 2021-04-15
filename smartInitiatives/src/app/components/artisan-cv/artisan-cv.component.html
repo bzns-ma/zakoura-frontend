@@ -42,7 +42,7 @@
           <div class="flip">
             <div class="front">
               <div class="top">
-                <div class="logo"><img class="artisanImg" src="assets/images/about/IMG_8880.jpg" alt="artisans"></div>
+                <div class="logo"><img [src]="artisan.photoUrl ? artisan.photoUrl : 'https://avatars.dicebear.com/api/bottts/aaaaaaaaaaaaaaaaa.svg'" alt="artisans"></div>
                 <div *ngIf="artisan.membership" class="badge"> <span>{{getStatut(artisan.membership)}}</span></div>
               </div>
               <div class="nametroduction">
@@ -52,22 +52,22 @@
               <div class="contact">
                 <div class="phone ">
                   <span class="ion-ios7-telephone"></span>
-                  <a href="#">0118 999 7253</a>
+                  <a>{{artisan.phone_number}}</a>
                 </div>
                 <div class="email ">
                   <span class="ion-email"></span>
-                  <a href="#">eduard@kosicky.me</a>
+                  <a style="font-size: 14px;">{{artisan.email}}</a>
                 </div>
 
                 <div class="facebook ">
                   <span class="ion-social-facebook"></span>
-                  <a href="#">{{artisan.facebook}}</a>
+                  <a>{{artisan.facebook}}</a>
                 </div>
 
-                <div class="twitter ">
-                  <span class="ion-social-twitter"></span>
-                  <a href="#">{{artisan.twitter}}</a>
-                </div>
+                <!-- <div class="website">
+                  <span ><i class="fas fa-home"></i></span>
+                  <a href="#">my adress</a>
+                </div> -->
 
               </div>
             </div>

@@ -46,6 +46,9 @@ import { ArtisanEditComponent } from './components/artisan-edit/artisan-edit.com
 import { EventEditComponent } from './components/event-edit/event-edit.component';
 import { EventAddComponent } from './components/event-add/event-add.component';
 import {MatTabsModule} from '@angular/material/tabs';
+import { LoaderComponent } from './shared/loader/loader.component';
+import { LoaderService } from './shared/loader.service';
+import { LoaderInterceptor } from './shared/loader.interceptor';
 
 @NgModule({
   declarations: [
@@ -72,7 +75,8 @@ import {MatTabsModule} from '@angular/material/tabs';
     ArtisanAddComponent,
     ArtisanEditComponent,
     EventEditComponent,
-    EventAddComponent
+    EventAddComponent,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,
@@ -98,6 +102,9 @@ import {MatTabsModule} from '@angular/material/tabs';
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    [LoaderService,
+      {provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true},
+    ],
     // provider used to create fake backend
     fakeBackendProvider,
     FormBuilder

@@ -62,7 +62,6 @@ export class ArtisanAddComponent implements OnInit {
       return;
     } else {
       this.artisanApi.addArtisan(tempArtisan).subscribe(res => {
-        console.log('onsave artisan = ',tempArtisan);
         this.router.navigateByUrl("/administration")
       }, error => {
         alert("something went wrong!")
