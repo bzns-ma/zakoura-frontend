@@ -6,7 +6,7 @@ export interface Artisan {
     membership: boolean;
     title: string;
     email? : string
-    photo?: string;
+    photoUrl?: string;
     website?: string;
     facebook?: string;
     phone_number?: string;

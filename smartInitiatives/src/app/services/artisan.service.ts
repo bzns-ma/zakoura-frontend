@@ -18,12 +18,17 @@ export class ArtisanService {
     return this.httpClient.get<Artisan[]>(environment.backendUrl.api + environment.backendUrl.artisan);
   }
 
+  getArtisan(id : string): Observable<Artisan> {
+    return this.httpClient.get<Artisan>(environment.backendUrl.api + environment.backendUrl.artisan +'/'+ id);
+  }
+
   addArtisan(artisan: Artisan){
     return this.httpClient.post<Artisan>(environment.backendUrl.api + environment.backendUrl.createArtisan,artisan);
   }
 
   updateArtisan(id: string, artisan: any){
-    return this.httpClient.post<Artisan>(environment.backendUrl.api + environment.backendUrl.updateArtisan+ "?id=" + id, artisan, { observe: 'response' });
+    return this.httpClient.put<Artisan>(environment.backendUrl.api + environment.backendUrl.updateArtisan+ "/" + id, artisan)
+    .pipe(catchError(this.handleError));
   }
 
   deleteArtisan(id: string){

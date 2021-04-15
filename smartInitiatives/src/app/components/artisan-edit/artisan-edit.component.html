@@ -1,1 +1,114 @@
-<p>artisan-edit works!</p>
+<div class="artisanContainer">
+    <div class="container" *ngIf="modificationForm">
+        <!-- {{modificationForm.value | json}} -->
+        <form [formGroup]="modificationForm" (ngSubmit)="modifyArtisan()">
+
+            <!-- Image Preview -->
+            <!-- <div class="imagePreview">
+                <img [src]="imageUrl"> <br />
+
+            </div> -->
+            <div class="imagePreview">
+                <label class="hoverable" for="fileInput">
+                    <img [src]="imageUrl ? imageUrl : 'https://avatars.dicebear.com/api/bottts/aaaaaaaaaaaaaaaaa.svg'"> 
+                    <div class="hover-text">Choisir une photo</div>
+                    <div class="background"></div>
+                  </label>
+                  <br/>
+                  <input id="fileInput" type='file'  (change)="selectFile($event)">
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-6">
+                        <label>Nom</label>
+                        <input type="text" class="form-control" formControlName="last_name"
+                            [ngClass]="{ 'is-invalid': f.last_name.touched && f.last_name.errors }">
+                        <div *ngIf="f.last_name.touched && f.last_name.errors" class="invalid-feedback">
+                            <div *ngIf="f.last_name.errors.required">le champ nom est requis</div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label>Prenom</label>
+                        <input type="text" class="form-control" formControlName="first_name"
+                            [ngClass]="{ 'is-invalid': f.first_name.touched && f.first_name.errors }">
+                        <div *ngIf="f.first_name.touched && f.first_name.errors" class="invalid-feedback">
+                            <div *ngIf="f.first_name.errors.required">le champ prenom est requis</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-6">
+                        <label>titre</label>
+                        <input type="text" class="form-control" formControlName="title">
+                    </div>
+                    <div class="col-md-6">
+                        <label>email</label>
+                        <input type="text" class="form-control" formControlName="email"
+                            [ngClass]="{ 'is-invalid': f.email.touched && f.email.errors }">
+                        <div *ngIf="f.email.touched && f.email.errors" class="invalid-feedback">
+                            <div *ngIf="f.email.errors.required">champ email est requis</div>
+                            <div *ngIf="f.email.errors.email">L'adresse email doit etre une adresse valide !</div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Description</label>
+                <textarea type="text" class="form-control" formControlName="description" maxlength="2000"></textarea>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-6 ">
+                        <label>siteweb</label>
+                        <input type="text" class="form-control" formControlName="website">
+                    </div>
+                    <div class="col-md-6">
+                        <label>Telephone</label>
+                        <input type="text" class="form-control" formControlName="phone_number">
+                    </div>
+                </div>
+            </div>
+
+            <br> <br>
+            <div class="form-group">
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" formControlName="membership" class="custom-control-input" id="membrecheck">
+                    <label class="custom-control-label" for="membrecheck">Membre Adherent</label>
+                </div>
+            </div>
+
+            <div class="row" style="float: right; margin: 1%;">
+                <button class="btn btn-warning" [disabled]="!modificationForm.valid">Enregistrer</button>
+            </div>
+
+            <div *ngIf="currentFile" class="progress my-3">
+                <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar"
+                    attr.aria-valuenow="{{ progress }}" aria-valuemin="0" aria-valuemax="100"
+                    [ngStyle]="{ width: progress + '%' }">
+                    {{ progress }}%
+                </div>
+            </div>
+
+            <br>
+            <br>
+            <!-- <div *ngIf="message" class="alert alert-secondary" role="alert">{{ message }}</div> -->
+
+            <!-- <div class="card mt-3">
+                <div class="card-header">List of Files</div>
+                <ul class="list-group list-group-flush" *ngFor="let file of fileInfos | async">
+                    <li class="list-group-item">
+                        <a href="{{ file.url }}">{{ file.name }}</a>
+                    </li>
+                </ul>
+            </div> -->
+
+        </form>
+    </div>
+
+</div>

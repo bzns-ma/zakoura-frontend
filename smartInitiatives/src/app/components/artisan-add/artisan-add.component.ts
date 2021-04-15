@@ -20,6 +20,8 @@ export class ArtisanAddComponent implements OnInit {
   message = '';
   submitted = false;
   fileInfos?: Observable<any>;
+  preview: string;
+  imageUrl:any='';
 
   constructor(
     private formBuilder: FormBuilder,
@@ -35,7 +37,7 @@ export class ArtisanAddComponent implements OnInit {
       title: ["", Validators.required],
       description: [""],
       membership: [false, Validators.required],
-      photo: [""],
+      photoUrl: [null],
       website: [""],
       facebook: [""],
       phone_number: [""],
@@ -54,11 +56,13 @@ export class ArtisanAddComponent implements OnInit {
     this.submitted = true;
     let tempArtisan: Artisan;
     tempArtisan = this.artisanFormGroup.value;
+    console.log('before save artisan = ',tempArtisan);
     this.upload();
     if (this.artisanFormGroup.invalid) {
       return;
     } else {
       this.artisanApi.addArtisan(tempArtisan).subscribe(res => {
+        console.log('onsave artisan = ',tempArtisan);
         this.router.navigateByUrl("/administration")
       }, error => {
         alert("something went wrong!")
@@ -67,7 +71,22 @@ export class ArtisanAddComponent implements OnInit {
   }
 
   selectFile(event: any): void {
+    let reader = new FileReader(); // HTML5 FileReader API
     this.selectedFiles = event.target.files;
+    let filepreview = this.selectedFiles.item(0);
+    if(this.selectedFiles && filepreview){
+      reader.readAsDataURL(filepreview);
+      // When file uploads set it to file formcontrol
+            reader.onload = () => {
+              this.imageUrl = reader.result;
+              // console.log( this.imageUrl);
+              this.artisanFormGroup.patchValue({
+                photoUrl: reader.result
+              });
+              // this.editFile = false;
+              // this.removeUpload = true;
+            }
+    }
   }
 
   upload(): void {
@@ -85,8 +104,8 @@ export class ArtisanAddComponent implements OnInit {
               this.progress = Math.round(100 * event.loaded / event.total);
             } else if (event instanceof HttpResponse) {
               this.message = event.body.message;
-              console.log('this.currentFile.name', this.currentFile.name);
-              this.artisanFormGroup.value['photo'] = this.currentFile.name || '';
+              // console.log('this.currentFile.name', this.currentFile.name);
+              // this.artisanFormGroup.value['photoUrl'] = this.currentFile.name || '';
 
               // this.fileInfos = this.fileService.getFiles();
             }
@@ -114,4 +133,10 @@ export class ArtisanAddComponent implements OnInit {
     this.artisanFormGroup.reset();
   }
 
+  previewPhoto(){
+    console.log('inside preview')
+  }
+  delete(){
+    this.imageUrl = null;
+  }
 }

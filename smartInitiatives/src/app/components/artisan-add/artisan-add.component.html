@@ -2,18 +2,37 @@
     <div class="container" *ngIf="artisanFormGroup">
         <!-- {{artisanFormGroup.value | json}} -->
         <form [formGroup]="artisanFormGroup" (ngSubmit)="saveArtisan()">
+
+            <!-- Image Preview -->
+            <!-- <div class="imagePreview">
+                <img [src]="imageUrl"> <br />
+
+            </div> -->
+            <div class="imagePreview">
+                <label class="hoverable" for="fileInput">
+                    <img [src]="imageUrl ? imageUrl : 'https://avatars.dicebear.com/api/bottts/aaaaaaaaaaaaaaaaa.svg'"> 
+                    <div class="hover-text">Choisir une photo</div>
+                    <div class="background"></div>
+                  </label>
+                  <br/>
+                  <input id="fileInput" type='file'  (change)="selectFile($event)">
+
+            </div>
+
             <div class="form-group">
                 <div class="row">
                     <div class="col-md-6">
                         <label>Nom</label>
-                        <input type="text" class="form-control" formControlName="last_name" [ngClass]="{ 'is-invalid': f.last_name.touched && f.last_name.errors }">
+                        <input type="text" class="form-control" formControlName="last_name"
+                            [ngClass]="{ 'is-invalid': f.last_name.touched && f.last_name.errors }">
                         <div *ngIf="f.last_name.touched && f.last_name.errors" class="invalid-feedback">
                             <div *ngIf="f.last_name.errors.required">le champ nom est requis</div>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <label>Prenom</label>
-                        <input type="text" class="form-control" formControlName="first_name" [ngClass]="{ 'is-invalid': f.first_name.touched && f.first_name.errors }">
+                        <input type="text" class="form-control" formControlName="first_name"
+                            [ngClass]="{ 'is-invalid': f.first_name.touched && f.first_name.errors }">
                         <div *ngIf="f.first_name.touched && f.first_name.errors" class="invalid-feedback">
                             <div *ngIf="f.first_name.errors.required">le champ prenom est requis</div>
                         </div>
@@ -29,12 +48,13 @@
                     </div>
                     <div class="col-md-6">
                         <label>email</label>
-                        <input type="text" class="form-control" formControlName="email" [ngClass]="{ 'is-invalid': f.email.touched && f.email.errors }">
+                        <input type="text" class="form-control" formControlName="email"
+                            [ngClass]="{ 'is-invalid': f.email.touched && f.email.errors }">
                         <div *ngIf="f.email.touched && f.email.errors" class="invalid-feedback">
                             <div *ngIf="f.email.errors.required">champ email est requis</div>
                             <div *ngIf="f.email.errors.email">L'adresse email doit etre une adresse valide !</div>
                         </div>
-                        
+
                     </div>
                 </div>
             </div>
@@ -55,12 +75,7 @@
                     </div>
                 </div>
             </div>
-            <br>
-            <div class=" form-group custom-file">
-                <input type="file" class="custom-file-input" formControlName="photo" id="photo"
-                    (change)="selectFile($event)">
-                <label class="custom-file-label" for="photo">Télécharger la photo</label>
-            </div>
+
             <br> <br>
             <div class="form-group">
                 <div class="custom-control custom-checkbox">
@@ -70,7 +85,8 @@
             </div>
 
             <div class="row" style="float: right; margin: 1%;">
-                <button class="btn btn-success" [disabled]="!artisanFormGroup.valid">Enregistrer</button>
+                <button class="btn btn-warning mr-3" [disabled]="!artisanFormGroup.valid">Enregistrer</button>
+                <button class="btn btn-dark" (click)='ResetForm()'>Réinitialiser</button>
             </div>
 
             <div *ngIf="currentFile" class="progress my-3">
@@ -80,6 +96,7 @@
                     {{ progress }}%
                 </div>
             </div>
+
             <br>
             <br>
             <!-- <div *ngIf="message" class="alert alert-secondary" role="alert">{{ message }}</div> -->

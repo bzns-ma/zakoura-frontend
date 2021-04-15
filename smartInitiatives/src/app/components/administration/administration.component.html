@@ -1,9 +1,42 @@
+<header id="home" class="header-area pt-100">
+    <div class="shape header-shape-one">
+        <img src="assets/images/banner/shape/shape-1.png" alt="shape">
+    </div>
+<!-- 
+    <div class="shape header-shape-tow animation-one">
+        <img src="assets/images/banner/shape/shape-2.png" alt="shape">
+    </div>
+
+    <div class="shape header-shape-three animation-one">
+        <img src="assets/images/banner/shape/shape-3.png" alt="shape">
+    </div> -->
+
+    <div class="shape header-shape-fore">
+        <img src="assets/images/banner/shape/shape-4.png" alt="shape">
+    </div>
+
+ 
+
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <nav class="navbar navbar-expand-lg">
+                        <a class="navbar-brand">
+                            <img src="assets/images/logo_smart.png" alt="Logo">
+                        </a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    
+</header>
+
 <div class="container mt-80">
     <nav class="navbar navbar-expand-sm bg-light navbar-light">
         <ul class="navbar navbar-nav">
             <!-- <li><button class="btn btn-sm btn-outline-dark ml-2" (click)='switchToArtisan()'>Artisans</button></li> -->
             <!-- <li><button class="btn btn-sm btn-outline-dark ml-2">Events</button></li> -->
-            <button class="btn btn-sm btn-success ml-2" (click)="add()">
+            <button class="btn btn-sm btn-dark ml-2" (click)="add()">
                 <span class="fas fa-plus"> Nouveau</span>
 
             </button>
@@ -24,23 +57,24 @@
             <div class="container">
                 <!-- *ngIf="isArtisan" -->
                 <table class="table">
-                    <tr>
+                    <tr >
                         <th>Nom et Prénom</th>
                         <th>Metier</th>
                         <th>Description</th>
                         <th>Membre</th>
-                        <th>Siteweb</th>
-                        <th>Facebook</th>
-                        <th>Photo</th>
+                        <!-- <th>Siteweb</th> -->
+                        <!-- <th>Facebook</th> -->
+                        <th class="text-center">Image</th>
+                        <th class="text-center" width="1%">Actions</th>
                     </tr>
                     <tr *ngFor="let artisan of artisans | filter : keyword">
                         <td>{{artisan.last_name}} {{artisan.first_name}}</td>
                         <td>{{artisan.title}}</td>
                         <td>{{artisan.description}}</td>
                         <td>{{artisan.membership}}</td>
-                        <td>{{artisan.website}}</td>
-                        <td>{{artisan.facebook}}</td>
-                        <td>{{artisan.photo}}</td>
+                        <!-- <td>{{artisan.website}}</td> -->
+                        <!-- <td>{{artisan.facebook}}</td> -->
+                        <td><img [src]="artisan.photoUrl ? artisan.photoUrl : 'https://avatars.dicebear.com/api/bottts/aaaaaaaaaaaaaaaaa.svg'"></td>
                         <td>
                             <button class="btn btn-sm btn-warning" (click)="modifyArtisan(artisan._id)">
                                 <span class="far fa-edit"></span>

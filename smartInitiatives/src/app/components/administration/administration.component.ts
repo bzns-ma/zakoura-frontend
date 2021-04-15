@@ -19,6 +19,7 @@ export class AdministrationComponent implements OnInit {
   activeLink = this.links[0];
   tabIndex= 0;
   nouveaulabel='';
+  // imageUrl:any='';
  
   constructor(
     private api: ArtisanService, 
@@ -41,7 +42,7 @@ export class AdministrationComponent implements OnInit {
 
   getAllArtisans() {
     this.artisansnapshot = this.actro.snapshot.data['artres'];
-    this.artisans = this.artisansnapshot.data;    
+    this.artisans = this.artisansnapshot.data; 
   }
 
   search(value) {
@@ -51,9 +52,8 @@ export class AdministrationComponent implements OnInit {
     this.router.navigateByUrl("/newArtisan")
   }
 
-  modifyArtisan(a: Artisan) {
-    this.router.navigateByUrl("/editArtisan")
-
+  modifyArtisan(id) {
+    this.router.navigateByUrl("/editArtisan/"+id)
   }
 
   deleteArtisan(id) {

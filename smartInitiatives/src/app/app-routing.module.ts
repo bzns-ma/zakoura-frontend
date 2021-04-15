@@ -32,13 +32,13 @@ const routes: Routes = [
   { path: 'admin', component: IndexComponent, canActivate: [AuthGuard], data: { header: false } },
   { path: 'login', component: LoginComponent },
   {
-    path: 'administration', component: AdministrationComponent,
+    path: 'administration', component: AdministrationComponent, data: { header: false },
     resolve: {
       artres: ArtisansResolver
     }
   },
-  { path: 'newArtisan', component: ArtisanAddComponent },
-  { path: 'editArtisan', component: ArtisanEditComponent },
+  { path: 'newArtisan', component: ArtisanAddComponent , data: { header: false }},
+  { path: 'editArtisan/:id', component: ArtisanEditComponent },
   { path: 'newEvent', component: EventAddComponent },
   { path: 'editEvent', component: EventEditComponent },
 
