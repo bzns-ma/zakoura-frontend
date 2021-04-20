@@ -1,4 +1,6 @@
 <div class="artisanContainer">
+    <button class="btn btn-secondary mr-3" onclick="history.back(-1)"> &laquo; Administration</button>
+
     <div class="container" *ngIf="artisanFormGroup">
         <!-- {{artisanFormGroup.value | json}} -->
         <form [formGroup]="artisanFormGroup" (ngSubmit)="saveArtisan()">

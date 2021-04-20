@@ -1,7 +1,7 @@
-<header id="home" class="header-area pt-100">
-    <div class="shape header-shape-one">
+<header id="home" class="header-area pt-50">
+    <!-- <div class="shape header-shape-one">
         <img src="assets/images/banner/shape/shape-1.png" alt="shape">
-    </div>
+    </div> -->
 <!-- 
     <div class="shape header-shape-tow animation-one">
         <img src="assets/images/banner/shape/shape-2.png" alt="shape">
@@ -50,7 +50,15 @@
         </ul>
     </nav>
 </div>
-<mat-tab-group mat-align-tabs="center" animationDuration="0ms" (selectedTabChange)="tabChanged($event)">
+<div class="row center-elems" >
+    <mat-paginator 
+    [length]="paginatorLength"
+    [pageSize]="pageSize" 
+    (page)="onPageChanged($event)"
+    >
+</mat-paginator>
+</div>
+<mat-tab-group mat-align-tabs="center" animationDuration="0ms" (selectedTabChange)="tabChanged($event)" [selectedIndex]="tabSelectedIndex">
     <!-- Artisan Tab -->
     <mat-tab label="Artisans">
         <ng-template matTabContent>
@@ -67,7 +75,7 @@
                         <th class="text-center">Image</th>
                         <th class="text-center" width="1%">Actions</th>
                     </tr>
-                    <tr *ngFor="let artisan of artisans | filter : keyword">
+                    <tr *ngFor="let artisan of activeArtisans | filter : keyword">
                         <td>{{artisan.last_name}} {{artisan.first_name}}</td>
                         <td>{{artisan.title}}</td>
                         <td>{{artisan.description}}</td>
@@ -93,7 +101,38 @@
     <mat-tab label="Events">
         <ng-template matTabContent>
             <!-- Event Tab -->
-            Content of Events
+            <div class="container">
+                <!-- *ngIf="isArtisan" -->
+                <table class="table">
+                    <tr >
+                        <th>Title</th>
+                        <th>event Date</th>
+                        <th>Description</th>
+                        <th>Place</th>
+                        <th>Start time </th>
+                        <th>End time</th>
+                        <th class="text-center" width="1%">Actions</th>
+                    </tr>
+                    <tr *ngFor="let event of activeEvents | filter : keyword">
+                        <td>{{event.title}}</td>
+                        <td>{{event.eventDate}}</td>
+                        <td>{{event.description}}</td>
+                        <td>{{event.place}}</td>
+                        <td>{{event.start_time}}</td>
+                        <td>{{event.end_time}}</td>
+                        <td>
+                            <button class="btn btn-sm btn-warning" (click)="modifyEvent(event._id)">
+                                <span class="far fa-edit"></span>
+                            </button>
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-danger" (click)="deleteEvent(event._id)">
+                                <span class="fa fa-trash-o"></span>
+                            </button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
         </ng-template>
     </mat-tab>
 </mat-tab-group>

@@ -29,7 +29,7 @@ const routes: Routes = [
       artres: ArtisansResolver
     }
   },
-  { path: 'admin', component: IndexComponent, canActivate: [AuthGuard], data: { header: false } },
+  // { path: 'admin', component: IndexComponent, canActivate: [AuthGuard], data: { header: false } },
   { path: 'login', component: LoginComponent },
   {
     path: 'administration', component: AdministrationComponent, data: { header: false },
@@ -39,7 +39,7 @@ const routes: Routes = [
   },
   { path: 'newArtisan', component: ArtisanAddComponent , data: { header: false }},
   { path: 'editArtisan/:id', component: ArtisanEditComponent },
-  { path: 'newEvent', component: EventAddComponent },
+  { path: 'newEvent', component: EventAddComponent ,data: { header: false } },
   { path: 'editEvent', component: EventEditComponent },
 
 

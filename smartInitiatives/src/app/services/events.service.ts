@@ -2,7 +2,7 @@ import { HttpClient, HttpResponse, HttpErrorResponse } from '@angular/common/htt
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { Event } from '../models/event';
+import { Event } from '../models/Event_';
 import { throwError } from 'rxjs';
 
 @Injectable({
@@ -16,9 +16,10 @@ export class EventsService {
     return this.httpClient.get<Event[]>(environment.backendUrl.api + environment.backendUrl.events);
   }
 
-  addEvent(event: any){
-    return this.httpClient.post<Event>(environment.backendUrl.api + environment.backendUrl.events + environment.backendUrl.createAchievement, event, { observe: 'response' });
+  addEvent(event: Event){
+    return this.httpClient.post<Event>(environment.backendUrl.api + environment.backendUrl.createEvent, event);
   }
+
 
   updateEvent(id: string, event: any){
     return this.httpClient.post<Event>(environment.backendUrl.api + environment.backendUrl.events + environment.backendUrl.updateAchievement  + "?id=" + id, event, { observe: 'response' });

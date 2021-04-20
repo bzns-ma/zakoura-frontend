@@ -18,7 +18,7 @@ export class LoaderInterceptor implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     this.requests.push(req);
     this.loaderService.isLoading.next(true);
-    return Observable.create(observer => {
+    return new Observable(observer => {
       const subscription = next.handle(req)
         .subscribe(
           event => {
@@ -28,7 +28,7 @@ export class LoaderInterceptor implements HttpInterceptor {
             }
           },
           err => {
-            alert('Error: ' + err);
+            // alert('Error: ' + err);
             this.removeRequest(req);
             observer.error(err);
           },

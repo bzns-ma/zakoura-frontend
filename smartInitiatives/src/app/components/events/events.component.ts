@@ -3,7 +3,7 @@ import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { map } from 'rxjs/operators';
-import { Event } from 'src/app/models/event';
+import { Event } from 'src/app/models/Event_';
 import { EventsService } from 'src/app/services/events.service';
 
 @Component({
@@ -19,31 +19,6 @@ export class EventsComponent implements OnInit {
   monthShortNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
     "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
   ];
-
-  test: any = [
-    {
-      date: "03/12/2021",
-      description: "The best event of the year",
-      end_time: "20h",
-      id: "1",
-      photo: "photo 1",
-      place: "place 1",
-      start_time: "14h",
-      title: "WWDC",
-      _id: "603e569c1fe97e3bc4ef84d2"
-    },
-    {
-      date: "03/12/2021",
-      description: "The best event of the year",
-      end_time: "20h",
-      id: "1",
-      photo: "photo 1",
-      place: "place 1",
-      start_time: "14h",
-      title: "WWDC",
-      _id: "603e569c1fe97e3bc4ef84d2"
-    }
-  ]
 
   // pagination 
   pageSize = 2;
@@ -92,8 +67,8 @@ export class EventsComponent implements OnInit {
   }
 
   getMonthShortName(event) {
-    if (typeof event['date'] == 'string' && this.validateDateFormat(event['date'])) {
-      let splitedDate = event['date'].split('/');
+    if (typeof event['eventDate'] == 'string' && this.validateDateFormat(event['eventDate'])) {
+      let splitedDate = event['eventDate'].split('/');
       let day = splitedDate[0];
       let month = splitedDate[1];
       let year = splitedDate[2];
@@ -104,8 +79,8 @@ export class EventsComponent implements OnInit {
   }
 
   getDayFromDate(event){
-    if (typeof event['date'] == 'string' && this.validateDateFormat(event['date'])) {
-      let splitedDate = event['date'].split('/');
+    if (typeof event['eventDate'] == 'string' && this.validateDateFormat(event['eventDate'])) {
+      let splitedDate = event['eventDate'].split('/');
       return splitedDate[0];
     } else {
       return '';
@@ -117,7 +92,7 @@ export class EventsComponent implements OnInit {
   }
 
   getStatutOfevents(event) {
-    if (this.isUpcoming( event['date'])) {
+    if (this.isUpcoming( event['eventDate'])) {
       this.statutOfevent = 'À venir';
     } else {
       this.statutOfevent = 'passé'

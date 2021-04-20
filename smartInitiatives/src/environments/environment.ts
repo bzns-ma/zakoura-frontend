@@ -15,9 +15,9 @@ export const environment = {
       deleteProject: "",
       updateProject: "",
 
-      createEvent: "",
-      deleteEvent: "",
-      updateEvent: "",
+      createEvent: "create_event",
+      deleteEvent: "delete_event",
+      updateEvent: "update_event",
 
       createArtisan: "create_artisan",
       deleteArtisan: "delete_artisan",

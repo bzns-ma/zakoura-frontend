@@ -56,7 +56,6 @@ export class ArtisanAddComponent implements OnInit {
     this.submitted = true;
     let tempArtisan: Artisan;
     tempArtisan = this.artisanFormGroup.value;
-    console.log('before save artisan = ',tempArtisan);
     this.upload();
     if (this.artisanFormGroup.invalid) {
       return;
@@ -132,10 +131,9 @@ export class ArtisanAddComponent implements OnInit {
     this.artisanFormGroup.reset();
   }
 
-  previewPhoto(){
-    console.log('inside preview')
-  }
   delete(){
     this.imageUrl = null;
   }
+
+
 }
