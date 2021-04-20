@@ -7,6 +7,8 @@ import { error } from 'selenium-webdriver';
 import { ArtisanService } from 'src/app/services/artisan.service';
 import { FileService } from 'src/app/services/file.service';
 import { Artisan } from '../../models/artisan';
+import { Location } from '@angular/common';
+
 @Component({
   selector: 'app-artisan-add',
   templateUrl: './artisan-add.component.html',
@@ -27,7 +29,8 @@ export class ArtisanAddComponent implements OnInit {
     private formBuilder: FormBuilder,
     private artisanApi: ArtisanService,
     private router: Router,
-    private fileService: FileService
+    private fileService: FileService,
+    private location : Location
   ) { }
 
   ngOnInit(): void {
@@ -61,7 +64,7 @@ export class ArtisanAddComponent implements OnInit {
       return;
     } else {
       this.artisanApi.addArtisan(tempArtisan).subscribe(res => {
-        this.router.navigateByUrl("/administration")
+        this.location.back();
       }, error => {
         alert("something went wrong!")
       });

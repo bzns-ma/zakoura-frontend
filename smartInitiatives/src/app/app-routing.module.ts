@@ -4,7 +4,7 @@ import { ArtisanCvComponent } from './components/artisan-cv/artisan-cv.component
 import { LandingComponent } from './components/landing/landing.component';
 import { ArtisansResolver } from './resolvers/artisans.resolver';
 import { LoginComponent } from './components/admin/login/login.component';
-import { IndexComponent } from './components/admin/index/index.component';
+// import { IndexComponent } from './components/admin/index/index.component';
 import { AuthGuard } from './helpers/auth.guard';
 import { AdministrationComponent } from './components/administration/administration.component';
 import { ArtisanAddComponent } from './components/artisan-add/artisan-add.component';

@@ -2,7 +2,7 @@
     <!-- <div class="shape header-shape-one">
         <img src="assets/images/banner/shape/shape-1.png" alt="shape">
     </div> -->
-<!-- 
+    <!-- 
     <div class="shape header-shape-tow animation-one">
         <img src="assets/images/banner/shape/shape-2.png" alt="shape">
     </div>
@@ -15,20 +15,20 @@
         <img src="assets/images/banner/shape/shape-4.png" alt="shape">
     </div>
 
- 
 
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <nav class="navbar navbar-expand-lg">
-                        <a class="navbar-brand">
-                            <img src="assets/images/logo_smart.png" alt="Logo">
-                        </a>
-                    </nav>
-                </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <nav class="navbar navbar-expand-lg">
+                    <a class="navbar-brand">
+                        <img src="assets/images/logo_smart.png" alt="Logo">
+                    </a>
+                </nav>
             </div>
         </div>
-    
+    </div>
+
 </header>
 
 <div class="container mt-80">
@@ -37,7 +37,7 @@
             <!-- <li><button class="btn btn-sm btn-outline-dark ml-2" (click)='switchToArtisan()'>Artisans</button></li> -->
             <!-- <li><button class="btn btn-sm btn-outline-dark ml-2">Events</button></li> -->
             <button class="btn btn-sm btn-dark ml-2" (click)="add()">
-                <span class="fas fa-plus"> Nouveau</span>
+                <span class="fas fa-plus"> Nouveau </span>
 
             </button>
         </ul>
@@ -50,22 +50,19 @@
         </ul>
     </nav>
 </div>
-<div class="row center-elems" >
-    <mat-paginator 
-    [length]="paginatorLength"
-    [pageSize]="pageSize" 
-    (page)="onPageChanged($event)"
-    >
-</mat-paginator>
+<div class="row center-elems">
+    <mat-paginator [length]="paginatorLength" [pageSize]="pageSize" (page)="onPageChanged($event)">
+    </mat-paginator>
 </div>
-<mat-tab-group mat-align-tabs="center" animationDuration="0ms" (selectedTabChange)="tabChanged($event)" [selectedIndex]="tabSelectedIndex">
+<mat-tab-group mat-align-tabs="center" animationDuration="0ms" (selectedTabChange)="tabChanged($event)"
+    [selectedIndex]="tabSelectedIndex">
     <!-- Artisan Tab -->
     <mat-tab label="Artisans">
         <ng-template matTabContent>
             <div class="container">
                 <!-- *ngIf="isArtisan" -->
                 <table class="table">
-                    <tr >
+                    <tr>
                         <th>Nom et Prénom</th>
                         <th>Metier</th>
                         <th>Description</th>
@@ -82,7 +79,9 @@
                         <td>{{artisan.membership}}</td>
                         <!-- <td>{{artisan.website}}</td> -->
                         <!-- <td>{{artisan.facebook}}</td> -->
-                        <td><img [src]="artisan.photoUrl ? artisan.photoUrl : 'https://avatars.dicebear.com/api/bottts/aaaaaaaaaaaaaaaaa.svg'"></td>
+                        <td><img
+                                [src]="artisan.photoUrl ? artisan.photoUrl : 'https://avatars.dicebear.com/api/bottts/aaaaaaaaaaaaaaaaa.svg'">
+                        </td>
                         <td>
                             <button class="btn btn-sm btn-warning" (click)="modifyArtisan(artisan._id)">
                                 <span class="far fa-edit"></span>
@@ -104,7 +103,7 @@
             <div class="container">
                 <!-- *ngIf="isArtisan" -->
                 <table class="table">
-                    <tr >
+                    <tr>
                         <th>Title</th>
                         <th>event Date</th>
                         <th>Description</th>

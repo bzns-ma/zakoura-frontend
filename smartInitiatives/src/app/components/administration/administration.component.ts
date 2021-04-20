@@ -16,7 +16,7 @@ export class AdministrationComponent implements OnInit {
 
   tabSelectedIndex = 0;
   keyword = '';
-  links = ['Artisans', 'Events'];
+  links = ['artisan', 'événement'];
   activeLink = this.links[0];
   tabIndex = 0;
   nouveaulabel = '';
@@ -42,8 +42,10 @@ export class AdministrationComponent implements OnInit {
   ngOnInit(): void {
     this.getAllArtisans();
     this.getAllEvents();
-    this.paginatorLength = this.artisans.length;
     this.tabSelectedIndex = parseInt(this.actro.snapshot.queryParamMap.get('tab'),10); 
+    console.log('tabSelectedIndex',this.tabSelectedIndex);
+    // this.activeLink = this.links[this.tabSelectedIndex];
+    // this.tabSelectedIndex == 0 ? this.paginatorLength =this.artisans.length :this.paginatorLength =this.events.length  ;
   }
 
 
@@ -73,10 +75,11 @@ export class AdministrationComponent implements OnInit {
   }
 
   add() {
-    if (this.tabSelectedIndex == 0) {
-      this.addArtisan();
-    } else if (this.tabSelectedIndex == 1) {
+    if (this.tabSelectedIndex == 1) {
       this.addEvent();
+    } else {
+      this.addArtisan();
+
     }
   }
   addEvent() {
@@ -101,13 +104,15 @@ export class AdministrationComponent implements OnInit {
     if (conf == true) {
       this.artisanService.deleteArtisan(id).subscribe(res => {
         this.removeItemFromDom(id);
-
+        this.paginatorLength =this.artisans.length;
       });
     }
     this.removeItemFromDom(id);
   }
+
   removeItemFromDom(id) {
     const artisanToremove = this.artisans.find(artisan => artisan._id == id);
+    console.log(artisanToremove);
     this.artisans = this.artisans.filter(artisan => artisan !== artisanToremove);
   }
 
@@ -130,6 +135,8 @@ export class AdministrationComponent implements OnInit {
       this.paginatorLength = this.events.length;
       this.getAllEvents();
     }
+
+    // this.activeLink = this.links[this.tabIndex];
   }
 
   onPageChanged(e) {

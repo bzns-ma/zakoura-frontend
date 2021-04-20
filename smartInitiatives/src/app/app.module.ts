@@ -18,11 +18,11 @@ import { ActivitiesComponent } from './components/activities/activities.componen
 import { LandingComponent } from './components/landing/landing.component';
 import { LoginComponent } from './components/admin/login/login.component';
 import { IndexComponent } from './components/admin/index/index.component';
-import { AdminProjectsComponent } from './components/admin/index/projects/adminProjects.component';
-import { AdminArtisansComponent } from './components/admin/index/artisans/adminArtisans.component';
-import { AdminAchivementsComponent } from './components/admin/index/achievements/adminAchievements.component';
-import { AdminActivitiesComponent } from './components/admin/index/activities/adminActivities.component';
-import { AdminEventsComponent } from './components/admin/index/events/adminEvents.component';
+// import { AdminProjectsComponent } from './components/admin/index/projects/adminProjects.component';
+// import { AdminArtisansComponent } from './components/admin/index/artisans/adminArtisans.component';
+// import { AdminAchivementsComponent } from './components/admin/index/achievements/adminAchievements.component';
+// import { AdminActivitiesComponent } from './components/admin/index/activities/adminActivities.component';
+// import { AdminEventsComponent } from './components/admin/index/events/adminEvents.component';
 import { ArtisanCvComponent } from './components/artisan-cv/artisan-cv.component';
 import { AboutComponent } from './components/about/about.component';
 import { ContactComponent } from './components/contact/contact.component';
@@ -63,12 +63,12 @@ import { LoaderInterceptor } from './shared/loader.interceptor';
     ActivitiesComponent,
     TeamComponent,
     LoginComponent,
-    IndexComponent,
-    AdminProjectsComponent,
-    AdminArtisansComponent,
-    AdminEventsComponent,
-    AdminAchivementsComponent,
-    AdminActivitiesComponent,
+    // IndexComponent,
+    // AdminProjectsComponent,
+    // AdminArtisansComponent,
+    // AdminEventsComponent,
+    // AdminAchivementsComponent,
+    // AdminActivitiesComponent,
     FilterPipe,
     EventsComponent,
     AdministrationComponent,
@@ -96,14 +96,14 @@ import { LoaderInterceptor } from './shared/loader.interceptor';
     ReactiveFormsModule,
     RouterModule.forRoot([
       {path: 'login', component: LoginComponent},
-      {path: 'admin', component: IndexComponent},
+      // {path: 'admin', component: IndexComponent},
     ]),
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
-    [LoaderService,
-      {provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true},
+    [
+      LoaderService,{provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true},
     ],
     // provider used to create fake backend
     fakeBackendProvider,
