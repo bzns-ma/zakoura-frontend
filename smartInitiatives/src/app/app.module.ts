@@ -17,7 +17,7 @@ import { ProjectsComponent } from './components/projects/projects.component';
 import { ActivitiesComponent } from './components/activities/activities.component';
 import { LandingComponent } from './components/landing/landing.component';
 import { LoginComponent } from './components/admin/login/login.component';
-import { IndexComponent } from './components/admin/index/index.component';
+// import { IndexComponent } from './components/admin/index/index.component';
 // import { AdminProjectsComponent } from './components/admin/index/projects/adminProjects.component';
 // import { AdminArtisansComponent } from './components/admin/index/artisans/adminArtisans.component';
 // import { AdminAchivementsComponent } from './components/admin/index/achievements/adminAchievements.component';

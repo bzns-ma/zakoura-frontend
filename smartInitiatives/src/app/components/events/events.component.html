@@ -18,12 +18,13 @@
                     </section>
                     <section class="card-cont">
                         <!-- <small>{{event.title}}</small> -->
-                        <h3>{{event.description}}</h3>
+                        <h3>{{event.title}}</h3>
                         <div class="even-date">
                             <i class="fa fa-calendar"></i>
                             <time>
                                 <span>{{event.eventDate}}</span>
-                                <span>{{event.start_time}} à  {{event.end_time}}</span>
+                                <span>{{displayedStartTime(event.start_time)}} à
+                                    {{displayedEndTime(event.end_time)}}</span>
                             </time>
                         </div>
                         <div class="even-info">
@@ -32,22 +33,19 @@
                                 {{event.place}}
                             </p>
                         </div>
-                        <a style = '{{getStatutStyle()}}' >{{getStatutOfevents(event)}}</a>
+                        <a
+                            [ngStyle]="{'background-color' : isUpcoming(event.eventDate)  ?  'orange' : 'gray'}">{{getStatutOfevents(event)}}</a>
                     </section>
                 </article>
             </div>
         </div>
-        <div class="row center-elems" >
-            <mat-paginator 
-            [length]="events.length"
-            [pageSize]="pageSize" 
-            [pageSizeOptions]="pageSizeOptions"
-            (page)="onPageChanged($event)"
-            >
-        </mat-paginator>
+        <div class="row center-elems">
+            <mat-paginator [length]="events.length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"
+                (page)="onPageChanged($event)">
+            </mat-paginator>
         </div>
     </div>
-        <!-- <div class="row">
+    <!-- <div class="row">
 <div class="col-lg-6" style="float: left;">
 
     <svg class="btn btn--prev" height="96" viewBox="0 0 24 24" width="96" xmlns="http://www.w3.org/2000/svg">

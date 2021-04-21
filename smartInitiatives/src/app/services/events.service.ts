@@ -2,8 +2,9 @@ import { HttpClient, HttpResponse, HttpErrorResponse } from '@angular/common/htt
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { Event } from '../models/Event_';
+import { Evnt } from '../models/Event_';
 import { throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -12,22 +13,32 @@ export class EventsService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getEvents(): Observable<Event[]> {
-    return this.httpClient.get<Event[]>(environment.backendUrl.api + environment.backendUrl.events);
+  getEvents(): Observable<Evnt[]> {
+    return this.httpClient.get<Evnt[]>(environment.backendUrl.api + environment.backendUrl.events);
   }
 
-  addEvent(event: Event){
-    return this.httpClient.post<Event>(environment.backendUrl.api + environment.backendUrl.createEvent, event);
+  getEventById(id : string){
+    return this.httpClient.get<Evnt>(environment.backendUrl.api + environment.backendUrl.events +'/'+ id);
+  }
+
+  addEvent(event: Evnt){
+    return this.httpClient.post<Evnt>(environment.backendUrl.api + environment.backendUrl.createEvent, event);
   }
 
 
-  updateEvent(id: string, event: any){
-    return this.httpClient.post<Event>(environment.backendUrl.api + environment.backendUrl.events + environment.backendUrl.updateAchievement  + "?id=" + id, event, { observe: 'response' });
-  }
+  updateEvent(id: string, event: Evnt){
+    let API_URL = `${environment.backendUrl.api}${environment.backendUrl.updateEvent}/${id}`;
+    return this.httpClient.put<Evnt>(API_URL,event).pipe(
+      catchError(this.handleError)
+    );  }
 
   deleteEvent(id: string){
-    return this.httpClient.post<Event>(environment.backendUrl.api + environment.backendUrl.events + environment.backendUrl.deleteAchievement + "?id=" + id, {}, { observe: 'response' });
+    let API_URL = `${environment.backendUrl.api}${environment.backendUrl.deleteEvent}/${id}`;
+    return this.httpClient.delete<Evnt>(API_URL).pipe(
+      catchError(this.handleError)
+    );
   }
+
 
   handleError(error: HttpErrorResponse) {
     let errorMessage = 'Unknown error!';

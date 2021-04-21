@@ -61,7 +61,7 @@
         <ng-template matTabContent>
             <div class="container">
                 <!-- *ngIf="isArtisan" -->
-                <table class="table">
+                <table [dataSource]="dataSource" class="table">
                     <tr>
                         <th>Nom et Prénom</th>
                         <th>Metier</th>

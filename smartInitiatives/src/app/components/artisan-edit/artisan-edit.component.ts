@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { first, map } from 'rxjs/operators';
 import { ArtisanService } from 'src/app/services/artisan.service';
 import { FileService } from 'src/app/services/file.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-artisan-edit',
@@ -28,6 +29,7 @@ export class ArtisanEditComponent implements OnInit {
     private ArtisanService: ArtisanService,
     private fileService: FileService,
     private router: Router,
+    private location: Location,
     private formBuilder: FormBuilder) {
     this.artisanId = this.activatedRoute.snapshot.params.id;
   }
@@ -61,11 +63,9 @@ export class ArtisanEditComponent implements OnInit {
   get f() { return this.modificationForm.controls; }
 
   modifyArtisan() {
-    console.log('this.artisanId', this.artisanId, 'form value : ', this.modificationForm.value);
     this.ArtisanService.updateArtisan(this.artisanId, this.modificationForm.value).subscribe(data => {
       alert('modification terminé ! ');
-      this.router.navigateByUrl("/administration")
-
+      this.location.back();
     });
   }
 

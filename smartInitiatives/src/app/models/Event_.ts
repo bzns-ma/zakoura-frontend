@@ -1,4 +1,5 @@
-export interface Event {
+export interface Evnt {
+    _id: string;
     title: string;
     description: string;
     eventDate: string;

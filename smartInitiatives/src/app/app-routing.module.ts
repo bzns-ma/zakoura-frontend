@@ -38,9 +38,9 @@ const routes: Routes = [
     }
   },
   { path: 'newArtisan', component: ArtisanAddComponent , data: { header: false }},
-  { path: 'editArtisan/:id', component: ArtisanEditComponent },
+  { path: 'editArtisan/:id', component: ArtisanEditComponent , data: { header: false }},
   { path: 'newEvent', component: EventAddComponent ,data: { header: false } },
-  { path: 'editEvent', component: EventEditComponent },
+  { path: 'editEvent/:id', component: EventEditComponent , data: { header: false } },
 
 
 

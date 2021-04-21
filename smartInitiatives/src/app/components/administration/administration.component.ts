@@ -4,6 +4,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatTabChangeEvent } from '@angular/material/tabs';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Artisan } from 'src/app/models/artisan';
+import { Evnt } from 'src/app/models/Event_';
 import { ArtisanService } from 'src/app/services/artisan.service';
 import { EventsService } from 'src/app/services/events.service';
 
@@ -25,7 +26,7 @@ export class AdministrationComponent implements OnInit {
   activeArtisans : Artisan[] = [] ;
   /** event variable */
   events: any[] = [];
-  activeEvents: Event[];
+  activeEvents: Evnt[];
   pageSize = 5;
   paginatorLength = 0;
   // pageSizeptions = [5,10,20]
@@ -43,7 +44,6 @@ export class AdministrationComponent implements OnInit {
     this.getAllArtisans();
     this.getAllEvents();
     this.tabSelectedIndex = parseInt(this.actro.snapshot.queryParamMap.get('tab'),10); 
-    console.log('tabSelectedIndex',this.tabSelectedIndex);
     // this.activeLink = this.links[this.tabSelectedIndex];
     // this.tabSelectedIndex == 0 ? this.paginatorLength =this.artisans.length :this.paginatorLength =this.events.length  ;
   }
@@ -103,21 +103,35 @@ export class AdministrationComponent implements OnInit {
     let conf = confirm("Etes vous sure de vouloir supprimer cet artisan ?")
     if (conf == true) {
       this.artisanService.deleteArtisan(id).subscribe(res => {
-        this.removeItemFromDom(id);
+        this.removeArtisanFromDom(id);
         this.paginatorLength =this.artisans.length;
       });
     }
-    this.removeItemFromDom(id);
   }
 
-  removeItemFromDom(id) {
-    const artisanToremove = this.artisans.find(artisan => artisan._id == id);
-    console.log(artisanToremove);
-    this.artisans = this.artisans.filter(artisan => artisan !== artisanToremove);
+  removeArtisanFromDom(id) {
+    const indexOfartisanToremove = this.activeArtisans.findIndex(artisan => artisan._id == id);
+    console.log(indexOfartisanToremove);
+    // this.artisans = this.artisans.filter(artisan => artisan !== artisanToremove);
+    this.activeArtisans.splice(indexOfartisanToremove,1)
+    this.dataSource = new MatTableDataSource<Artisan>(this.artisans);
   }
 
   deleteEvent(id) {
+    let conf = confirm("Etes vous sure de vouloir supprimer cet événement ?")
+    if (conf == true) {
+      this.eventService.deleteEvent(id).subscribe(res => {
+        console.log('res',res);
+        this.removeEventFromDom(id);
+        this.paginatorLength =this.events.length;
+      });
+    }
+  }
 
+  removeEventFromDom(id){
+    const indexOfEventToremove = this.activeEvents.findIndex(event => event._id == id);
+    this.activeEvents.splice(indexOfEventToremove,1)
+    // this.dataSource = new MatTableDataSource<Event>(this.events);
   }
 
   tabChanged(tabChangeEvent: MatTabChangeEvent): void {

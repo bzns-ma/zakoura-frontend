@@ -1,10 +1,10 @@
 
-import { FormGroup, ValidatorFn } from '@angular/forms';
+import { AbstractControl, FormGroup, ValidatorFn } from '@angular/forms';
 
 export function startTimeIsBEforeEndTime(start: string, end: string) {
-    return (formGroup: FormGroup) => {
-        const start_time_control = formGroup.controls[start];//formGroup.get('start_time');
-        const end_time_control = formGroup.controls[end];//formGroup.get('end_time');
+    return (control: AbstractControl) => {
+        const start_time_control = control.get(start);//formGroup.get('start_time');
+        const end_time_control = control.get(end);//formGroup.get('end_time');
         if (!start_time_control || !end_time_control) {
             return null;
         }

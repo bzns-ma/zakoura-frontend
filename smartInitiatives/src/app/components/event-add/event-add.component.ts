@@ -3,7 +3,7 @@ import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { EventsService } from 'src/app/services/events.service';
-import { Event } from 'src/app/models/Event_';
+import { Evnt } from 'src/app/models/Event_';
 import { error } from 'selenium-webdriver';
 import { startTimeIsBEforeEndTime } from 'src/app/helpers/time-compare.validator';
 
@@ -49,7 +49,7 @@ export class EventAddComponent implements OnInit {
 
   saveEvent() {
     this.submitted = true;
-    let tempEvent: Event;
+    let tempEvent: Evnt;
     tempEvent = this.eventFormGroup.value;
     if (this.eventFormGroup.invalid) {
       return;

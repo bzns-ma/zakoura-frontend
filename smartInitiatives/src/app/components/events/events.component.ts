@@ -3,16 +3,18 @@ import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { map } from 'rxjs/operators';
-import { Event } from 'src/app/models/Event_';
+import { Evnt } from 'src/app/models/Event_';
 import { EventsService } from 'src/app/services/events.service';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-events',
   templateUrl: './events.component.html',
-  styleUrls: ['./events.component.scss']
+  styleUrls: ['./events.component.scss'],
+  providers: [DatePipe]
 })
 export class EventsComponent implements OnInit {
-  events: Event[];
+  events: Evnt[];
   lfCard: any;
   shortFormMonth: string[] = [];
   eventDay: string[] = [];
@@ -24,20 +26,22 @@ export class EventsComponent implements OnInit {
   pageSize = 2;
   // pageSizeOptions: number[] = [3, 5, 8, 10];
   @ViewChild(MatPaginator) paginator: MatPaginator;
-  dataSource: MatTableDataSource<Event>;
-  activeEvents: Event[];
+  dataSource: MatTableDataSource<Evnt>;
+  activeEvents: Evnt[];
   statutOfevent: string;
   statutStyle: string;
-  constructor(private api: EventsService, private cdRef: ChangeDetectorRef) { }
+  now = new Date();
+  current_date = '';
+  constructor(private api: EventsService, private cdRef: ChangeDetectorRef, private datePipe: DatePipe) { }
 
   ngOnInit(): void {
+    this.current_date = this.datePipe.transform(this.now, 'dd/MM/yyyy');
     this.api.getEvents().subscribe(data => {
       this.events = data;
       this.activeEvents = this.events.slice(0, this.pageSize) || [];
       if (this.activeEvents && this.activeEvents.length >= 0) {
-        this.dataSource = new MatTableDataSource<Event>(this.events);
+        this.dataSource = new MatTableDataSource<Evnt>(this.events);
         this.dataSource.paginator = this.paginator;
-        this.getStatutOfevents('19/03/2021');
       }
     }, (error => {
       console.log('error connexion or events > ', error);
@@ -57,61 +61,41 @@ export class EventsComponent implements OnInit {
     this.activeEvents = this.events.slice(firstCut, secondCut);
   }
 
-  getlfCard() {
-    return this.lfCard = (Math.random() >= 0.5) ? 'fl-left' : 'fl-right';
-  }
+  // getlfCard() {
+  //   return this.lfCard = (Math.random() >= 0.5) ? 'fl-left' : 'fl-right';
+  // }
 
-  getStatutStyle() {
-    // this.statutStyle = 'background-color: red;'
-    return this.statutStyle = this.statutOfevent == 'À venir' ? 'background-color: orange;' : 'background-color: gray;';
-  }
-
-  getMonthShortName(event) {
-    if (typeof event['eventDate'] == 'string' && this.validateDateFormat(event['eventDate'])) {
-      let splitedDate = event['eventDate'].split('/');
-      let day = splitedDate[0];
+  getMonthShortName(event : Evnt) {
+      let splitedDate = event.eventDate.split('/');
       let month = splitedDate[1];
-      let year = splitedDate[2];
       return this.monthShortNames[+month - 1];
-    } else {
-      return '';
-    }
   }
 
-  getDayFromDate(event){
-    if (typeof event['eventDate'] == 'string' && this.validateDateFormat(event['eventDate'])) {
-      let splitedDate = event['eventDate'].split('/');
-      return splitedDate[0];
-    } else {
-      return '';
-    }
+  getDayFromDate(event : Evnt) {
+    // console.log('<',event.eventDate,'>');
+      let day = event.eventDate.split('/');
+      return day[0];
   }
 
-  validateDateFormat(str: string) {
-    return (str.match(/^[0-9]{2}\/[0-9]{2}\/[0-9]{4}$/) !== null) ? true : false;
+  getStatutOfevents(event: any) {
+   return this.isUpcoming(event.eventDate) == true ?'À venir' :  'passé';
   }
 
-  getStatutOfevents(event) {
-    if (this.isUpcoming( event['eventDate'])) {
-      this.statutOfevent = 'À venir';
-    } else {
-      this.statutOfevent = 'passé'
-    }
-    return this.statutOfevent;
+  isUpcoming(eventDate: string) {
+    let evparts = eventDate.split('/');
+    let evdate = Number(evparts[2] + evparts[1] + evparts[0]);
+    let curparts = this.current_date.split('/');
+    let curdate = Number(curparts[2] + curparts[1] + curparts[0]);
+ 
+    return curdate < evdate;
   }
 
-  isUpcoming(dateString1: string) {
-    if(typeof dateString1 == 'string' && this.validateDateFormat(dateString1)){
-      let splitedDate = dateString1.split('/');
-      let day = splitedDate[0];
-      let month = splitedDate[1];
-      let year = splitedDate[2];
-      let current_date = new Date();
-      current_date.setHours(0, 0, 0, 0);
-      console.log(+day, +month, +year);
-      let evdate = new Date(+year, 3 - 1, +day);
-      return current_date.getTime() < evdate.getTime();
-    }
-
+  displayedStartTime(starttime : string ){
+    let st = starttime.split('.');
+    return st[0]+'h'+st[1];
+  }
+  displayedEndTime(endtime : string ){
+    let st = endtime.split('.');
+    return st[0]+'h'+st[1];
   }
 }
