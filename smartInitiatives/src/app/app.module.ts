@@ -49,6 +49,10 @@ import {MatTabsModule} from '@angular/material/tabs';
 import { LoaderComponent } from './shared/loader/loader.component';
 import { LoaderService } from './shared/loader.service';
 import { LoaderInterceptor } from './shared/loader.interceptor';
+import { EventDetailsComponent } from './components/event-details/event-details.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { NotFoundComponent } from './shared/not-found/not-found.component';
+import { CarouselComponent } from './shared/carousel/carousel.component';
 
 @NgModule({
   declarations: [
@@ -76,7 +80,10 @@ import { LoaderInterceptor } from './shared/loader.interceptor';
     ArtisanEditComponent,
     EventEditComponent,
     EventAddComponent,
-    LoaderComponent
+    LoaderComponent,
+    EventDetailsComponent,
+    NotFoundComponent,
+    CarouselComponent
   ],
   imports: [
     BrowserModule,
@@ -94,6 +101,7 @@ import { LoaderInterceptor } from './shared/loader.interceptor';
     MatInputModule,
     MatTabsModule,
     ReactiveFormsModule,
+    MatDialogModule,
     RouterModule.forRoot([
       {path: 'login', component: LoginComponent},
       // {path: 'admin', component: IndexComponent},

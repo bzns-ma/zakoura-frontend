@@ -6,4 +6,5 @@ export interface Evnt {
     place: string;
     start_time: string;
     end_time: string;
+    multiImages : string[];
 }

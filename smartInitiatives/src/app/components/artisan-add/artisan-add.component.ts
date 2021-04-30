@@ -105,9 +105,6 @@ export class ArtisanAddComponent implements OnInit {
               this.progress = Math.round(100 * event.loaded / event.total);
             } else if (event instanceof HttpResponse) {
               this.message = event.body.message;
-              // console.log('this.currentFile.name', this.currentFile.name);
-              // this.artisanFormGroup.value['photoUrl'] = this.currentFile.name || '';
-
               // this.fileInfos = this.fileService.getFiles();
             }
           },

@@ -6,6 +6,9 @@ import { map } from 'rxjs/operators';
 import { Evnt } from 'src/app/models/Event_';
 import { EventsService } from 'src/app/services/events.service';
 import { DatePipe } from '@angular/common';
+import { Router } from '@angular/router';
+import { MatDialog, MatDialogConfig,MatDialogModule  } from '@angular/material/dialog';
+import { EventDetailsComponent } from '../event-details/event-details.component';
 
 @Component({
   selector: 'app-events',
@@ -32,9 +35,18 @@ export class EventsComponent implements OnInit {
   statutStyle: string;
   now = new Date();
   current_date = '';
-  constructor(private api: EventsService, private cdRef: ChangeDetectorRef, private datePipe: DatePipe) { }
+  constructor(
+    private api: EventsService, 
+    private cdRef: ChangeDetectorRef, 
+    private datePipe: DatePipe,
+    private router : Router
+    ) { }
 
   ngOnInit(): void {
+  }
+
+  ngAfterViewInit() {
+    // this.obs = this.dataSource.connect();
     this.current_date = this.datePipe.transform(this.now, 'dd/MM/yyyy');
     this.api.getEvents().subscribe(data => {
       this.events = data;
@@ -46,11 +58,6 @@ export class EventsComponent implements OnInit {
     }, (error => {
       console.log('error connexion or events > ', error);
     }))
-
-  }
-
-  ngAfterViewInit() {
-    // this.obs = this.dataSource.connect();
     this.cdRef.detectChanges();
 
   }
@@ -90,12 +97,19 @@ export class EventsComponent implements OnInit {
     return curdate < evdate;
   }
 
-  displayedStartTime(starttime : string ){
-    let st = starttime.split('.');
+  displayedTime(time : string ){
+    let st = time.split('.');
     return st[0]+'h'+st[1];
   }
-  displayedEndTime(endtime : string ){
-    let st = endtime.split('.');
-    return st[0]+'h'+st[1];
+
+  gotoEventDetails(id){
+    console.log(id);
+    this.router.navigate(["eventDetail",id]).then(res =>{
+      console.log(res,'routes exists');
+    }).catch(e=>{
+      console.log('route not found with this error : ',e)
+    })
   }
+
+
 }

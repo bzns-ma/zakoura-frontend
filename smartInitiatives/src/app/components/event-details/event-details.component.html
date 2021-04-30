@@ -1,0 +1,21 @@
+{{slides}}
+<div class="card center-position">
+    <div class="container">
+        <app-carousel [slides]="slides" *ngIf="slides && slides.length > 0"></app-carousel>
+            <img *ngIf="no_image"  src="../../../assets/images/no_image.jpg" >
+    </div>
+
+    <div class="card-body">
+        <h5 class="card-title" *ngIf="eventDetail && eventDetail.title">{{eventDetail?.title}}</h5>
+        <p class="card-text" *ngIf="eventDetail">{{eventDetail?.description}}.</p>
+    </div>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item" *ngIf="eventDetail"> {{dayToEvent(eventDetail?.eventDate)}} Jours restants avant {{eventDetail?.title}} </li>
+        <li class="list-group-item" *ngIf="eventDetail">Date prévu de l'évenement : {{eventDetail?.eventDate}}</li>
+        <li class="list-group-item" *ngIf="eventDetail">Entre {{displayedTime(eventDetail?.start_time)}} et {{displayedTime(eventDetail?.end_time)}}</li>
+    </ul>
+    <!-- <div class="card-body">
+        <a href="#" class="card-link">Card link</a>
+        <a href="#" class="card-link">Another link</a>
+    </div> -->
+</div>

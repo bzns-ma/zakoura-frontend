@@ -1,0 +1,33 @@
+// .container2 {
+//     display: flex;
+//     flex-direction: column;
+//     // position: relative;
+//     height: 100vh;
+//     width: 100vw;
+//     top: 19%;
+//     left: 30%;
+
+//     max-height: 265px;
+//     max-width: 365px;
+//     margin: 8em 15em -2em;
+//     transform: translate(-50%, -50%);
+
+//   }
+
+.center-position {
+    position: relative;
+    top: 100px;
+    left: 15%;
+    padding-top: 10px;
+    max-height: 50rem;
+    max-width: 50rem;
+}
+
+.container {
+    width: fit-content;
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+    max-height: 300px;
+    max-width: 430px;
+}

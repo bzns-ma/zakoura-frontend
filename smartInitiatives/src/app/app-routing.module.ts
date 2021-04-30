@@ -11,6 +11,8 @@ import { ArtisanAddComponent } from './components/artisan-add/artisan-add.compon
 import { ArtisanEditComponent } from './components/artisan-edit/artisan-edit.component';
 import { EventAddComponent } from './components/event-add/event-add.component';
 import { EventEditComponent } from './components/event-edit/event-edit.component';
+import { EventDetailsComponent } from './components/event-details/event-details.component';
+import { NotFoundComponent } from './shared/not-found/not-found.component';
 
 const routerOptions: ExtraOptions = {
   scrollPositionRestoration: 'enabled',
@@ -22,13 +24,20 @@ const routerOptions: ExtraOptions = {
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: LandingComponent },
+  // { path: '404', component: NotFoundComponent },
+  // { path: '**', component: NotFoundComponent },
   {
     path: 'artisan',
     component: ArtisanCvComponent,
     resolve: {
       artres: ArtisansResolver
     }
-  },
+  }
+  ,
+  {
+    path: 'eventDetail/:id', component: EventDetailsComponent
+  }
+  ,
   // { path: 'admin', component: IndexComponent, canActivate: [AuthGuard], data: { header: false } },
   { path: 'login', component: LoginComponent },
   {
@@ -37,10 +46,10 @@ const routes: Routes = [
       artres: ArtisansResolver
     }
   },
-  { path: 'newArtisan', component: ArtisanAddComponent , data: { header: false }},
-  { path: 'editArtisan/:id', component: ArtisanEditComponent , data: { header: false }},
-  { path: 'newEvent', component: EventAddComponent ,data: { header: false } },
-  { path: 'editEvent/:id', component: EventEditComponent , data: { header: false } },
+  { path: 'newArtisan', component: ArtisanAddComponent, data: { header: false } },
+  { path: 'editArtisan/:id', component: ArtisanEditComponent, data: { header: false } },
+  { path: 'newEvent', component: EventAddComponent, data: { header: false } },
+  { path: 'editEvent/:id', component: EventEditComponent, data: { header: false } },
 
 
 

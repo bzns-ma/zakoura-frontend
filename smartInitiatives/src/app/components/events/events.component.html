@@ -9,8 +9,8 @@
             </div>
         </div>
         <div class="row">
-            <div *ngFor="let event of activeEvents" class="col-lg-6" style="padding-bottom: 3em;">
-                <article class="card fl-left">
+            <div *ngFor="let event of activeEvents" class="col-lg-6" style="padding-bottom: 3em;" >
+                <article class="card fl-left" (click)="gotoEventDetails(event._id)">
                     <section class="date">
                         <time>
                             <span>{{getDayFromDate(event)}}</span><span>{{getMonthShortName(event)}}</span>
@@ -23,8 +23,8 @@
                             <i class="fa fa-calendar"></i>
                             <time>
                                 <span>{{event.eventDate}}</span>
-                                <span>{{displayedStartTime(event.start_time)}} à
-                                    {{displayedEndTime(event.end_time)}}</span>
+                                <span>{{displayedTime(event.start_time)}} à
+                                    {{displayedTime(event.end_time)}}</span>
                             </time>
                         </div>
                         <div class="even-info">
