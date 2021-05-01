@@ -19,7 +19,6 @@ export class AdministrationComponent implements OnInit {
   keyword = '';
   links = ['artisan', 'événement'];
   activeLink = this.links[0];
-  tabIndex = 0;
   nouveaulabel = '';
   artisansnapshot: any;
   artisans: Artisan[] = []
@@ -136,16 +135,16 @@ export class AdministrationComponent implements OnInit {
 
   tabChanged(tabChangeEvent: MatTabChangeEvent): void {
     // 0 > artisans 1 > events
-    this.tabIndex = tabChangeEvent.index;
+    this.tabSelectedIndex = tabChangeEvent.index;
 
     this.router.navigate([], { relativeTo: this.actro, queryParams: {
       tab: tabChangeEvent.index
     }});
     this.tabSelectedIndex = tabChangeEvent.index
 
-    if (this.tabIndex == 0) {
+    if (this.tabSelectedIndex == 0) {
       this.paginatorLength = this.artisans.length;
-    } else if (this.tabIndex == 1) {
+    } else if (this.tabSelectedIndex == 1) {
       this.paginatorLength = this.events.length;
       this.getAllEvents();
     }
@@ -156,9 +155,9 @@ export class AdministrationComponent implements OnInit {
   onPageChanged(e) {
     let firstCut = e.pageIndex * e.pageSize;
     let secondCut = firstCut + e.pageSize;
-    if(this.tabIndex == 0){
+    if(this.tabSelectedIndex == 0){
       this.activeArtisans = this.artisans.slice(firstCut, secondCut);
-    }else if(this.tabIndex == 1){
+    }else if(this.tabSelectedIndex == 1){
       this.activeEvents = this.events.slice(firstCut, secondCut);
     }
   }

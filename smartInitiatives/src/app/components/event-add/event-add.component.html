@@ -86,13 +86,6 @@
                 </div>
             </div>
 
-            <!-- <div *ngIf="multiImages && multiImages.length" formArrayName="multiImages">
-                <div  *ngFor="let image of multiImages.controls; let i = index">
-                  <div [formGroupName]="i">
-                    <img [src]="image.value" width="180" />
-                  </div>
-                </div>
-              </div> -->
 
             <div class="row" style="float: right; margin: 1%;">
                 <button class="btn btn-warning mr-3" [disabled]="!eventFormGroup.valid">Enregistrer</button>
