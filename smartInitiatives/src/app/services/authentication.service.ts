@@ -1,7 +1,7 @@
 ﻿import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { BehaviorSubject, Observable, throwError } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
 
 import { environment } from '../../environments/environment';
 import { User } from '../models/user';
@@ -21,12 +21,18 @@ export class AuthenticationService {
     }
 
     login(username: string, password: string) {
-        return this.http.post<any>(`${environment.backendUrl.api}/login`, { username, password })
+        console.log('service >>',username,password);
+        return this.http.post<any>(environment.backendUrl.api +'login',{ 'email' :'mouad@bel.com','password' : 'letmein' })
             .pipe(map(user => {
+                console.log('user',user);
                 // store user details and jwt token in local storage to keep user logged in between page refreshes
                 localStorage.setItem('currentUser', JSON.stringify(user));
                 this.currentUserSubject.next(user);
                 return user;
+            }),
+            catchError(err =>{
+                console.log('caught mapping error and rethrowing >>', err);
+                return throwError(err);
             }));
     }
 
@@ -35,4 +41,6 @@ export class AuthenticationService {
         localStorage.removeItem('currentUser');
         this.currentUserSubject.next(null);
     }
+
+
 }

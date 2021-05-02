@@ -29,6 +29,7 @@ const routes: Routes = [
   {
     path: 'artisan',
     component: ArtisanCvComponent,
+    canActivate: [AuthGuard],
     resolve: {
       artres: ArtisansResolver
     }
@@ -41,7 +42,7 @@ const routes: Routes = [
   // { path: 'admin', component: IndexComponent, canActivate: [AuthGuard], data: { header: false } },
   { path: 'login', component: LoginComponent },
   {
-    path: 'administration', component: AdministrationComponent, data: { header: false },
+    path: 'administration', component: AdministrationComponent,canActivate: [AuthGuard], data: { header: false },
     resolve: {
       artres: ArtisansResolver
     }
