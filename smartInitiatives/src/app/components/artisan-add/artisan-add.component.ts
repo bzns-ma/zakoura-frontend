@@ -80,7 +80,6 @@ export class ArtisanAddComponent implements OnInit {
       // When file uploads set it to file formcontrol
             reader.onload = () => {
               this.imageUrl = reader.result;
-              // console.log( this.imageUrl);
               this.artisanFormGroup.patchValue({
                 photoUrl: reader.result
               });

@@ -51,11 +51,9 @@ export class ArtisanEditComponent implements OnInit {
     this.ArtisanService.getArtisan(this.artisanId)
       .pipe(first())
       .subscribe(artisan => {
-        console.log(artisan);
         this.modificationForm.patchValue(artisan);
         this.imageUrl = artisan.photoUrl;
       });
-    // console.log('this.modificationForm', this.modificationForm.value);
   }
 
 
@@ -78,7 +76,6 @@ export class ArtisanEditComponent implements OnInit {
       // When file uploads set it to file formcontrol
       reader.onload = () => {
         this.imageUrl = reader.result;
-        // console.log( this.imageUrl);
         this.modificationForm.patchValue({
           photoUrl: reader.result
         });
@@ -103,14 +100,12 @@ export class ArtisanEditComponent implements OnInit {
               this.progress = Math.round(100 * event.loaded / event.total);
             } else if (event instanceof HttpResponse) {
               this.message = event.body.message;
-              console.log('this.currentFile.name', this.currentFile.name);
               this.modificationForm.value['photoUrl'] = this.currentFile.name || '';
 
               // this.fileInfos = this.fileService.getFiles();
             }
           },
           (err: any) => {
-            console.log(err);
             this.progress = 0;
 
             if (err.error && err.error.message) {

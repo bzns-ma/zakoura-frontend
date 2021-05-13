@@ -30,7 +30,6 @@ export class EventDetailsComponent implements OnInit {
 
   ) {
     this.eventId = this.activatedRoute.snapshot.params.id;
-    // console.log('const',this.eventId);
   }
 
   ngOnInit(): void {
@@ -44,7 +43,6 @@ export class EventDetailsComponent implements OnInit {
         if (this.eventDetail.multiImages && this.eventDetail.multiImages.length > 0) {
           this.eventDetail.multiImages.forEach(img => {
             this.slides.push({ src: img });
-            console.log(this.slides);
             this.no_image = false;
           });
         }
@@ -62,8 +60,6 @@ export class EventDetailsComponent implements OnInit {
     let d = this.now.getTime();
     let dd = Date.parse(this.changePositionOfDaysAndMonth(date_event));
     return this.dateInDays(dd) - this.dateInDays(d);
-
-    // console.log( this.dateInDays(d) , this.dateInDays(dd),this.dateInDays(d) - this.dateInDays(dd))
   }
 
   changePositionOfDaysAndMonth(date_event) {

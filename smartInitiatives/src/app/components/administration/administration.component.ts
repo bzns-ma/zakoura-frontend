@@ -7,6 +7,7 @@ import { Artisan } from 'src/app/models/artisan';
 import { Evnt } from 'src/app/models/Event_';
 import { ArtisanService } from 'src/app/services/artisan.service';
 import { EventsService } from 'src/app/services/events.service';
+import { TokenStorageService } from 'src/app/services/token-storage.service';
 
 @Component({
   selector: 'app-administration',
@@ -22,13 +23,17 @@ export class AdministrationComponent implements OnInit {
   nouveaulabel = '';
   artisansnapshot: any;
   artisans: Artisan[] = []
-  activeArtisans : Artisan[] = [] ;
+  activeArtisans: Artisan[] = [];
   /** event variable */
   events: any[] = [];
   activeEvents: Evnt[];
   pageSize = 5;
   paginatorLength = 0;
   // pageSizeptions = [5,10,20]
+
+  isLoggedIn = false;
+
+
   @ViewChild(MatPaginator) paginator: MatPaginator;
   dataSource: MatTableDataSource<any>;
 
@@ -36,17 +41,30 @@ export class AdministrationComponent implements OnInit {
     private artisanService: ArtisanService,
     private eventService: EventsService,
     private actro: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private tokenStorage: TokenStorageService
   ) { }
 
   ngOnInit(): void {
-    this.getAllArtisans();
-    this.getAllEvents();
-    this.tabSelectedIndex = parseInt(this.actro.snapshot.queryParamMap.get('tab'),10); 
+    // this.isLoggedIn = !!this.tokenStorage.getToken();
+    const timer = this.tokenStorage.getTimer();
+    if (timer && (Date.now() > timer)) {
+      this.tokenStorage.signOut();
+      this.router.navigateByUrl("/login");
+    } else {
+      const admin = this.tokenStorage.getUser();
+      this.getAllArtisans();
+      this.getAllEvents();
+      this.tabSelectedIndex = parseInt(this.actro.snapshot.queryParamMap.get('tab'), 10);
+    }
+
     // this.activeLink = this.links[this.tabSelectedIndex];
     // this.tabSelectedIndex == 0 ? this.paginatorLength =this.artisans.length :this.paginatorLength =this.events.length  ;
   }
-
+  logout(): void {
+    this.tokenStorage.signOut();
+    window.location.reload();
+  }
 
   getAllArtisans() {
     this.artisansnapshot = this.actro.snapshot.data['artres'];
@@ -103,16 +121,15 @@ export class AdministrationComponent implements OnInit {
     if (conf == true) {
       this.artisanService.deleteArtisan(id).subscribe(res => {
         this.removeArtisanFromDom(id);
-        this.paginatorLength =this.artisans.length;
+        this.paginatorLength = this.artisans.length;
       });
     }
   }
 
   removeArtisanFromDom(id) {
     const indexOfartisanToremove = this.activeArtisans.findIndex(artisan => artisan._id == id);
-    console.log(indexOfartisanToremove);
     // this.artisans = this.artisans.filter(artisan => artisan !== artisanToremove);
-    this.activeArtisans.splice(indexOfartisanToremove,1)
+    this.activeArtisans.splice(indexOfartisanToremove, 1)
     this.dataSource = new MatTableDataSource<Artisan>(this.artisans);
   }
 
@@ -120,16 +137,15 @@ export class AdministrationComponent implements OnInit {
     let conf = confirm("Etes vous sure de vouloir supprimer cet événement ?")
     if (conf == true) {
       this.eventService.deleteEvent(id).subscribe(res => {
-        console.log('res',res);
         this.removeEventFromDom(id);
-        this.paginatorLength =this.events.length;
+        this.paginatorLength = this.events.length;
       });
     }
   }
 
-  removeEventFromDom(id){
+  removeEventFromDom(id) {
     const indexOfEventToremove = this.activeEvents.findIndex(event => event._id == id);
-    this.activeEvents.splice(indexOfEventToremove,1)
+    this.activeEvents.splice(indexOfEventToremove, 1)
     // this.dataSource = new MatTableDataSource<Event>(this.events);
   }
 
@@ -137,9 +153,11 @@ export class AdministrationComponent implements OnInit {
     // 0 > artisans 1 > events
     this.tabSelectedIndex = tabChangeEvent.index;
 
-    this.router.navigate([], { relativeTo: this.actro, queryParams: {
-      tab: tabChangeEvent.index
-    }});
+    this.router.navigate([], {
+      relativeTo: this.actro, queryParams: {
+        tab: tabChangeEvent.index
+      }
+    });
     this.tabSelectedIndex = tabChangeEvent.index
 
     if (this.tabSelectedIndex == 0) {
@@ -155,9 +173,9 @@ export class AdministrationComponent implements OnInit {
   onPageChanged(e) {
     let firstCut = e.pageIndex * e.pageSize;
     let secondCut = firstCut + e.pageSize;
-    if(this.tabSelectedIndex == 0){
+    if (this.tabSelectedIndex == 0) {
       this.activeArtisans = this.artisans.slice(firstCut, secondCut);
-    }else if(this.tabSelectedIndex == 1){
+    } else if (this.tabSelectedIndex == 1) {
       this.activeEvents = this.events.slice(firstCut, secondCut);
     }
   }

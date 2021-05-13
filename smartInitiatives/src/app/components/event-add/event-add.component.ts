@@ -63,7 +63,6 @@ export class EventAddComponent implements OnInit {
       return;
     } else {
       this.eventService.addEvent(tempEvent).subscribe(data => {
-        console.log(data);
         // this.location.back();
       }, error => {
         alert("something went wrong!" + error);
@@ -79,7 +78,6 @@ export class EventAddComponent implements OnInit {
               //
       this.fileService.upload(file).subscribe(
         (event: any) => {
-          // console.log(event);
           if (event.type === HttpEventType.UploadProgress) {
             this.progress = Math.round(100 * event.loaded / event.total);
           } else if (event instanceof HttpResponse) {
@@ -88,7 +86,6 @@ export class EventAddComponent implements OnInit {
           }
         },
         (err: any) => {
-          console.log(err);
           this.progress = 0;
           if (err.error && err.error.message) {
             this.message = err.error.message;
@@ -104,14 +101,11 @@ export class EventAddComponent implements OnInit {
         }
         reader.readAsDataURL(file);
       }
-      console.log(this.urls);
  
     }
      this.eventFormGroup.patchValue({
         multiImages: this.urls
       });
-    // console.log(this.urls);
-    console.log(this.eventFormGroup.value);
     
   }
 

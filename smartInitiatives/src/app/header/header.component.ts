@@ -15,7 +15,7 @@ export class HeaderComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,private router: Router, location: Location) { 
     this.router.events.subscribe(val => {
-        this.notAdminPages = !(location.path() === "/admin" || location.path() === "/login");
+        this.notAdminPages = !(location.path() === "/admininistration" || location.path() === "/login");
     }); 
   }
 

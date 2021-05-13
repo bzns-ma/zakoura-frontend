@@ -62,7 +62,6 @@ export class ArtisanCvComponent implements OnInit {
     this.artisans = this.artisansnapshot.data;
     this.artisansToShow = this.artisans;
     this.imageUrl = this
-    // console.log('this.artisansToShow',this.artisansToShow);
   }
 
   getAdherents() {

@@ -114,7 +114,7 @@ import { CarouselComponent } from './shared/carousel/carousel.component';
       LoaderService,{provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true},
     ],
     // provider used to create fake backend
-    fakeBackendProvider,
+    // fakeBackendProvider,
     FormBuilder
   ],
   bootstrap: [AppComponent]

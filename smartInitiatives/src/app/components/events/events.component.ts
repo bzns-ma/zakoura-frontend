@@ -79,7 +79,6 @@ export class EventsComponent implements OnInit {
   }
 
   getDayFromDate(event : Evnt) {
-    // console.log('<',event.eventDate,'>');
       let day = event.eventDate.split('/');
       return day[0];
   }
@@ -103,9 +102,7 @@ export class EventsComponent implements OnInit {
   }
 
   gotoEventDetails(id){
-    console.log(id);
     this.router.navigate(["eventDetail",id]).then(res =>{
-      console.log(res,'routes exists');
     }).catch(e=>{
       console.log('route not found with this error : ',e)
     })

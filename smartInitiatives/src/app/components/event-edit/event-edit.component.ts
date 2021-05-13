@@ -52,9 +52,6 @@ export class EventEditComponent implements OnInit {
       .subscribe(event => {
         this.eventFormGroup.patchValue(event);
         this.imageUrls = event.multiImages;
-        console.log('this.imageUrls=',this.imageUrls)
-        console.log('event',event);
-        console.log('eventFormGroup',this.eventFormGroup.value)
       });
   }
 
@@ -75,7 +72,6 @@ export class EventEditComponent implements OnInit {
               //
       this.fileService.upload(file).subscribe(
         (event: any) => {
-          // console.log(event);
           if (event.type === HttpEventType.UploadProgress) {
             this.progress = Math.round(100 * event.loaded / event.total);
           } else if (event instanceof HttpResponse) {
@@ -84,7 +80,6 @@ export class EventEditComponent implements OnInit {
           }
         },
         (err: any) => {
-          console.log(err);
           this.progress = 0;
           if (err.error && err.error.message) {
             this.message = err.error.message;
@@ -100,14 +95,11 @@ export class EventEditComponent implements OnInit {
         }
         reader.readAsDataURL(file);
       }
-      console.log(this.urls);
  
     }
      this.eventFormGroup.patchValue({
         multiImages: this.urls
       });
-    // console.log(this.urls);
-    console.log(this.eventFormGroup.value);
     
   }
 
