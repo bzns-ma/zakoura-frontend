@@ -1,14 +1,22 @@
 <!--====== FOOTER PART START ======-->
 
-<footer  class="footer-area">
-    <div class="footer-widget pt-80 pb-130">
+<footer class="footer-area">
+    <div class="footer-widget pt-20 pb-30">
         <div class="container">
             <div class="row">
                 <div class="col-lg-3 col-md-4 col-sm-8">
                     <div class="footer-logo mt-50">
-                        <a >
+                        <a>
                             <img src="assets/images/logo_smart.png" alt="Logo" />
                         </a>
+                        <ul>
+                            <li>
+                                <img src="assets/images/logo-fondation-zakoura.jpg" alt="Logo" width="30%"
+                                    height="30%" />
+                                <img src="assets/images/fondation_smart.jpg" alt="Logo" width="48%" height="48%" />
+
+                            </li>
+                        </ul>
                         <ul *ngIf="notAdminPages" class="footer-info">
                             <li>
                                 <div class="single-info">
@@ -43,8 +51,8 @@
                         </ul>
                         <ul class="footer-social mt-20">
                             <li>
-                                <a href="https://www.facebook.com/SmartInitiatives.AinHarrouda"><i class="lni-facebook-filled"></i
-                ></a>
+                                <a href="https://www.facebook.com/SmartInitiatives.AinHarrouda"><i
+                                        class="lni-facebook-filled"></i></a>
                             </li>
                             <li>
                                 <a><i class="lni-twitter-original"></i></a>
@@ -53,8 +61,8 @@
                                 <a><i class="lni-google"></i></a>
                             </li>
                             <li>
-                                <a href="https://www.instagram.com/smartinitiatives/?hl=fr"><i class="lni-instagram"></i
-                ></a>
+                                <a href="https://www.instagram.com/smartinitiatives/?hl=fr"><i
+                                        class="lni-instagram"></i></a>
                             </li>
                         </ul>
                     </div>
@@ -65,11 +73,16 @@
                             <h4 class="title">Menu</h4>
                         </div>
                         <ul class="mt-15">
-                            <li><a style="cursor: pointer;" routerLink="." fragment="about" (click)="onClickAnchor()">A propos</a></li>
-                            <li><a style="cursor: pointer;" routerLink="." fragment="activities" (click)="onClickAnchor()">Nos activités</a></li>
-                            <li><a style="cursor: pointer;" routerLink="." fragment="projects" (click)="onClickAnchor()">Nos projets</a></li>
-                            <li><a style="cursor: pointer;" routerLink="artisans" (click)="onClickAnchor()">Nos artisans</a></li>
-                            <li><a style="cursor: pointer;" routerLink="." fragment="contact" (click)="onClickAnchor()">Nous contactez</a></li>
+                            <li><a style="cursor: pointer;" routerLink="." fragment="about" (click)="onClickAnchor()">A
+                                    propos</a></li>
+                            <li><a style="cursor: pointer;" routerLink="." fragment="activities"
+                                    (click)="onClickAnchor()">Nos activités</a></li>
+                            <li><a style="cursor: pointer;" routerLink="." fragment="projects"
+                                    (click)="onClickAnchor()">Nos projets</a></li>
+                            <li><a style="cursor: pointer;" routerLink="artisans" (click)="onClickAnchor()">Nos
+                                    artisans</a></li>
+                            <li><a style="cursor: pointer;" routerLink="." fragment="contact"
+                                    (click)="onClickAnchor()">Nous contactez</a></li>
 
                         </ul>
                     </div>
@@ -77,9 +90,18 @@
                 <div *ngIf="notAdminPages" class="col-lg-3 col-md-4 col-sm-6">
                     <div class="footer-link mt-45">
                         <div class="f-title">
-                            <h4 class="title">Liens utiles</h4>
+                            <h4 class="title">Nos Partenaires</h4>
                         </div>
                         <ul class="mt-15">
+                            <li class="mt-15">
+                                <img src="assets/images/bidaya.jpg" alt="Logo" width="48%" height="48%" />
+                            </li>
+                            <li class="mt-15">
+                                <img src="assets/images/ampmt.jpg" alt="Logo" width="48%" height="48%" />
+                            </li>
+                            <li class="mt-15">
+                                <img src="assets/images/young-africa.jpg" alt="Logo" width="48%" height="48%" />
+                            </li>
                             <!-- <li><a routerLink="artisan" (click)='scrollToTop()'>Nos artisans</a></li> -->
                             <!-- <li><a routerLink="events">Nos événements</a></li> -->
                             <!-- <li><a href="#">Nos Partenaires</a></li> -->
@@ -112,7 +134,7 @@
                     <div class="copyright text-center">
                         <p>
                             &copy; Tous les droits sont réservés.
-                            <a >GITLAB TEAM</a>
+                            <a>GITLAB TEAM</a>
                         </p>
                     </div>
                 </div>

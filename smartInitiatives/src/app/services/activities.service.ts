@@ -17,17 +17,17 @@ export class ActivitiesService {
   }
 
   
-  addActivity(activity: any){
-    return this.httpClient.post<any>(environment.backendUrl.api + environment.backendUrl.activities + environment.backendUrl.createActivity, { observe: 'response' });
-  }
+  // addActivity(activity: any){
+  //   return this.httpClient.post<any>(environment.backendUrl.api + environment.backendUrl.activities + environment.backendUrl.createActivity, { observe: 'response' });
+  // }
 
-  updateActivity(activity: any){
-    return this.httpClient.post<Activity>(environment.backendUrl.api + environment.backendUrl.activities + environment.backendUrl.updateActivity, activity, { observe: 'response' });
-  }
+  // updateActivity(activity: any){
+  //   return this.httpClient.post<Activity>(environment.backendUrl.api + environment.backendUrl.activities + environment.backendUrl.updateActivity, activity, { observe: 'response' });
+  // }
 
-  deleteActivity(activity: any){
-    return this.httpClient.post<Activity>(environment.backendUrl.api + environment.backendUrl.activities + environment.backendUrl.deleteActivity, activity, { observe: 'response' });
-  }
+  // deleteActivity(activity: any){
+  //   return this.httpClient.post<Activity>(environment.backendUrl.api + environment.backendUrl.activities + environment.backendUrl.deleteActivity, activity, { observe: 'response' });
+  // }
 
   handleError(error: HttpErrorResponse) {
     let errorMessage = 'Unknown error!';

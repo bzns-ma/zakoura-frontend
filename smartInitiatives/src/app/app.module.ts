@@ -53,6 +53,7 @@ import { EventDetailsComponent } from './components/event-details/event-details.
 import { MatDialogModule } from '@angular/material/dialog';
 import { NotFoundComponent } from './shared/not-found/not-found.component';
 import { CarouselComponent } from './shared/carousel/carousel.component';
+import { LocationStrategy, PathLocationStrategy } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -113,6 +114,7 @@ import { CarouselComponent } from './shared/carousel/carousel.component';
     [
       LoaderService,{provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true},
     ],
+    { provide: LocationStrategy, useClass: PathLocationStrategy },
     // provider used to create fake backend
     // fakeBackendProvider,
     FormBuilder

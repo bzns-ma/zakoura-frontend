@@ -34,15 +34,15 @@ export class AdminActivitiesComponent implements OnInit {
   }
 
   add(){
-    this.api.addActivity({title: this.activityForm.get("title"), image: this.activityForm.get("description")});
+   // this.api.addActivity({title: this.activityForm.get("title"), image: this.activityForm.get("description")});
   }
 
   modify(id){
-    this.api.updateActivity({title: this.activityForm.get("title"), image: this.activityForm.get("description")});
+   // this.api.updateActivity({title: this.activityForm.get("title"), image: this.activityForm.get("description")});
   }
 
   delete(id){
-    this.api.deleteActivity({title: this.activityForm.get("title"), image: this.activityForm.get("description")});
+    //this.api.deleteActivity({title: this.activityForm.get("title"), image: this.activityForm.get("description")});
   }
 
 }
