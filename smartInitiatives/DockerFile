@@ -25,3 +25,4 @@ WORKDIR /usr/share/nginx/html
 RUN rm -rf ./*
 COPY --from=compile-image /app/dist/smartInitiatives .
 ENTRYPOINT ["nginx", "-g", "daemon off;"]
+
