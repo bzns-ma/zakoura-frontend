@@ -29,7 +29,6 @@ export const environment = {
       createActivity: "",
       deleteActivity: "",
       updateActivity: "",
-      //events :"assets/data/events.json"
       events:"allEvents"
   }
 };
