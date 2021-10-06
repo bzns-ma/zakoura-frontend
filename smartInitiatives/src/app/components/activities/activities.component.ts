@@ -11,25 +11,25 @@ export class ActivitiesComponent implements OnInit {
 
   activities: Activity[] = [];
   activitiesData = [{
-    "title": "Accueil et Orientation",
-    "description": "Offrir un service d’accueil et d’orientation socio-professionnelle au profit de la population locale",
+    "title": "Orientation",
+    "description": "Offrir un service d’orientation socio-professionnelle au profit de la population locale",
     "iconclass":"lni-direction-alt"
 },
 {
     "title": "Employabilité",
-    "description": "Renforcer les aspects de l’employabilité des jeunes chercheurs d’emplois",
+    "description": "Renforcer les aspects de l’employabilité des jeunes chercheurs d’emplois.",
     "iconclass":"lni-briefcase"
 
 },
 {
     "title": "Accompagnement",
-    "description": "Accompagner les porteurs de projets dans les démarches de la maturité entrepreneuriale",
+    "description": "Accompagner les porteurs de projets dans les démarches de la maturité entrepreneuriale.",
     "iconclass":"lni-customer"
 
 },
 {
     "title": "Innovation sociale",
-    "description": "Renforcer la cohésion entre les collaborateurs du SMT et la commune à travers l’innovation sociale",
+    "description": "Apporter des réponses inventives aux besoins Socio-économiques de la population en associant les acteurs locales.",
     "iconclass":"lni-invention"
 
 },
